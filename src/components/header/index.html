@@ -1,11 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/public/favicon.ico" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <script type="module" src="/src/components/header/header.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="top_banner">
+      지금 가입하고 인기상품 <span>100</span>원에 받아가세요!
+    </div>
+    <div class="container">
+      <header class="header">
+        <ul class="member_service">
+          <li>
+            <a href="/">회원가입</a>
+          </li>
+          <span class="divider" aria-hidden="true"></span>
+          <li>
+            <a href="/">로그인</a>
+          </li>
+          <span class="divider" aria-hidden="true"></span>
+          <li>
+            <a href="/">고객센터</a>
+          </li>
+        </ul>
+        <div class="header_inner">
+          <div class="logo_switch">
+            <h1 class="logo">
+              <a href="/src/pages/main/">
+                <img src="/public/logo.png" alt="마켓컬리 홈으로" />
+              </a>
+            </h1>
+            <div class="switch">
+              <button class="is--active">마켓칼리</button>
+              <span class="divider" aria-hidden="true"></span>
+              <button class="new">뷰티칼리</button>
+            </div>
+          </div>
+          <div class="search">
+            <form action="/" class="search_form">
+              <legend>검색 폼</legend>
+              <input type="text" placeholder="검색어를 입력해주세요" />
+              <button type="submit" class="search_btn">
+                <img src="/src/assets/icons/Group.svg" alt="" />
+              </button>
+            </form>
+          </div>
+          <div class="icon">
+            <div class="icon-wrapper">
+              <a href="">
+                <img src="/src/assets/icons/Location.png" alt="" />
+              </a>
+              <a href="">
+                <img src="/src/assets/icons/Heart.png" alt="" />
+              </a>
+              <a href="">
+                <img src="/src/assets/icons/Cart.png" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <nav class="nav">
+      <ul class="menu">
+        <li><a href="/">카테고리</a></li>
+        <li><a href="/">신상품</a></li>
+        <li><a href="/">베스트</a></li>
+        <li><a href="/">알뜰쇼핑</a></li>
+        <li><a href="/">특가/혜택</a></li>
+        <li>
+          <button class="menu_dawn">샛별·낮 <span>배송안내</span></button>
+        </li>
+      </ul>
+    </nav>
+  </body>
 </html>
