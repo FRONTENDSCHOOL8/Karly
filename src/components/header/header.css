@@ -2,17 +2,8 @@
   --container-width: 1050px;
 }
 
-legend {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  clip-path: polygon(0 0, 0 0, 0 0);
-  white-space: nowrap;
-  border-width: 0;
+body {
+  height: 150vh;
 }
 
 .container {
@@ -29,7 +20,7 @@ legend {
   text-align: center;
   line-height: 50px;
   color: #fff;
-  font-size: 1em;
+  font-size: 16px;
   font-weight: 400;
   position: relative;
 }
@@ -46,7 +37,7 @@ legend {
 }
 
 .top_banner span {
-  font-size: 1em;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -65,19 +56,19 @@ legend {
 
 .member_service a {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 12.003px;
   font-weight: 400;
-  line-height: 1.2rem; /* 19.205px */
+  line-height: 160%; /* 19.205px */
 }
 
-.member_service li:nth-of-type(3) {
+.member_service li:nth-of-type(5) {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   gap: 4px;
 }
 
-.member_service li:nth-of-type(3)::after {
+.member_service li:nth-of-type(5)::after {
   content: '';
   width: 8px;
   height: 5.6px;
@@ -89,7 +80,7 @@ legend {
   display: inline-block;
   width: 1px;
   height: 13px;
-  line-height: 0.8rem;
+  line-height: 13px;
   background-color: #d9d9d9;
 }
 
@@ -123,9 +114,9 @@ legend {
   border: none;
   background-color: transparent;
   color: #898989;
-  font-size: 1.3rem;
+  font-size: 21.328px;
   font-weight: 600;
-  line-height: 1.3rem;
+  line-height: 150%;
   padding: 12px;
 }
 
@@ -145,7 +136,7 @@ legend {
   content: '';
   width: 7px;
   height: 7px;
-  background: url(/src/assets/new\ 1.svg) no-repeat;
+  background: url(/src/assets/icons/new\ 1.svg) no-repeat;
 }
 
 /* 검색창 */
@@ -157,7 +148,7 @@ legend {
   position: relative;
 }
 
-.header_inner input {
+.search_form input {
   display: flex;
   width: 365px;
   padding: 12px 20px;
@@ -169,9 +160,9 @@ legend {
 
   color: var(--gray-400, #898989);
 
-  font-size: 1.3rem;
+  font-size: 21.328px;
   font-weight: 400;
-  line-height: 2.1rem; /* 34.125px */
+  line-height: 160%; /* 34.125px */
 }
 
 .search_btn {
@@ -204,32 +195,51 @@ legend {
 }
 
 /* 네비게이션 */
+.nav_wrapper {
+  position: relative;
+  height: inherit;
+}
+
 .nav {
+  width: 100vw;
   height: 72px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  flex-basis: 150px;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;
 }
 
 .menu {
   width: var(--container-width);
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  text-align: center;
+  grid-template-columns: 1.5fr repeat(4, 1fr) 1.5fr;
+  align-items: center;
 
   color: var(--content, #333);
 
   font-size: 16px;
   font-weight: 600;
-  line-height: 150%; /* 24px */
+  line-height: 72px; /* 24px */
 }
 
-.menu li:nth-child(1) {
+.menu li {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   gap: 12px;
+  position: relative;
+  height: 72px;
+}
+
+.menu li:nth-child(2),
+.menu li:nth-child(3),
+.menu li:nth-child(4),
+.menu li:nth-child(5) {
+  justify-content: space-around;
 }
 
 .menu li:nth-child(1)::before {
@@ -240,9 +250,65 @@ legend {
   background: url(/src/assets/icons/Hamburger.svg) no-repeat;
 }
 
+.menu li:nth-child(1):hover .category {
+  display: flex;
+}
+
+.menu_scroll li:nth-child(1):hover .category {
+  display: flex;
+}
+
+/* 카테고리 메뉴 1depths */
+.category {
+  display: none;
+  flex-flow: column nowrap;
+  position: absolute;
+  top: 72px;
+  border: 1px solid #d9d9d9;
+
+  color: var(--content, #333);
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  background-color: #fff;
+
+  width: 247px;
+  height: 775px;
+
+  overflow-y: scroll;
+}
+
+.category a {
+  display: flex;
+  width: 247px;
+  padding: 8px 0px 8px 12px;
+  align-items: center;
+  gap: 16px;
+  flex-flow: row nowrap;
+  cursor: pointer;
+}
+
+.category a:hover {
+  background: #f7f7f7;
+  color: #5f0080;
+}
+
+.category a:hover img {
+  filter: invert(10%) sepia(82%) saturate(6353%) hue-rotate(285deg)
+    brightness(40%) contrast(109%);
+}
+
+.category a img {
+  width: 24px;
+  height: 24px;
+}
+
 .menu li:nth-last-child(1) {
   display: flex;
   flex-flow: row-reverse nowrap;
+  height: 27px;
 }
 
 .menu_dawn {
@@ -259,4 +325,110 @@ legend {
 
 .menu_dawn span {
   color: var(--gray-500, #6b6b6b);
+}
+
+/* 네비게이션 - 스크롤 이벤트 */
+.nav_scroll {
+  width: 100vw;
+  height: 72px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;
+}
+
+.menu_scroll {
+  width: var(--container-width);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  line-height: 72px;
+  color: var(--content, #333);
+  font-weight: 600;
+}
+
+.menu_scroll li:nth-child(1) {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  flex-basis: 120px;
+}
+
+.menu_scroll li:nth-child(1)::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 14px;
+  background: url(/src/assets/icons/Hamburger.svg) no-repeat;
+}
+
+.menu_scroll li:nth-child(2),
+.menu_scroll li:nth-child(3),
+.menu_scroll li:nth-child(4),
+.menu_scroll li:nth-child(5) {
+  display: flex;
+  justify-content: center;
+  flex-basis: 120px;
+}
+
+.menu_scroll li:nth-child(6) {
+  flex-basis: 246px;
+  position: relative;
+}
+
+.menu_scroll li:nth-child(7) {
+  flex-basis: 148px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.menu_scroll .search_form input {
+  display: flex;
+  width: 196px;
+  height: 10px;
+  padding: 12px 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+
+  border-radius: 4px;
+  border: 1px solid var(--primary, #5f0080);
+
+  color: var(--gray-400, #898989);
+
+  font-size: 12.003px;
+  font-weight: 400;
+  line-height: 160%; /* 19.205px */
+
+  position: absolute;
+  top: 16px;
+  left: 5px;
+}
+
+.menu_scroll .search_btn {
+  background: transparent;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu_scroll .search_btn img {
+  display: block;
+}
+
+.menu_scroll a {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
