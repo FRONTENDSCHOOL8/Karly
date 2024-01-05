@@ -537,6 +537,16 @@ body {
   flex-basis: 120px;
 }
 
+.menu_scroll li:nth-child(2):hover,
+.menu_scroll li:nth-child(3):hover,
+.menu_scroll li:nth-child(4):hover,
+.menu_scroll li:nth-child(5):hover {
+  color: #5f0080;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-thickness: 1px;
+}
+
 .menu_scroll li:nth-child(6) {
   flex-basis: 246px;
   position: relative;
