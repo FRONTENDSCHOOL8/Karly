@@ -22,18 +22,29 @@ body {
   color: #fff;
   font-size: 16px;
   font-weight: 400;
-  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
 }
 
-.top_banner::after {
-  content: '';
-  background: url(/src/assets/icons/ico_close_fff_84x84\ 1.png) no-repeat;
-  display: inline-block;
-  width: 42px;
-  height: 42px;
+.top_banner_inner {
+  width: var(--container-width);
+  position: relative;
+  overflow: hidden;
+}
+
+.top_banner_inner p {
+  text-align: center;
+}
+
+.top_banner_close {
   position: absolute;
-  right: calc(calc(100vw - var(--container-width)) / 2);
-  top: calc((50px - 42px) / 2);
+  top: 0;
+  right: 0;
+  border: none;
+  padding-top: 3px;
+  line-height: 20px;
+  background-color: transparent;
 }
 
 .top_banner span {
@@ -61,11 +72,17 @@ body {
   line-height: 160%; /* 19.205px */
 }
 
+.member_service li:nth-child(1) {
+  color: #5f0080;
+}
+
 .member_service li:nth-of-type(5) {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   gap: 4px;
+  position: relative;
+  height: 23px;
 }
 
 .member_service li:nth-of-type(5)::after {
@@ -74,6 +91,35 @@ body {
   height: 5.6px;
   display: inline-block;
   background: url(/src/assets/icons/Icon_down\ 1.png) no-repeat;
+}
+
+.member_service li:nth-of-type(5):hover .cs_modal,
+.member_service li:nth-of-type(5):focus .cs_modal {
+  display: flex;
+}
+
+.cs_modal {
+  position: absolute;
+  right: 0px;
+  top: 23px;
+  width: 130px;
+  padding: 3px 9px;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: rgb(255, 255, 255);
+  font-size: 13px;
+  display: none;
+  flex-flow: column wrap;
+  z-index: 10;
+}
+
+.cs_modal a {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.member_service li:nth-of-type(5) {
 }
 
 .divider {
@@ -95,19 +141,20 @@ body {
 .header_inner {
   padding: 32px 0 20px 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.1fr repeat(2, 1fr);
 }
 
 /* 로고 */
+.logo a,
+.logo img {
+  display: block;
+  padding-right: 2px;
+}
+
 .logo_switch {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-}
-
-.logo a,
-.logo img {
-  display: block;
 }
 
 .switch button {
@@ -120,7 +167,9 @@ body {
   padding: 12px;
 }
 
-.switch button.is--active {
+.switch button.is--active,
+.switch button:hover,
+.switch button:focus {
   color: var(--primary, #5f0080);
 }
 
@@ -130,13 +179,13 @@ body {
 
 .switch .new::after {
   position: absolute;
-  top: 0px;
+  top: 7px;
   right: 0px;
   display: block;
   content: '';
   width: 7px;
   height: 7px;
-  background: url(/src/assets/icons/new\ 1.svg) no-repeat;
+  background: url(/src/assets/icons/new1.svg) no-repeat;
 }
 
 /* 검색창 */
@@ -184,14 +233,106 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: end;
+  align-items: center;
 }
 
-.icon-wrapper {
+.icon_wrapper {
   width: 148px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.location_modal_wrapper {
+  position: relative;
+  cursor: pointer;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.location_modal_wrapper:hover .location_modal,
+.location_modal_wrapper:focus .location_modal {
+  display: block;
+}
+
+.location_modal {
+  display: none;
+  position: absolute;
+  top: 57px;
+  right: -113px;
+  width: 267px;
+  height: 132px;
+  background-color: #fff;
+  padding: 17px 18px 18px 18px;
+  z-index: 10;
+  border: 1px solid #d9d9d9;
+}
+
+.location_modal::after {
+  content: '';
+  position: absolute;
+  left: 130px;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-left: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  rotate: 135deg;
+}
+
+.location_modal p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.8px;
+}
+
+.location_modal span {
+  color: #5f0080;
+}
+
+.location_modal_btn {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 6px;
+  padding-top: 11px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.location_modal_btn .location_modal_btn_login,
+.location_modal_btn .location_modal_btn_addr {
+  width: 80px;
+  height: 36px;
+  padding: auto 10px;
+  border-radius: 4px;
+  border: 1px solid #5f0080;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.location_modal_btn .location_modal_btn_login {
+  color: #5f0080;
+}
+
+.location_modal_btn .location_modal_btn_addr {
+  flex-grow: 2;
+  background: #5f0080;
+  color: #fff;
+}
+
+.location_modal_btn_addr::before {
+  content: '';
+  width: 19px;
+  height: 20px;
+  background: url(/src/assets/icons/Group.svg) no-repeat -5px -3px / 25px;
+  filter: invert(98%) sepia(98%) saturate(0%) hue-rotate(306deg)
+    brightness(103%) contrast(101%);
 }
 
 /* 네비게이션 */
@@ -242,6 +383,16 @@ body {
   justify-content: space-around;
 }
 
+.menu li:nth-child(2):hover,
+.menu li:nth-child(3):hover,
+.menu li:nth-child(4):hover,
+.menu li:nth-child(5):hover {
+  color: #5f0080;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-thickness: 1px;
+}
+
 .menu li:nth-child(1)::before {
   content: '';
   display: inline-block;
@@ -250,12 +401,20 @@ body {
   background: url(/src/assets/icons/Hamburger.svg) no-repeat;
 }
 
-.menu li:nth-child(1):hover .category {
+.menu li:nth-child(1):hover .category,
+.menu_scroll li:nth-child(1):hover .category {
   display: flex;
 }
 
-.menu_scroll li:nth-child(1):hover .category {
-  display: flex;
+.menu li:nth-child(1):hover,
+.menu_scroll li:nth-child(1):hover {
+  color: #5f0080;
+}
+
+.menu li:nth-child(1):hover::before,
+.menu_scroll li:nth-child(1):hover::before {
+  filter: invert(10%) sepia(82%) saturate(6353%) hue-rotate(285deg)
+    brightness(40%) contrast(109%);
 }
 
 /* 카테고리 메뉴 1depths */
@@ -388,6 +547,7 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
 }
 
 .menu_scroll .search_form input {
@@ -427,8 +587,12 @@ body {
   display: block;
 }
 
-.menu_scroll a {
+.menu_scroll .icon_wrapper {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+}
+
+.menu_scroll .icon_wrapper img {
+  display: block;
 }

@@ -12,4 +12,18 @@ import { getNode, css } from '/src/lib';
       css(navScroll, 'display', 'none');
     }
   });
+
+  const topBanner = getNode('.top_banner');
+  const topBannerCloseBtn = getNode('.top_banner_close');
+
+  function handleBannerClose() {
+    topBanner.style.transition = 'All 0.5s';
+    topBanner.style.transform = 'translateY(-50px)';
+
+    setTimeout(() => {
+      topBanner.remove();
+    }, 250);
+  }
+
+  topBannerCloseBtn.addEventListener('click', handleBannerClose);
 })();

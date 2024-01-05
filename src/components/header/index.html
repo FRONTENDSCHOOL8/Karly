@@ -15,7 +15,12 @@
   </head>
   <body>
     <div class="top_banner">
-      지금 가입하고 인기상품 <span>100</span>원에 받아가세요!
+      <div class="top_banner_inner">
+        <p>지금 가입하고 인기상품 <span>100</span>원에 받아가세요!</p>
+        <button class="top_banner_close">
+          <img src="/src/assets/icons/ico_close_fff_84x841.png" alt="" />
+        </button>
+      </div>
     </div>
     <div class="container">
       <header class="header">
@@ -30,6 +35,12 @@
           <li class="divider" aria-hidden="true"></li>
           <li>
             <a href="/">고객센터</a>
+            <div class="cs_modal">
+              <a href="/">공지사항</a>
+              <a href="/">자주하는 질문</a>
+              <a href="/">1:1 문의</a>
+              <a href="/">대량주문 문의</a>
+            </div>
           </li>
         </ul>
         <div class="header_inner">
@@ -47,10 +58,10 @@
           </div>
           <div class="search">
             <form action="/" class="search_form">
-              <label for="searchKeyword"></label>
+              <label for="searchOrigin"></label>
               <input
                 type="text"
-                id="searchKeyword"
+                id="searchOrigin"
                 placeholder="검색어를 입력해주세요"
               />
               <button type="submit" class="search_btn">
@@ -59,16 +70,30 @@
             </form>
           </div>
           <div class="icon">
-            <div class="icon-wrapper">
-              <a href="">
+            <div class="icon_wrapper">
+              <div class="location_modal_wrapper">
                 <img src="/src/assets/icons/Location.png" alt="" />
-              </a>
-              <a href="">
-                <img src="/src/assets/icons/Heart.png" alt="" />
-              </a>
-              <a href="">
-                <img src="/src/assets/icons/Cart.png" alt="" />
-              </a>
+                <div class="location_modal">
+                  <p>
+                    <span>배송지를 등록하고</span><br />구매 가능한 상품을
+                    확인하세요!
+                  </p>
+                  <div class="location_modal_btn">
+                    <a href="/" class="location_modal_btn_login">로그인</a>
+                    <a href="/" class="location_modal_btn_addr">주소 검색</a>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Heart.png" alt="" />
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Cart.png" alt="" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -145,7 +170,7 @@
               </a>
               <a>
                 <img
-                  src="/src/assets/icons/Type=_Traditional Liquor.svg"
+                  src="/src/assets/icons/Type=_TraditionalLiquor.svg"
                   alt=""
                 />
                 <span>전통주</span>
@@ -270,7 +295,7 @@
               </a>
               <a>
                 <img
-                  src="/src/assets/icons/Type=_Traditional Liquor.svg"
+                  src="/src/assets/icons/Type=_TraditionalLiquor.svg"
                   alt=""
                 />
                 <span>전통주</span>
@@ -322,10 +347,10 @@
           <li><a href="/">특가/혜택</a></li>
           <li>
             <form action="/" class="search_form">
-              <label for="searchKeyword"></label>
+              <label for="searchScroll"></label>
               <input
                 type="text"
-                id="searchKeyword"
+                id="searchScroll"
                 placeholder="검색어를 입력해주세요"
               />
               <button type="submit" class="search_btn">
@@ -334,15 +359,31 @@
             </form>
           </li>
           <li>
-            <a href="">
-              <img src="/src/assets/icons/Location.png" alt="" />
-            </a>
-            <a href="">
-              <img src="/src/assets/icons/Heart.png" alt="" />
-            </a>
-            <a href="">
-              <img src="/src/assets/icons/Cart.png" alt="" />
-            </a>
+            <div class="icon_wrapper">
+              <div class="location_modal_wrapper">
+                <img src="/src/assets/icons/Location.png" alt="" />
+                <div class="location_modal">
+                  <p>
+                    <span>배송지를 등록하고</span><br />구매 가능한 상품을
+                    확인하세요!
+                  </p>
+                  <div class="location_modal_btn">
+                    <a href="/" class="location_modal_btn_login">로그인</a>
+                    <a href="/" class="location_modal_btn_addr">주소 검색</a>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Heart.png" alt="" />
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Cart.png" alt="" />
+                </a>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
