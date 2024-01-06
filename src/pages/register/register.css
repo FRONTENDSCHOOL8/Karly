@@ -107,7 +107,11 @@ label {
   font-style: normal;
   font-weight: 400;
   line-height: 160%; /* 25.6px */
-  outline: none;
+  /* outline: none; */
+}
+
+.input_active {
+  color: #000;
 }
 
 .duplicate_btn,
@@ -207,7 +211,7 @@ label {
 #check_2:checked + div label::before,
 #check_3:checked + div label::before,
 #check_4:checked + div label::before {
-  background-image: url('/src/assets/icons/Group.svg');
+  background-image: url('/src/assets/icons/Checked.svg');
 }
 
 .birth_box {
