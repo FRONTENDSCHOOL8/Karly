@@ -1,4 +1,5 @@
 import '/src/styles/style.css';
+import '/src/components/header/header.css';
 import '/src/pages/login/login.css';
 import '/src/components/footer/footer.css';
 import { getNode } from '/src/lib';
