@@ -1,5 +1,6 @@
+import '/src/styles/style.css';
 import '/src/pages/login/login.css';
-import '/src/styles/reset.css';
+import '/src/components/footer/footer.css';
 import { getNode } from '/src/lib';
 
 const login_btn = getNode('.login_btn');
