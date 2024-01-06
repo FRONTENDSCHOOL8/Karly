@@ -1,5 +1,2 @@
-
-
-#app{
-  background: orange
-}
+@import '/src/styles/theme.css';
+@import '/src/styles/reset.css';
