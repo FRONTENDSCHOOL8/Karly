@@ -387,13 +387,30 @@
                 alt="필수입력사항 표시"
             /></label>
             <input
+              required
               type="text"
               id="user_id"
-              name="user_id"
               class="user_id_input"
+              name="user_id"
               placeholder="아이디를 입력해주세요"
+              aria-invalid="false"
+              aria-live="assertive"
+              aria-describedby="user_id_error"
             />
-            <button type="button" class="duplicate_btn">중복확인</button>
+            <button type="button" class="duplicate_id_btn">중복확인</button>
+            <span class="error_message" id="user_id_error">
+              6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합
+            </span>
+          </div>
+
+          <!-- 아이디 유효성 알림창 -->
+          <div class="duplicate_alert_container" role="alert">
+            <div class="duplicate_alert_box">
+              <p class="duplicate_alert_text">
+                6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합
+              </p>
+              <button class="duplicate_alert_btn" type="button">확인</button>
+            </div>
           </div>
 
           <div class="user_password_wrapper">
@@ -404,12 +421,19 @@
                 alt="필수입력사항 표시"
             /></label>
             <input
+              required
               type="password"
               id="user_password"
               name="user_password"
               class="user_password_input"
               placeholder="비밀번호를 입력해주세요"
+              aria-live="polite"
+              aria-invalid="false"
+              aria-describedby="user_password_error"
             />
+            <span class="error_message" id="user_password_error">
+              영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합
+            </span>
           </div>
 
           <div class="user_password_check_wrapper">
@@ -420,12 +444,19 @@
                 alt="필수입력사항 표시"
             /></label>
             <input
+              required
               type="password"
               id="user_password_check"
               name="user_password_check"
               class="user_password_check_input"
               placeholder="비밀번호를 한번 더 입력해주세요"
+              aria-live="polite"
+              aria-invalid="false"
+              aria-describedby="user_password_check_error"
             />
+            <span class="error_message" id="user_password_check_error">
+              동일한 비밀번호를 입력
+            </span>
           </div>
 
           <div class="user_name_wrapper">
@@ -436,6 +467,7 @@
                 alt="필수입력사항 표시"
             /></label>
             <input
+              required
               type="text"
               id="user_name"
               name="user_name"
@@ -452,13 +484,32 @@
                 alt="필수입력사항 표시"
             /></label>
             <input
+              required
               type="email"
               id="user_email"
               name="user_email"
               class="user_email_input"
               placeholder="예) marketkarly@karly.com"
+              aria-live="polite"
+              aria-invalid="false"
+              aria-describedby="user_email_error"
             />
-            <button type="button" class="duplicate_btn">중복확인</button>
+            <button type="button" class="duplicate_email_btn">중복확인</button>
+            <span class="error_message" id="user_email_error">
+              이메일 형식으로 입력해 주세요.
+            </span>
+          </div>
+
+          <!-- 이메일 중복확인 알림창 -->
+          <div class="duplicate_email_alert_container" role="alert">
+            <div class="duplicate_email_alert_box">
+              <p class="duplicate_email_alert_text">
+                사용 가능한 이메일 입니다.
+              </p>
+              <button class="duplicate_email_alert_btn" type="button">
+                확인
+              </button>
+            </div>
           </div>
 
           <div class="user_phone_wrapper">
@@ -469,13 +520,15 @@
                 alt="필수입력사항 표시"
             /></label>
             <input
+              required
               type="tel"
               id="user_phone"
               name="user_phone"
               class="user_phone_input"
               placeholder="숫자만 입력해주세요"
+              maxlength="11"
             />
-            <button type="button" class="check_number_btn">
+            <button type="button" class="check_number_btn disable_btn">
               인증번호 받기
             </button>
           </div>
@@ -588,6 +641,7 @@
                   name="agree_all"
                   id="agree_all"
                   class="agree_all_input sr_only"
+                  ch
                 />
                 <div class="agree_all">
                   <label for="agree_all" class="agree_all_label"
