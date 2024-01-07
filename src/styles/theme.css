@@ -1,5 +1,4 @@
 :root {
-  /* Color styles */
   --black: rgba(0, 0, 0, 1);
   --secondary: rgba(189, 118, 255, 1);
   --white: rgba(255, 255, 255, 1);
@@ -51,4 +50,4 @@
   --below---high: 0px 16px 48px rgba(0, 0, 0, 0.3);
   --below---medium: 0px 8px 36px rgba(0, 0, 0, 0.2);
   --below---low: 0px 4px 24px rgba(0, 0, 0, 0.1);
-}
+} /* Color styles */

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/public/favicon.ico" />
+    <link
+      rel="stylesheet preload"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <script type="module" src="/src/components/header/header.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="top_banner">
+      <div class="top_banner_inner">
+        <p>지금 가입하고 인기상품 <span>100</span>원에 받아가세요!</p>
+        <button class="top_banner_close">
+          <img src="/src/assets/icons/ico_close_fff_84x841.png" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <header class="header">
+        <ul class="member_service">
+          <li>
+            <a href="/">회원가입</a>
+          </li>
+          <li class="divider" aria-hidden="true"></li>
+          <li>
+            <a href="/">로그인</a>
+          </li>
+          <li class="divider" aria-hidden="true"></li>
+          <li>
+            <a href="/">고객센터</a>
+            <div class="cs_modal">
+              <a href="/">공지사항</a>
+              <a href="/">자주하는 질문</a>
+              <a href="/">1:1 문의</a>
+              <a href="/">대량주문 문의</a>
+            </div>
+          </li>
+        </ul>
+        <div class="header_inner">
+          <div class="logo_switch">
+            <h1 class="logo">
+              <a href="/src/pages/main/">
+                <img src="/public/logo.png" alt="마켓컬리 홈으로" />
+              </a>
+            </h1>
+            <div class="switch">
+              <button class="is--active">마켓칼리</button>
+              <span class="divider" aria-hidden="true"></span>
+              <button class="new">뷰티칼리</button>
+            </div>
+          </div>
+          <div class="search">
+            <form action="/" class="search_form">
+              <label for="searchOrigin"></label>
+              <input
+                type="text"
+                id="searchOrigin"
+                placeholder="검색어를 입력해주세요"
+              />
+              <button type="submit" class="search_btn">
+                <img src="/src/assets/icons/Group.svg" alt="" />
+              </button>
+            </form>
+          </div>
+          <div class="icon">
+            <div class="icon_wrapper">
+              <div class="location_modal_wrapper">
+                <img src="/src/assets/icons/Location.png" alt="" />
+                <div class="location_modal">
+                  <p>
+                    <span>배송지를 등록하고</span><br />구매 가능한 상품을
+                    확인하세요!
+                  </p>
+                  <div class="location_modal_btn">
+                    <a href="/" class="location_modal_btn_login">로그인</a>
+                    <a href="/" class="location_modal_btn_addr">주소 검색</a>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Heart.png" alt="" />
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Cart.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <nav class="nav_wrapper">
+      <div class="nav">
+        <ul class="menu">
+          <li>
+            <a href="/">카테고리</a>
+            <div class="category">
+              <a>
+                <img src="/src/assets/icons/gift_thin_icon_171751.svg" alt="" />
+
+                <span>선물하기</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Vegetable.svg" alt="" />
+                <span>채소</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Fruit.svg" alt="" />
+                <span>과일 · 견과 · 쌀</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=SeaFood.svg" alt="" />
+
+                <span>수산 · 해산 · 건어물</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Meet.svg" alt="" />
+
+                <span>정육 · 계란</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Cook.svg" alt="" />
+
+                <span>국 · 반찬 · 메인요리</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Salad.svg" alt="" />
+
+                <span>샐러드 · 간편식</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Oil.svg" alt="" />
+
+                <span>면 · 양념 · 오일</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Coffee.svg" alt="" />
+
+                <span>생수 · 음료 · 우유 · 커피</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Snack.svg" alt="" />
+
+                <span>간식 · 과자 · 떡</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Bread.svg" alt="" />
+
+                <span>베이커리 · 치즈 · 델리</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Health.svg" alt="" />
+
+                <span>건강식품</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Wine.svg" alt="" />
+
+                <span>와인</span>
+              </a>
+              <a>
+                <img
+                  src="/src/assets/icons/Type=_TraditionalLiquor.svg"
+                  alt=""
+                />
+                <span>전통주</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Detergent.svg" alt="" />
+
+                <span>생활용품 · 리빙 · 캠핑</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Cosmetics.svg" alt="" />
+
+                <span>스킨케어 · 메이크업</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=shampoo.svg" alt="" />
+
+                <span>헤어 · 바디 · 구강</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Food.svg" alt="" />
+
+                <span>주방용품</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=HomeAppliances.svg" alt="" />
+
+                <span>가전제품</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Dog.svg" alt="" />
+
+                <span>반려동물</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Baby.svg" alt="" />
+
+                <span>베이비 · 키즈 · 완구</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Travel.svg" alt="" />
+                <span>여행 · 티켓</span>
+              </a>
+            </div>
+          </li>
+          <li><a href="/">신상품</a></li>
+          <li><a href="/">베스트</a></li>
+          <li><a href="/">알뜰쇼핑</a></li>
+          <li><a href="/">특가/혜택</a></li>
+          <li>
+            <button class="menu_dawn">샛별·낮 <span>배송안내</span></button>
+          </li>
+        </ul>
+      </div>
+      <div class="nav_scroll" style="display: none">
+        <ul class="menu_scroll">
+          <li>
+            <a href="/">카테고리</a>
+            <div class="category">
+              <a>
+                <img src="/src/assets/icons/gift_thin_icon_171751.svg" alt="" />
+
+                <span>선물하기</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Vegetable.svg" alt="" />
+                <span>채소</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Fruit.svg" alt="" />
+                <span>과일 · 견과 · 쌀</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=SeaFood.svg" alt="" />
+
+                <span>수산 · 해산 · 건어물</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Meet.svg" alt="" />
+
+                <span>정육 · 계란</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Cook.svg" alt="" />
+
+                <span>국 · 반찬 · 메인요리</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Salad.svg" alt="" />
+
+                <span>샐러드 · 간편식</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Oil.svg" alt="" />
+
+                <span>면 · 양념 · 오일</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Coffee.svg" alt="" />
+
+                <span>생수 · 음료 · 우유 · 커피</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Snack.svg" alt="" />
+
+                <span>간식 · 과자 · 떡</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Bread.svg" alt="" />
+
+                <span>베이커리 · 치즈 · 델리</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Health.svg" alt="" />
+
+                <span>건강식품</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Wine.svg" alt="" />
+
+                <span>와인</span>
+              </a>
+              <a>
+                <img
+                  src="/src/assets/icons/Type=_TraditionalLiquor.svg"
+                  alt=""
+                />
+                <span>전통주</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Detergent.svg" alt="" />
+
+                <span>생활용품 · 리빙 · 캠핑</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=_Cosmetics.svg" alt="" />
+
+                <span>스킨케어 · 메이크업</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=shampoo.svg" alt="" />
+
+                <span>헤어 · 바디 · 구강</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Food.svg" alt="" />
+
+                <span>주방용품</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=HomeAppliances.svg" alt="" />
+
+                <span>가전제품</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Dog.svg" alt="" />
+
+                <span>반려동물</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Baby.svg" alt="" />
+
+                <span>베이비 · 키즈 · 완구</span>
+              </a>
+              <a>
+                <img src="/src/assets/icons/Type=Travel.svg" alt="" />
+                <span>여행 · 티켓</span>
+              </a>
+            </div>
+          </li>
+          <li><a href="/">신상품</a></li>
+          <li><a href="/">베스트</a></li>
+          <li><a href="/">알뜰쇼핑</a></li>
+          <li><a href="/">특가/혜택</a></li>
+          <li>
+            <form action="/" class="search_form">
+              <label for="searchScroll"></label>
+              <input
+                type="text"
+                id="searchScroll"
+                placeholder="검색어를 입력해주세요"
+              />
+              <button type="submit" class="search_btn">
+                <img src="/src/assets/icons/Group.svg" alt="" />
+              </button>
+            </form>
+          </li>
+          <li>
+            <div class="icon_wrapper">
+              <div class="location_modal_wrapper">
+                <img src="/src/assets/icons/Location.png" alt="" />
+                <div class="location_modal">
+                  <p>
+                    <span>배송지를 등록하고</span><br />구매 가능한 상품을
+                    확인하세요!
+                  </p>
+                  <div class="location_modal_btn">
+                    <a href="/" class="location_modal_btn_login">로그인</a>
+                    <a href="/" class="location_modal_btn_addr">주소 검색</a>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Heart.png" alt="" />
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <img src="/src/assets/icons/Cart.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </body>
+</html>
