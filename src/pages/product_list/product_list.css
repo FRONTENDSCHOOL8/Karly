@@ -90,7 +90,7 @@
   margin: 0 0 80px auto;
 }
 
-.item_info_container {
+.item_list_info_container {
   display: flex;
   justify-content: space-between;
   width: 100%;
