@@ -1,10 +1,8 @@
 .item_list_main {
   width: 1050px;
-  height: 3004px;
   padding: 48px 0 80px 0;
   margin: 0 auto;
   position: relative;
-  background-color: aqua;
 }
 
 .item_list_subject {
@@ -19,14 +17,11 @@
 
   text-align: center;
   margin-bottom: 48px;
-  background-color: tomato;
 }
 
 .item_filter_container {
   position: absolute;
   width: 220px;
-  margin-right: 48px;
-  background-color: orange;
 }
 
 .item_filter_container li {
@@ -90,12 +85,17 @@
   cursor: pointer;
 }
 
+.item_list_section {
+  width: 786px;
+  margin: 0 0 80px auto;
+}
+
 .item_info_container {
   display: flex;
   justify-content: space-between;
-  width: 784px;
+  width: 100%;
   height: 24px;
-  margin: 0 0 20px auto;
+  margin-bottom: 20px;
 }
 
 .item_total {
@@ -112,22 +112,11 @@
 .item_sort_container {
   display: flex;
   justify-content: space-between;
-  width: 444px;
-  background-color: lime;
 }
 
 .item_sort_options {
   display: inline-flex;
   justify-content: center;
-  margin: 0 8px;
-}
-
-.item_sort_options:first-child {
-  margin: 0 8px 0 0;
-}
-
-.item_sort_options:last-child {
-  margin: 0 0 0 8px;
 }
 
 .item_sort_options button {
@@ -156,8 +145,104 @@
   line-height: 150%; /* 24px */
 }
 
-/* 수정 필요. Content 삽입 시 li element의 height가 늘어나면서 style에 이상 발생. */
+/* 수정 필요. Content 삽입 시 item_sort_options 중 첫 번째 요소 style에 이상 발생. */
 /* .item_sort_options:first-child button::after {
   content: url('/src/assets/icons/info_tooltip.png');
   margin-left: 4px;
 } */
+
+.item_sort_options:nth-child(-n + 5)::after {
+  content: '|';
+  color: var(--gray--300);
+  align-self: center;
+  font-size: 12px;
+  margin: 0 8px;
+}
+
+.item_list_container {
+  width: 100%;
+  height: 2786px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  column-gap: 18px;
+  grid-column-gap: 18px;
+  row-gap: 24px;
+  grid-row-gap: 24px;
+}
+
+.item_card_container {
+  position: relative;
+  background-color: mediumaquamarine;
+}
+
+.product_img {
+  width: 250px;
+  height: 320px;
+  margin-bottom: 16px;
+}
+
+.cart_button {
+  position: absolute;
+  top: 258px;
+  left: 190px;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.product_delivery {
+  display: block;
+  color: var(--gray--400);
+
+  /* Label/Small */
+  font-family: Pretendard;
+  font-size: 12.003px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 18.005px */
+
+  margin-bottom: 8px;
+}
+
+.product_title {
+  display: block;
+  color: var(--content);
+
+  /* Paragraph/Medium */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 25.6px */
+
+  margin-bottom: 8px;
+}
+
+.product_price {
+  display: block;
+  color: var(--content);
+
+  /* Label/Large */
+  font-family: Pretendard;
+  font-size: 21.328px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 31.992px */
+
+  margin-bottom: 8px;
+}
+
+.product_description {
+  display: block;
+  color: var(--gray--400);
+
+  /* Paragraph/Small */
+  font-family: Pretendard;
+  font-size: 12.003px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 19.205px */
+
+  margin-bottom: 24px;
+}
