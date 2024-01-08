@@ -1,6 +1,6 @@
 import '/src/styles/style.css';
 import '/src/components/header/header.css';
-import { getNode, css } from '/src/lib';
+import { getNode, css, addClass, removeClass } from '/src/lib';
 
 (function () {
   const navScroll = getNode('.nav_scroll');
@@ -8,8 +8,10 @@ import { getNode, css } from '/src/lib';
   window.addEventListener('scroll', () => {
     if (window.scrollY >= 190) {
       css(navScroll, 'display', 'flex');
+      addClass(navScroll, 'sticky');
     } else if (window.scrollY < 190) {
       css(navScroll, 'display', 'none');
+      removeClass(navScroll, 'sticky');
     }
   });
 
