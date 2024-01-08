@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="ko-KR">
   <head>
-    <title>Vite Pure css</title>
     <meta charset="UTF-8" />
     <link rel="icon" href="/public/favicon.ico" />
-    <link rel="stylesheet" href="/src/styles/style.css" />
-    <link rel="stylesheet" href="/src/styles/reset.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/main.js"></script>
+    <script type="module" src="/src/components/header/header.js"></script>
+    <title>컬리 - 마켓컬리/뷰티컬리</title>
   </head>
   <body>
     <header>
@@ -440,7 +439,234 @@
         </div>
       </nav>
     </header>
-    <div id="app">hello css!</div>
+    <main>
+      <div class="main_banner">
+        <figure>
+          <img
+            src="/src/assets/images/banner04.png"
+            alt="배너 : 결심했다면 시작하세요 성공 보장 식단 플랜"
+          />
+          <!-- <figcaption class="sr_only">
+            배너 : 결심했다면 시작하세요 성공 보장 식단 플랜
+          </figcaption> -->
+        </figure>
+      </div>
+      <div class="main">
+        <section class="main_section recommand">
+          <h2>이 상품 어때요?</h2>
+          <div class="section_item">
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product01.png"
+                  alt="유기농 밀키퀸 현미 4kg"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title">튀기지 않아 부담 없는 매콤함</span>
+                <span class="title">[풀무원] 탱탱쫄면 (4개입)</span>
+                <div>
+                  <span class="discount">9%</span>
+                  <span class="price">4,492 원</span>
+                </div>
+                <span class="price_origin">4,980 원</span>
+                <span class="desc_product"></span>
+                <div>
+                  <!-- <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span> -->
+                </div>
+              </figcaption>
+            </div>
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product02.png"
+                  alt="온더바디 죠르디 시카 자석 선쿠션"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title"
+                  >[온더바디] 죠르디 시카 자석 선쿠션</span
+                >
+                <span class="title">[온더바디] 죠르디 시카 자석 선쿠션</span>
+                <div>
+                  <span class="discount">24%</span>
+                  <span class="price">32,500 원</span>
+                </div>
+                <span class="price_origin">24,900 원</span>
+                <span class="desc_product"
+                  >유분기를 보송하게 잡아주는 선쿠션</span
+                >
+                <div>
+                  <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span>
+                </div>
+              </figcaption>
+            </div>
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product03.png"
+                  alt="유기농 밀키퀸 현미 4kg"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title">구수한 향미와 찰기를 더해줄</span>
+                <span class="title">유기농 밀키퀸 현미 4kg</span>
+                <div>
+                  <span class="discount"></span>
+                  <span class="price">26,900 원</span>
+                </div>
+                <span class="price_origin"></span>
+                <span class="desc_product"
+                  >CJ즉석밥 고소한 맛의 발아 현미밥</span
+                >
+                <div>
+                  <!-- <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span> -->
+                </div>
+              </figcaption>
+            </div>
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product04.png"
+                  alt="유기농 밀키퀸 현미 4kg"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title"
+                  >판테놀이 함유되어 피부를 보호해줄</span
+                >
+                <span class="title">[프로쉬] 베이비 세탁세제</span>
+                <div>
+                  <span class="discount">32%</span>
+                  <span class="price">7,400 원</span>
+                </div>
+                <span class="price_origin">10,900 원</span>
+                <span class="desc_product"></span>
+                <div>
+                  <!-- <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span> -->
+                </div>
+              </figcaption>
+            </div>
+          </div>
+        </section>
+        <section class="main_section line_banner">
+          <figure>
+            <img
+              src="/src//assets//images/line-banner01.png"
+              alt="배너 : 더 풍성해진 10월의 퍼플위크"
+            />
+            <!-- <figcaption class="sr_only">
+              배너 : 결심했다면 시작하세요 성공 보장 식단 플랜
+            </figcaption> -->
+          </figure>
+        </section>
+        <section class="main_section sale">
+          <h2>놓치면 후회할 가격</h2>
+          <div class="section_item">
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product01.png"
+                  alt="유기농 밀키퀸 현미 4kg"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title">튀기지 않아 부담 없는 매콤함</span>
+                <span class="title">[풀무원] 탱탱쫄면 (4개입)</span>
+                <div>
+                  <span class="discount">9%</span>
+                  <span class="price">4,492 원</span>
+                </div>
+                <span class="price_origin">4,980 원</span>
+                <span class="desc_product"></span>
+                <div>
+                  <!-- <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span> -->
+                </div>
+              </figcaption>
+            </div>
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product02.png"
+                  alt="온더바디 죠르디 시카 자석 선쿠션"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title"
+                  >[온더바디] 죠르디 시카 자석 선쿠션</span
+                >
+                <span class="title">[온더바디] 죠르디 시카 자석 선쿠션</span>
+                <div>
+                  <span class="discount">24%</span>
+                  <span class="price">32,500 원</span>
+                </div>
+                <span class="price_origin">24,900 원</span>
+                <span class="desc_product"
+                  >유분기를 보송하게 잡아주는 선쿠션</span
+                >
+                <div>
+                  <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span>
+                </div>
+              </figcaption>
+            </div>
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product03.png"
+                  alt="유기농 밀키퀸 현미 4kg"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title">구수한 향미와 찰기를 더해줄</span>
+                <span class="title">유기농 밀키퀸 현미 4kg</span>
+                <div>
+                  <span class="discount"></span>
+                  <span class="price">26,900 원</span>
+                </div>
+                <span class="price_origin"></span>
+                <span class="desc_product"
+                  >CJ즉석밥 고소한 맛의 발아 현미밥</span
+                >
+                <div>
+                  <!-- <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span> -->
+                </div>
+              </figcaption>
+            </div>
+            <div class="item">
+              <figure>
+                <img
+                  src="/src/assets/images/product04.png"
+                  alt="유기농 밀키퀸 현미 4kg"
+                />
+              </figure>
+              <figcaption>
+                <span class="desc_title"
+                  >판테놀이 함유되어 피부를 보호해줄</span
+                >
+                <span class="title">[프로쉬] 베이비 세탁세제</span>
+                <div>
+                  <span class="discount">32%</span>
+                  <span class="price">7,400 원</span>
+                </div>
+                <span class="price_origin">10,900 원</span>
+                <span class="desc_product"></span>
+                <div>
+                  <!-- <span class="tag tag_karly">Karly Only</span>
+                  <span class="tag">한정수량</span> -->
+                </div>
+              </figcaption>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
     <footer>
       <div class="footer_inner">
         <div class="footer_area">
