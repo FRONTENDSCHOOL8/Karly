@@ -1,3 +1,6 @@
+footer {
+  border-top: 1px solid var(--gray--100, #e1e1e1);
+}
 .footer_inner {
   width: 1050px;
   margin: 0 auto;
