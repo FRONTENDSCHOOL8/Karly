@@ -15,6 +15,7 @@
   flex-flow: column nowrap;
   align-items: center;
   padding-bottom: 40px;
+  position: relative;
 }
 
 .main_section {
@@ -49,7 +50,13 @@
   gap: 16px;
 }
 
-.section_item .item img {
+.item figure {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+
+.item img {
   width: 249px;
 }
 
@@ -116,4 +123,47 @@ figcaption {
 
 .item .tag.tag_karly {
   color: var(--primary, #5f0080);
+}
+
+.recent_view {
+  position: absolute;
+  right: 39px;
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+.recent_view_inner {
+  position: sticky;
+  top: 193px;
+  display: flex;
+  padding: 8px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--gray-200, #c4c4c4);
+  width: 74px;
+}
+
+.recent_view_inner .recent_view_button {
+  border: none;
+  background-color: transparent;
+}
+
+.recent_view_button img {
+  width: 18px;
+  height: 18px;
+}
+
+.recent_view_inner h3 {
+  color: var(--black, #000);
+
+  font-size: 12.003px;
+  font-weight: 600;
+  line-height: 150%; /* 18.005px */
+  text-align: center;
+  white-space: nowrap;
+}
+
+.recent_view_inner .recent_view_item img {
+  width: 40px;
 }
