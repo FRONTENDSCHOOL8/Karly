@@ -467,6 +467,9 @@
   font-size: 12.003px;
   font-weight: 400;
   padding: 4px 8px;
+
+  height: 27px;
+  line-height: 18px;
 }
 
 .menu_dawn span {
@@ -489,6 +492,7 @@
   align-items: center;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;
+  z-index: 10;
 }
 
 .menu_scroll {
