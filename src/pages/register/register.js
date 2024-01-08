@@ -203,3 +203,24 @@ agreeAll.addEventListener('click', function () {
   if (agreeAll.checked) handleAgreeAll(true);
   else handleAgreeAll(false);
 });
+
+function handleSearchAddress() {
+  // eslint-disable-next-line no-undef
+  new daum.Postcode({
+    oncomplete: function (data) {
+      if (data.userSelectedType === 'R') return;
+      else return;
+    },
+  }).open({
+    //여러개의 팝업창이 뜨는 것을 방지하기 위해 팝업창의 Key값을 지정
+    //지정하지 않을시 기본값은 '_blank'로 설정되어 계속 새창으로 열리게 됩니다
+    popupKey: 'popup1',
+    popupTitle: '컬리 - 마켓컬리/뷰티컬리',
+    left: window.screen.width / 2 - 530 / 2,
+    top: window.screen.height / 2 - 630 / 2,
+  });
+}
+
+const userAddressBtn = getNode('.user_address_btn');
+
+userAddressBtn.addEventListener('click', handleSearchAddress);
