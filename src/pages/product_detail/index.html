@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="stylesheet"
+      rel="stylesheet preload"
       as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <main>
+    <main class="item_detail_main">
       <section class="product_purchase_section">
         <h2 class="sr_only">상품 구매</h2>
         <img
@@ -29,92 +29,104 @@
         <div class="product_purchase_container">
           <article class="product_summary">
             <h3 class="sr_only">상품 판매 개요</h3>
-            <span class="product_delivery_info">샛별배송</span
-            ><b class="product_title">장군이</b
-            ><small class="product_description">6조의 자랑 귀여운 장군이</small
-            ><em class="product_price">1,000,000,000 원</em>
-            <p class="benefit_notice">로그인 후, 적립 혜택이 제공됩니다.</p>
-            <table>
+            <p class="product_delivery_info">샛별배송</p>
+            <h4 class="product_title">장군이</h4>
+            <p class="product_description">6조의 자랑 귀여운 장군이</p>
+            <p class="product_price"><em>1,000,000,000</em>원</p>
+            <small class="benefit_notice"
+              >로그인 후, 적립 혜택이 제공됩니다.</small
+            >
+            <table class="product_brief_info_container">
               <caption class="sr_only">
                 상품 판매 정보
               </caption>
               <tr>
-                <th>배송</th>
-                <td>
+                <th class="product_delivery">배송</th>
+                <td class="product_delivery_type">
                   샛별배송
-                  <p>
+                  <p class="product_delivery_description">
                     23시 전 주문 시 내일 아침 7시 전 도착<br />(대구 부산 울산
                     샛별배송 운영시간 별도 확인)
                   </p>
                 </td>
               </tr>
               <tr>
-                <th>판매자</th>
-                <td>칼리</td>
+                <th class="product_seller">판매자</th>
+                <td class="product_seller_info">칼리</td>
               </tr>
               <tr>
-                <th>포장타입</th>
-                <td>
+                <th class="product_package">포장타입</th>
+                <td class="product_package_type">
                   상온 (종이포장)
-                  <p>택배배송은 에코 포장이 스티로폼으로 대체됩니다.</p>
+                  <p class="product_package_notice">
+                    택배배송은 에코 포장이 스티로폼으로 대체됩니다.
+                  </p>
                 </td>
               </tr>
               <tr>
-                <th>판매단위</th>
-                <td>1봉</td>
+                <th class="product_sell_unit">판매단위</th>
+                <td class="product_sell_unit_info">1봉</td>
               </tr>
               <tr>
-                <th>중량/용량</th>
-                <td>123g*4봉</td>
+                <th class="product_quantity">중량/용량</th>
+                <td class="product_quantity_info">123g*4봉</td>
               </tr>
               <tr>
-                <th>원산지</th>
-                <td>상세페이지 별도표기</td>
+                <th class="product_origin">원산지</th>
+                <td class="product_origin_description">상세페이지 별도표기</td>
               </tr>
               <tr>
-                <th>알레르기정보</th>
-                <td>
-                  <p>-대두, 밀, 쇠고기 함유</p>
-                  <p>
-                    -계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아,
+                <th class="product_allergy">알레르기정보</th>
+                <td class="product_allergy_info">
+                  <p class="product_allergy_description">
+                    대두, 밀, 쇠고기 함유
+                  </p>
+                  <p class="product_allergy_description">
+                    계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아,
                     토마토, 아황산류, 호두, 잣, 닭고기, 오징어, 조개류(굴, 전복,
                     홍합 포함)를 사용한 제품과 같은 제조시설에서 제조
                   </p>
                 </td>
               </tr>
               <tr>
-                <th>상품선택</th>
-                <td>
+                <th class="product_select">상품선택</th>
+                <td class="product_select_option">
                   <div class="product_quantity_selector">
-                    <b>장군이</b>
+                    <strong class="product_name">장군이</strong>
                     <div class="product_quantity_select_buttons">
                       <button
                         class="product_quantity_decrease_button"
                         type="button"
                       >
-                        -</button
+                        &#45;</button
                       >1<button
                         class="product_quantity_increase_button"
                         type="button"
                       >
-                        +
+                        &#43;
                       </button>
                     </div>
-                    <em>1,000,000,000원</em>
+                    <em class="calculated_price">1,000,000,000원</em>
                   </div>
                 </td>
               </tr>
             </table>
           </article>
-          <article>
+          <article class="product_total_price_section">
             <h3 class="sr_only">총 상품 금액</h3>
-            <p><span>총 상품 금액</span><em>1,000,000,000</em>원</p>
-            <small>로그인 후, 적립 혜택 제공</small>
+            <p class="product_total_price">
+              <span>총 상품 금액&#58;</span><em>1,000,000,000</em>원
+            </p>
+            <small class="benefit_notice">로그인 후, 적립 혜택 제공</small>
           </article>
           <div class="product_choice_buttons">
-            <button type="submit">하트</button>
-            <button type="submit">알림</button>
-            <button type="submit">장바구니 담기</button>
+            <button class="dibs_button" type="submit">
+              <img src="/src/assets/icons/Heart.png" alt="찜" />
+            </button>
+            <button class="notify_button" type="submit">
+              <img src="/src/assets/icons/notify.png" alt="알람 설정" />
+            </button>
+            <button class="add_cart_button" type="submit">장바구니 담기</button>
           </div>
         </div>
       </section>
@@ -126,7 +138,7 @@
           ><button type="button">후기<small>(1000)</small></button
           ><button type="button">문의</button>
         </nav>
-        <article class="product_brief_info">
+        <article class="product_description_brief_info">
           <h3 class="sr_only">상품설명</h3>
           <picture>
             <img
@@ -317,16 +329,14 @@
                   <th>판매(일시)중단 제품 안내 (22.11.10 업데이트)</th>
                   <td>칼리</td>
                   <td><time datetime="2017-02-01">2017.02.01</time></td>
-                  <td>-</td>
+                  <td>&#45;</td>
                 </tr>
                 <tr>
                   <th>팩이 터져서 왔어요</th>
                   <td>김*식</td>
                   <td><time datetime="2022-11-11">2022.11.11</time></td>
                   <td>답변대기</td>
-                  <div></div>
                 </tr>
-                <tr></tr>
                 <tr>
                   <th>팩이 터져서 왔어요</th>
                   <td>김*식</td>
