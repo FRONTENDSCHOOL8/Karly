@@ -3,6 +3,10 @@
   --navbar-height: 72px;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .header {
   display: flex;
   flex-flow: row;
