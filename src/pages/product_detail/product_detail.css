@@ -8,7 +8,7 @@
 
 .product_purchase_section {
   position: relative;
-  margin: 48px;
+  margin-bottom: 48px;
 }
 
 .product_img {
@@ -299,8 +299,278 @@
   line-height: 150%; /* 24px */
 }
 
-/* 나중용 */
+.product_details_buttons {
+  display: flex;
+  height: 54px;
+
+  & button {
+    flex-grow: 1;
+    border: 1px solid var(--gray--300);
+    background: var(--gray--50);
+    padding: 0;
+    color: var(--content);
+
+    /* Label/Medium */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+  }
+}
+
+.product_details_buttons button:first-child {
+  border-top: 1px solid var(--gray--100);
+  border-right: 1px solid var(--gray--100);
+  border-left: 1px solid var(--gray--100);
+  padding: 0;
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.product_description_brief_info {
+  margin-top: 40px;
+  margin-bottom: 96px;
+}
+
 .product_description_img {
   width: 1050px;
   height: 670px;
+}
+
+.product_description_img_container {
+  display: block;
+  margin-bottom: 76px;
+}
+
+.product_description_info_container {
+  & p:first-child {
+    text-align: center;
+    color: var(--black);
+
+    /* Label/XL */
+    font-family: Pretendard;
+    font-size: 28.43px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 42.645px */
+  }
+
+  & h4 {
+    text-align: center;
+    color: var(--content);
+
+    /* Heading/XXXL */
+    font-family: Pretendard;
+    font-size: 50.517px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 70.724px */
+
+    margin-bottom: 36px;
+  }
+
+  & p:last-child {
+    color: var(--content);
+
+    /* Paragraph/Medium */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 25.6px */
+
+    padding-top: 28px;
+    border-top: 1px solid var(--gray--100);
+  }
+}
+
+.karly_checkpoint {
+  overflow: hidden;
+  margin-bottom: 96px;
+
+  & h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--content);
+
+    /* Heading/XXXL */
+    font-family: Pretendard;
+    font-size: 50.517px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 70.724px */
+
+    margin-bottom: 68px;
+    text-align: center;
+  }
+
+  & h3::before {
+    content: url(/src/assets/images/left_side_divide_line.png);
+    transform: translateY(-16px);
+  }
+
+  & h3::after {
+    content: url(/src/assets/images/right_side_divide_line.png);
+    transform: translateY(-16px);
+  }
+
+  & picture {
+    display: block;
+    text-align: center;
+  }
+}
+
+.product_details_info {
+  margin-bottom: 72px;
+
+  & picture {
+    display: block;
+    text-align: center;
+  }
+}
+
+.why_karly {
+  padding-top: 72px;
+  padding-bottom: 84px;
+
+  & h3 {
+    color: var(--content);
+
+    /* Heading/XL */
+    font-family: Pretendard;
+    font-size: 28.43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 39.802px */
+
+    text-align: center;
+  }
+}
+
+.why_karly_list {
+  margin: 36px auto 0;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(6, 1fr);
+  width: 948px;
+
+  & li {
+    width: 316px;
+    padding-top: 56px;
+
+    & h4 {
+      color: var(--primary);
+
+      /* Label/Large */
+      font-family: Pretendard;
+      font-size: 21.328px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 150%; /* 31.992px */
+
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    & p {
+      color: var(--content);
+      text-align: center;
+
+      /* Paragraph/Medium */
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%; /* 25.6px */
+
+      margin: 0 auto;
+    }
+  }
+
+  & li:first-child {
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+    margin: 0 auto;
+
+    & h4::before {
+      content: url(/src/assets/icons/why_karly_1.png);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    & p {
+      width: 250px;
+      height: 104px;
+    }
+  }
+
+  & li:nth-child(2) {
+    grid-row: 1 / 2;
+    grid-column: 3 / 5;
+    margin: 0 auto;
+
+    & h4::before {
+      content: url(/src/assets/icons/why_karly_2.png);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    & p {
+      width: 264px;
+      height: 104px;
+    }
+  }
+
+  & li:nth-child(3) {
+    grid-row: 1 / 2;
+    grid-column: 5 / 7;
+    margin: 0 auto;
+
+    & h4::before {
+      content: url(/src/assets/icons/why_karly_3.png);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    & p {
+      width: 294px;
+      height: 104px;
+    }
+  }
+
+  & li:nth-child(4) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 4;
+    margin-left: auto;
+
+    & h4::before {
+      content: url(/src/assets/icons/why_karly_4.png);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    & p {
+      width: 260px;
+      height: 130px;
+    }
+  }
+
+  & li:last-child {
+    grid-row: 2 / 3;
+    grid-column: 4 / 7;
+    margin-right: auto;
+
+    & h4::before {
+      content: url(/src/assets/icons/why_karly_5.png);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    & p {
+      width: 256px;
+      height: 130px;
+    }
+  }
 }
