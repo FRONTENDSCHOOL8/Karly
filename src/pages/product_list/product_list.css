@@ -193,8 +193,9 @@
   left: 190px;
   border: 0;
   padding: 0;
-  background-color: transparent;
+  background-color: var(--gray--300);
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .product_delivery {
