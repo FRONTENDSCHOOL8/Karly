@@ -20,6 +20,7 @@ export default defineConfig({
       },
     },
   },
+  base: '/conimmuty-frontend/',
   css: {
     devSourcemap: true,
   },
