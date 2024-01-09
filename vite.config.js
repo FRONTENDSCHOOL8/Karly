@@ -20,7 +20,7 @@ export default defineConfig({
       },
     },
   },
-  base: '/conimmuty-frontend/',
+  base: '/Karly/',
   css: {
     devSourcemap: true,
   },
