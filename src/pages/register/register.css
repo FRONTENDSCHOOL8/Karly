@@ -67,9 +67,9 @@ label {
 .register_container {
   /* background: #eee; */
   width: 640px;
-  margin: auto;
-  margin-top: 160px;
-  margin-bottom: 80px;
+  /* margin: auto; */
+  margin: 80px auto;
+  /* margin-bottom: 80px; */
 }
 
 .register_title {
