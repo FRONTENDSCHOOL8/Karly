@@ -41,7 +41,7 @@ async function handleAuth(id, pw) {
     if (authData) {
       console.log('로그인 성공');
       // alert('로그인 완료! 메인페이지로 이동합니다.');
-      window.location.href = '/src/pages/product_list/';
+      window.location.href = '/src/pages/main/';
     }
   } catch (error) {
     handleLoginAlert();
