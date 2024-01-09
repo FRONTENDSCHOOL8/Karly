@@ -68,8 +68,7 @@ label {
   /* background: #eee; */
   width: 640px;
   margin: auto;
-  margin-top: 160px;
-  margin-bottom: 80px;
+  margin: 80px auto;
 }
 
 .register_title {

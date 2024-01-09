@@ -6,7 +6,7 @@ migrate((db) => {
   // add
   collection.schema.addField(new SchemaField({
     "system": false,
-    "id": "w0mhed16",
+    "id": "ztg6bttm",
     "name": "user_id",
     "type": "text",
     "required": false,
@@ -25,7 +25,7 @@ migrate((db) => {
   const collection = dao.findCollectionByNameOrId("_pb_users_auth_")
 
   // remove
-  collection.schema.removeField("w0mhed16")
+  collection.schema.removeField("ztg6bttm")
 
   return dao.saveCollection(collection)
 })
