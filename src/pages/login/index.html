@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="stylesheet"
+      rel="stylesheet preload"
       as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div>
+    <header>
       <div class="top_banner">
         <div class="top_banner_inner">
           <p>지금 가입하고 인기상품 <span>100</span>원에 받아가세요!</p>
@@ -24,15 +24,15 @@
           </button>
         </div>
       </div>
-      <div class="container">
-        <header class="header">
-          <ul class="member_service">
+      <div class="header">
+        <div class="header_inner">
+          <ul class="header_member_service">
             <li>
-              <a href="/">회원가입</a>
+              <a href="/src/pages/register/">회원가입</a>
             </li>
             <li class="divider" aria-hidden="true"></li>
             <li>
-              <a href="/">로그인</a>
+              <a href="/src/pages/login/">로그인</a>
             </li>
             <li class="divider" aria-hidden="true"></li>
             <li>
@@ -45,7 +45,7 @@
               </div>
             </li>
           </ul>
-          <div class="header_inner">
+          <div class="header_main">
             <div class="logo_switch">
               <h1 class="logo">
                 <a href="/src/pages/main/">
@@ -67,7 +67,7 @@
                   placeholder="검색어를 입력해주세요"
                 />
                 <button type="submit" class="search_btn">
-                  <img src="/src/assets/icons/Group.svg" alt="" />
+                  <img src="/src/assets/icons/search.svg" alt="" />
                 </button>
               </form>
             </div>
@@ -99,10 +99,10 @@
               </div>
             </div>
           </div>
-        </header>
+        </div>
       </div>
-      <nav class="nav_wrapper">
-        <div class="nav">
+      <nav class="nav">
+        <div class="nav_origin">
           <ul class="menu">
             <li>
               <a href="/">카테고리</a>
@@ -110,113 +110,137 @@
                 <a>
                   <img
                     src="/src/assets/icons/gift_thin_icon_171751.svg"
-                    alt=""
+                    alt="선물하기"
                   />
-
                   <span>선물하기</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Vegetable.svg" alt="" />
+                  <img src="/src/assets/icons/Type=_Vegetable.svg" alt="채소" />
                   <span>채소</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Fruit.svg" alt="" />
+                  <img
+                    src="/src/assets/icons/Type=Fruit.svg"
+                    alt="과일,견과,쌀"
+                  />
                   <span>과일 · 견과 · 쌀</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=SeaFood.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=SeaFood.svg"
+                    alt="수산,해산,건어물"
+                  />
                   <span>수산 · 해산 · 건어물</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Meet.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Meet.svg" alt="정육,계란" />
                   <span>정육 · 계란</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Cook.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Cook.svg"
+                    alt="국,반찬,메인요리"
+                  />
                   <span>국 · 반찬 · 메인요리</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Salad.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=_Salad.svg"
+                    alt="샐러드,간편식"
+                  />
                   <span>샐러드 · 간편식</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Oil.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Oil.svg"
+                    alt="면,양념,오일"
+                  />
                   <span>면 · 양념 · 오일</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Coffee.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Coffee.svg"
+                    alt="생수,음료,우유,커피"
+                  />
                   <span>생수 · 음료 · 우유 · 커피</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Snack.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Snack.svg"
+                    alt="간식,과자,떡"
+                  />
                   <span>간식 · 과자 · 떡</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Bread.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Bread.svg"
+                    alt="베이커리,치즈,델리"
+                  />
                   <span>베이커리 · 치즈 · 델리</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Health.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Health.svg" alt="건강식품" />
                   <span>건강식품</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Wine.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Wine.svg" alt="와인" />
                   <span>와인</span>
                 </a>
                 <a>
                   <img
                     src="/src/assets/icons/Type=_TraditionalLiquor.svg"
-                    alt=""
+                    alt="전통주"
                   />
                   <span>전통주</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Detergent.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=_Detergent.svg"
+                    alt="생활용품,리빙,캠핑"
+                  />
                   <span>생활용품 · 리빙 · 캠핑</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Cosmetics.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=_Cosmetics.svg"
+                    alt="스킨케어,메이크업"
+                  />
                   <span>스킨케어 · 메이크업</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=shampoo.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=shampoo.svg"
+                    alt="헤어,바디,구강"
+                  />
                   <span>헤어 · 바디 · 구강</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Food.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Food.svg" alt="주방용품" />
                   <span>주방용품</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=HomeAppliances.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=HomeAppliances.svg"
+                    alt="가전제품"
+                  />
                   <span>가전제품</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Dog.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Dog.svg" alt="반려동물" />
                   <span>반려동물</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Baby.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Baby.svg"
+                    alt="베이비,키즈,완구"
+                  />
                   <span>베이비 · 키즈 · 완구</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Travel.svg" alt="" />
+                  <img
+                    src="/src/assets/icons/Type=Travel.svg"
+                    alt="여행,티켓"
+                  />
                   <span>여행 · 티켓</span>
                 </a>
               </div>
@@ -238,113 +262,137 @@
                 <a>
                   <img
                     src="/src/assets/icons/gift_thin_icon_171751.svg"
-                    alt=""
+                    alt="선물하기"
                   />
-
                   <span>선물하기</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Vegetable.svg" alt="" />
+                  <img src="/src/assets/icons/Type=_Vegetable.svg" alt="채소" />
                   <span>채소</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Fruit.svg" alt="" />
+                  <img
+                    src="/src/assets/icons/Type=Fruit.svg"
+                    alt="과일,견과,쌀"
+                  />
                   <span>과일 · 견과 · 쌀</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=SeaFood.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=SeaFood.svg"
+                    alt="수산,해산,건어물"
+                  />
                   <span>수산 · 해산 · 건어물</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Meet.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Meet.svg" alt="정육,계란" />
                   <span>정육 · 계란</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Cook.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Cook.svg"
+                    alt="국,반찬,메인요리"
+                  />
                   <span>국 · 반찬 · 메인요리</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Salad.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=_Salad.svg"
+                    alt="샐러드,간편식"
+                  />
                   <span>샐러드 · 간편식</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Oil.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Oil.svg"
+                    alt="면,양념,오일"
+                  />
                   <span>면 · 양념 · 오일</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Coffee.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Coffee.svg"
+                    alt="생수,음료,우유,커피"
+                  />
                   <span>생수 · 음료 · 우유 · 커피</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Snack.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Snack.svg"
+                    alt="간식,과자,떡"
+                  />
                   <span>간식 · 과자 · 떡</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Bread.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Bread.svg"
+                    alt="베이커리,치즈,델리"
+                  />
                   <span>베이커리 · 치즈 · 델리</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Health.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Health.svg" alt="건강식품" />
                   <span>건강식품</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Wine.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Wine.svg" alt="와인" />
                   <span>와인</span>
                 </a>
                 <a>
                   <img
                     src="/src/assets/icons/Type=_TraditionalLiquor.svg"
-                    alt=""
+                    alt="전통주"
                   />
                   <span>전통주</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Detergent.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=_Detergent.svg"
+                    alt="생활용품,리빙,캠핑"
+                  />
                   <span>생활용품 · 리빙 · 캠핑</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=_Cosmetics.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=_Cosmetics.svg"
+                    alt="스킨케어,메이크업"
+                  />
                   <span>스킨케어 · 메이크업</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=shampoo.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=shampoo.svg"
+                    alt="헤어,바디,구강"
+                  />
                   <span>헤어 · 바디 · 구강</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Food.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Food.svg" alt="주방용품" />
                   <span>주방용품</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=HomeAppliances.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=HomeAppliances.svg"
+                    alt="가전제품"
+                  />
                   <span>가전제품</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Dog.svg" alt="" />
-
+                  <img src="/src/assets/icons/Type=Dog.svg" alt="반려동물" />
                   <span>반려동물</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Baby.svg" alt="" />
-
+                  <img
+                    src="/src/assets/icons/Type=Baby.svg"
+                    alt="베이비,키즈,완구"
+                  />
                   <span>베이비 · 키즈 · 완구</span>
                 </a>
                 <a>
-                  <img src="/src/assets/icons/Type=Travel.svg" alt="" />
+                  <img
+                    src="/src/assets/icons/Type=Travel.svg"
+                    alt="여행,티켓"
+                  />
                   <span>여행 · 티켓</span>
                 </a>
               </div>
@@ -362,7 +410,7 @@
                   placeholder="검색어를 입력해주세요"
                 />
                 <button type="submit" class="search_btn">
-                  <img src="/src/assets/icons/Group.svg" alt="" />
+                  <img src="/src/assets/icons/search.svg" alt="" />
                 </button>
               </form>
             </li>
@@ -396,23 +444,28 @@
           </ul>
         </div>
       </nav>
-    </div>
+    </header>
+
     <main class="login">
       <h1 class="login_title">로그인</h1>
-      <form action="/" method="post" class="login_form">
+      <form action="/" class="login_form">
         <fieldset>
           <legend class="sr_only">로그인 폼</legend>
 
           <div class="login_form_container">
-            <div class="user_email">
-              <label class="sr_only" for="user_email">아이디</label>
+            <div class="user_id">
+              <label class="sr_only" for="user_id">아이디</label>
               <input
-                type="email"
-                class="user_email_input"
-                id="user_email"
-                name="user_email"
+                type="text"
+                class="user_id_input"
+                id="user_id"
+                name="user_id"
                 placeholder="아이디를 입력해주세요"
+                aria-invalid="false"
               />
+              <span class="error_message" id="user_id_error">
+                6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합
+              </span>
             </div>
 
             <div class="user_password">
@@ -423,7 +476,18 @@
                 id="user_password"
                 name="user_password"
                 placeholder="비밀버호를 입력해주세요"
+                aria-invalid="false"
               />
+              <span class="error_message" id="user_password_error">
+                영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합
+              </span>
+            </div>
+            <!-- 로그인 알림창 -->
+            <div class="login_alert_container" role="alert">
+              <div class="login_alert_box">
+                <p class="login_alert_text">아이디, 비밀번호를 확인해주세요.</p>
+                <button class="login_alert_btn" type="button">확인</button>
+              </div>
             </div>
 
             <div class="info_search">
@@ -433,12 +497,14 @@
 
             <div class="btn_wrapper">
               <button type="submit" class="login_btn">로그인</button>
-              <button type="submit" class="register_btn">회원가입</button>
+
+              <a href="/src/pages/register/" class="register_btn">회원가입</a>
             </div>
           </div>
         </fieldset>
       </form>
     </main>
+
     <footer>
       <div class="footer_inner">
         <div class="footer_area">
