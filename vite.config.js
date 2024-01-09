@@ -20,6 +20,7 @@ export default defineConfig({
       },
     },
   },
+  base: '/Karly/',
   css: {
     devSourcemap: true,
   },
