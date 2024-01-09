@@ -575,6 +575,10 @@
   }
 }
 
+.product_review {
+  margin-bottom: 72px;
+}
+
 .review_container {
   position: relative;
   margin-bottom: 56px;
