@@ -34,16 +34,17 @@
   line-height: 140%; /* 39.802px */
 }
 
-.section_item {
+.section_product {
   width: var(--container-width);
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
   gap: 18px;
+  position: relative;
 }
 
-.section_item .item {
+.section_recommend .item {
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
@@ -166,4 +167,108 @@ figcaption {
 
 .recent_view_inner .recent_view_item img {
   width: 40px;
+}
+
+/* 배너 슬라이더 */
+.swiper-button-prev.banner,
+.swiper-button-next.banner {
+  width: 50px;
+  height: 50px;
+
+  top: var(--swiper-navigation-top-offset, 48.5%);
+}
+
+.swiper-button-prev.banner {
+  background: url(/src/assets/icons/ArrowLeft.svg) no-repeat;
+  left: 200px;
+}
+
+.swiper-button-next.banner {
+  background: url(/src/assets/icons/ArrowRight.svg) no-repeat;
+  right: 200px;
+}
+
+.swiper-button-next.banner::after,
+.swiper-button-prev.banner::after {
+  display: none;
+}
+
+.swiper-pagination.banner {
+  width: 47px;
+  padding: 0px 12px;
+  border-radius: 12px;
+  background: rgba(64, 64, 64, 0.3);
+  color: var(--white, #fff);
+  font-size: 12.003px;
+  font-weight: 500;
+  line-height: 150%; /* 18.005px */
+  white-space: nowrap;
+
+  left: 1208px;
+  bottom: 28px;
+}
+
+/* 상품 슬라이더 */
+.swiper-button-prev.recommend,
+.swiper-button-next.recommend,
+.swiper-button-prev.sale,
+.swiper-button-next.sale {
+  width: 60px;
+  height: 60px;
+  top: 32%;
+  position: absolute;
+  z-index: 5;
+}
+
+.swiper-button-prev.recommend,
+.swiper-button-prev.sale {
+  background: url(/src/assets/icons/ArrowLeft02.svg) no-repeat;
+  left: -30px;
+}
+
+.swiper-button-next.recommend,
+.swiper-button-next.sale {
+  background: url(/src/assets/icons/ArrowRight02.svg) no-repeat;
+  right: -30px;
+}
+
+.swiper-button-next.recommend::after,
+.swiper-button-prev.recommend::after,
+.swiper-button-next.sale::after,
+.swiper-button-prev.sale::after {
+  display: none;
+}
+
+.item.item_last {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 249px;
+  height: 319.96px;
+}
+
+.item.item_last a {
+  display: block;
+  width: 64px;
+  height: 64px;
+}
+
+.item.item_last a:hover .item_last_icon {
+  background: url(/src/assets/icons/ArrowRoundRight02.svg) 50% 50% no-repeat;
+}
+
+.item.item_last a .item_last_icon {
+  display: block;
+  background: url(/src/assets/icons/ArrowRoundRight01.svg) 50% 50% no-repeat;
+  margin-bottom: 18px;
+  width: 64px;
+  height: 64px;
+}
+
+.item.item_last a span {
+  display: block;
+  font-size: 16px;
+  color: rgb(51, 51, 51);
+  text-align: center;
 }
