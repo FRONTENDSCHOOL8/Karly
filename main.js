@@ -12,11 +12,15 @@ import 'swiper/css/pagination';
 setDocumentTitle('칼리 | 마켓칼리');
 
 const swiperBanner = new Swiper('.swiper.banner', {
-  modules: [Navigation, Pagination],
+  modules: [Navigation, Pagination, Autoplay],
   loop: true,
   navigation: {
     nextEl: '.swiper-button-next.banner',
     prevEl: '.swiper-button-prev.banner',
+  },
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
   },
   pagination: {
     el: '.swiper-pagination.banner',
@@ -50,6 +54,18 @@ const swiperSale = new Swiper('.swiper.sale', {
   navigation: {
     nextEl: '.swiper-button-next.sale',
     prevEl: '.swiper-button-prev.sale',
+  },
+});
+
+const swiperRecent = new Swiper('.swiper.recent', {
+  modules: [Navigation, Pagination, Autoplay],
+  direction: 'vertical',
+  loop: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
+  navigation: {
+    nextEl: '.swiper-button-next.recent',
+    prevEl: '.swiper-button-prev.recent',
   },
 });
 
