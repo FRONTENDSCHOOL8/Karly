@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="59" id="filter0_ddd_1_262" width="58" x="1" y="1">
+   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+   <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+   <feOffset/>
+   <feGaussianBlur stdDeviation="2"/>
+   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+   <feBlend in2="BackgroundImageFix"/>
+   <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+   <feOffset dy="1"/>
+   <feGaussianBlur stdDeviation="2"/>
+   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0"/>
+   <feBlend in2="effect1_dropShadow_1_262"/>
+   <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+   <feOffset/>
+   <feGaussianBlur stdDeviation="2"/>
+   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.02 0"/>
+   <feBlend in2="effect2_dropShadow_1_262"/>
+   <feBlend in="SourceGraphic" in2="effect3_dropShadow_1_262"/>
+  </filter>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="arrow2 1" transform="rotate(-180 30 30)">
+   <g id="Group">
+    <g id="Group_2">
+     <g filter="url(#filter0_ddd_1_262)" id="Vector">
+      <path d="m30,55c13.81,0 25,-11.19 25,-25c0,-13.81 -11.19,-25 -25,-25c-13.81,0 -25,11.19 -25,25c0,13.81 11.19,25 25,25z" fill="black" id="svg_1"/>
+     </g>
+     <path d="m30,55c13.81,0 25,-11.19 25,-25c0,-13.81 -11.19,-25 -25,-25c-13.81,0 -25,11.19 -25,25c0,13.81 11.19,25 25,25z" fill="white" id="Vector_2"/>
+    </g>
+    <path d="m27.29,38.7c0.17,0.17 0.39,0.28 0.64,0.3c0.24,0.02 0.48,-0.06 0.67,-0.2l0.1,-0.08l8,-7.82c0.17,-0.17 0.28,-0.39 0.3,-0.63c0.02,-0.24 -0.05,-0.48 -0.19,-0.68l-0.08,-0.09l-7.73,-8.19c-0.17,-0.18 -0.41,-0.29 -0.66,-0.31c-0.26,-0.01 -0.51,0.07 -0.7,0.23c-0.2,0.16 -0.32,0.39 -0.36,0.65c-0.03,0.25 0.04,0.5 0.19,0.71l0.08,0.1l7.05,7.47l-7.3,7.12c-0.17,0.18 -0.28,0.4 -0.3,0.65c-0.02,0.24 0.06,0.48 0.2,0.67l0.09,0.1z" fill="#333333" id="Vector_3"/>
+   </g>
+  </g>
+ </g>
+</svg>
