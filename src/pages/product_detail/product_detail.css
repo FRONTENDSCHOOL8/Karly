@@ -191,6 +191,10 @@ button {
   }
 }
 
+.product_quantity_decrease_button {
+  cursor: default;
+}
+
 .calculated_price {
   position: absolute;
   right: 12px;
