@@ -20,7 +20,7 @@ export default defineConfig({
       },
     },
   },
-  base: '/Karly/',
+  base: process.env.NODE_ENV === 'production' ? '/Karly/' : '/',
   css: {
     devSourcemap: true,
   },
