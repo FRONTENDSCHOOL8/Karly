@@ -1,36 +1,38 @@
+import { insertLast } from './insert.js';
+import { comma, getPbImageURL } from '/src/lib/utils';
 
-import { insertLast } from './insert.js'
+// createItemCard 태그를 생성
 
-
-
-// createUserCard 태그를 생성
-
-
-function createUserCard({
-  id,
-  name = 'tiger',
-  email = 'tiger@naver.com',
-  website = 'tiger@tiger.com'
-}){
-  return /* html */`
-    <article class="user-card" data-index="user-${id}">
-      <h3 class="user-name">${name}</h3>
-      <div class="user-resouce-info">
-        <div>
-          <a class="user-email" href="mailto:${email}">${email}</a>
-        </div>
-        <div>
-          <a class="user-website" href="${website}" target="_blank" rel="noopener noreferer">${website}</a>
-        </div>
-      </div>
-      <button class="delete">삭제</button>
-    </article>
-  `
+function createItemCard(item) {
+  return /* html */ `
+  <li class="item_card">
+  <a href="/Karly/src/pages/product_detail/index.html#${item.id}">
+    <figure>
+      <img
+        class="product_img"
+        src="${getPbImageURL(item)}"
+        alt="${item.name}"
+      />
+      <figcaption class="product_info">
+        <small class="product_delivery">${item.delivery}</small>
+        <h4 class="product_title">${item.name}</h4>
+        <em class="product_price">${comma(item.price)} 원</em>
+        <p class="product_description">${item.description}</p>
+      </figcaption>
+    </figure>
+  </a>
+  <button class="cart_button">
+    <img src="/src/assets/icons/cart.png" alt="담기" />
+  </button>
+</li>
+  `;
 }
 
-
-function createSpinner(size=100,loadingMessage = '유저 정보를 가져오는 중....📂'){
-  return /* html */`
+function createSpinner(
+  size = 100,
+  loadingMessage = '유저 정보를 가져오는 중....📂'
+) {
+  return /* html */ `
     <figure class="loadingSpinner">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#fff;display:block;" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" preserveAspectRatio="xMidYMid">
         <g>
@@ -78,12 +80,14 @@ function createSpinner(size=100,loadingMessage = '유저 정보를 가져오는 
         <figcaption>${loadingMessage}</figcaption>
     </figure>
 
-  `
+  `;
 }
 
-
-function createEmptyCard(size= 200 , errorMessage= '알 수 없는 오류가 발생했습니다 🤔'){
-  return /* html */`
+function createEmptyCard(
+  size = 200,
+  errorMessage = '알 수 없는 오류가 발생했습니다 🤔'
+) {
+  return /* html */ `
     <figure class="empty-user-card">
       <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M180 100C180 111.881 177.405 123.168 172.746 133.308C160.119 160.865 132.292 180 100 180C67.7081 180 39.8811 160.865 27.2541 133.308C22.5946 123.168 20 111.881 20 100C20 55.8162 55.8162 20 100 20C144.184 20 180 55.8162 180 100Z" fill="#F4F7FC"/>
@@ -122,42 +126,19 @@ function createEmptyCard(size= 200 , errorMessage= '알 수 없는 오류가 발
         
       <figcaption>${errorMessage}</figcaption>
     </figure>
-  `
+  `;
 }
 
-
-export function renderUserCard(target,data){
-  insertLast(target,createUserCard(data))
+export function renderItemCard(target, item) {
+  insertLast(target, createItemCard(item));
 }
 
-export function renderSpinner(target){
-  insertLast(target,createSpinner())
+export function renderSpinner(target) {
+  insertLast(target, createSpinner());
 }
 
-export function renderEmptyCard(target){
-  insertLast(target,createEmptyCard())
+export function renderEmptyCard(target) {
+  insertLast(target, createEmptyCard());
 }
 
-// renderUserCard 랜더링 ( insertLast )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// renderItemCard 렌더링 ( insertLast )
