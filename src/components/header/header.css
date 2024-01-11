@@ -428,6 +428,8 @@ body {
   height: 775px;
 
   overflow-y: scroll;
+
+  z-index: 10;
 }
 
 .category a {
