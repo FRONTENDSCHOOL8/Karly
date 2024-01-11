@@ -3,6 +3,12 @@ label {
   cursor: pointer;
 }
 
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .duplicate_alert_container,
 .duplicate_email_alert_container,
 .duplicate_number_alert_container {

@@ -19,14 +19,14 @@ const duplicateIdBtn = getNode('.duplicate_id_btn');
 const duplicateAlertContainer = getNode('.duplicate_alert_container');
 const duplicateAlertText = getNode('.duplicate_alert_text');
 
-const duplicateEmailBtn = getNode('.duplicate_email_btn');
-const duplicateEmailAlertContainer = getNode(
-  '.duplicate_email_alert_container'
-);
-const duplicateEmailAlertText = getNode('.duplicate_email_alert_text');
+// const duplicateEmailBtn = getNode('.duplicate_email_btn');
+// const duplicateEmailAlertContainer = getNode(
+//   '.duplicate_email_alert_container'
+// );
+// const duplicateEmailAlertText = getNode('.duplicate_email_alert_text');
 
 const duplicateAlertBtn = getNode('.duplicate_alert_btn');
-const duplicateEmailAlertBtn = getNode('.duplicate_email_alert_btn');
+// const duplicateEmailAlertBtn = getNode('.duplicate_email_alert_btn');
 
 const checkNumberBtn = getNode('.check_number_btn');
 
@@ -71,20 +71,21 @@ function handleValidationEmail(email) {
 // 아이디 중복확인 (return값이 true면 중복이라는 뜻)
 async function DuplicationId() {
   const records = await pb.collection('users').getFullList();
+  console.log(records);
   let res = records.filter((item) => userIdInput.value === item.username);
   if (res.length === 0) return false;
   else return true;
 }
 
 // 이메일 중복확인 (return값이 true면 중복이라는 뜻)
-async function DuplicationEmail() {
-  const authData = await pb
-    .collection('users')
-    .authWithPassword(userIdInput.value, userPasswordInput.value);
+// async function DuplicationEmail() {
+//   const authData = await pb
+//     .collection('users')
+//     .authWithPassword(userIdInput.value, userPasswordInput.value);
 
-  if (authData.record.email !== userEmailInput.value) return false;
-  else return true;
-}
+//   if (authData.record.email !== userEmailInput.value) return false;
+//   else return true;
+// }
 
 // handleValidationAlertShow, handleValidationAlertClose 나중에 하나로 리팩토링하기
 // 아이디 중복확인 알림창 보이기
@@ -110,25 +111,25 @@ async function handleValidationAlertShow() {
 }
 
 // 이메일 중복확인 알림창 보이기
-async function handleDuplicateAlertShow() {
-  if (!handleValidationEmail(userEmailInput.value)) {
-    duplicateEmailAlertText.textContent = '이메일 형식으로 입력해 주세요.';
-    duplicateEmailAlertContainer.style.visibility = 'visible';
-    html.style.overflow = 'hidden';
-  } else {
-    if (await DuplicationEmail()) {
-      duplicateEmailAlertText.textContent = '이미 등록된 이메일 입니다.';
-      duplicateEmailAlertContainer.style.visibility = 'visible';
-      html.style.overflow = 'hidden';
-    } else {
-      duplicateEmailBtn.disabled = true;
-      duplicateEmailBtn.classList.add('disable_btn');
-      duplicateEmailAlertText.textContent = '사용 가능한 이메일 입니다.';
-      duplicateEmailAlertContainer.style.visibility = 'visible';
-      html.style.overflow = 'hidden';
-    }
-  }
-}
+// async function handleDuplicateAlertShow() {
+//   if (!handleValidationEmail(userEmailInput.value)) {
+//     duplicateEmailAlertText.textContent = '이메일 형식으로 입력해 주세요.';
+//     duplicateEmailAlertContainer.style.visibility = 'visible';
+//     html.style.overflow = 'hidden';
+//   } else {
+//     if (await DuplicationEmail()) {
+//       duplicateEmailAlertText.textContent = '이미 등록된 이메일 입니다.';
+//       duplicateEmailAlertContainer.style.visibility = 'visible';
+//       html.style.overflow = 'hidden';
+//     } else {
+//       duplicateEmailBtn.disabled = true;
+//       duplicateEmailBtn.classList.add('disable_btn');
+//       duplicateEmailAlertText.textContent = '사용 가능한 이메일 입니다.';
+//       duplicateEmailAlertContainer.style.visibility = 'visible';
+//       html.style.overflow = 'hidden';
+//     }
+//   }
+// }
 
 // 인증번호 알림창 보이기
 async function handleAuthNumAlertShow() {
@@ -147,10 +148,10 @@ function handleValidationAlertClose() {
 }
 
 // 이메일 중복확인 알림창 닫기
-function handleDuplicateAlertClose() {
-  duplicateEmailAlertContainer.style.visibility = 'hidden';
-  html.style.overflow = 'scroll';
-}
+// function handleDuplicateAlertClose() {
+//   duplicateEmailAlertContainer.style.visibility = 'hidden';
+//   html.style.overflow = 'scroll';
+// }
 
 // 인증번호 알림창 닫기
 function handleAuthNumAlertClose() {
@@ -232,8 +233,8 @@ document
 
 duplicateIdBtn.addEventListener('click', handleValidationAlertShow);
 duplicateAlertBtn.addEventListener('click', handleValidationAlertClose);
-duplicateEmailBtn.addEventListener('click', handleDuplicateAlertShow);
-duplicateEmailAlertBtn.addEventListener('click', handleDuplicateAlertClose);
+// duplicateEmailBtn.addEventListener('click', handleDuplicateAlertShow);
+// duplicateEmailAlertBtn.addEventListener('click', handleDuplicateAlertClose);
 
 // 전체 동의하면 모두 checked 상태 true로 변경
 function handleAgreeAll(state) {
@@ -268,15 +269,32 @@ const userAddressBtn = getNode('.user_address_btn');
 
 userAddressBtn.addEventListener('click', handleSearchAddress);
 
+if (
+  userIdInput.value
+  // userPasswordInput.value &&
+  // userNameInput.value &&
+  // userEmailInput.value &&
+  // userPhoneInput.value &&
+  // document.querySelectorAll('.radio_wrapper')[0].value
+) {
+  document.querySelector('.join_btn').classList.remove('disable_btn');
+  console.log('버튼 활성화!');
+}
+
 document.querySelector('.join_btn').addEventListener('click', function (e) {
   e.preventDefault();
 
   const data = {
     username: userIdInput.value,
-    email: userEmailInput.value,
     password: userPasswordInput.value,
     passwordConfirm: userPasswordInput.value,
     name: userNameInput.value,
+    email: userEmailInput.value,
+    phone: userPhoneInput.value,
+    gender: document.querySelectorAll('.radio_wrapper')[0].value ?? 'none',
+    birth: `${document.querySelector('#year').value}${
+      document.querySelector('#month').value
+    }${document.querySelector('#day').value}`,
   };
 
   pb.collection('users')
@@ -289,3 +307,58 @@ document.querySelector('.join_btn').addEventListener('click', function (e) {
       console.log('회원가입 실패', error);
     });
 });
+
+document
+  .querySelectorAll('.radio_wrapper')[0]
+  .addEventListener('click', function (e) {
+    if (e.target.tagName !== 'INPUT') return;
+    document.querySelectorAll('.radio_wrapper')[0].value = e.target.value;
+  });
+
+document.querySelector('#year').addEventListener('input', function (e) {
+  // if(year >== 1900 && year <== 2024)
+
+  if (e.target.value.length > 4) {
+    e.target.value = e.target.value.toString();
+    e.target.value = e.target.value.slice(0, 4);
+
+    let year = Number(e.target.value);
+    if (year >= 1900 && year <= 2024) {
+      document.querySelector('#year').textContent = e.target.value;
+      // console.log(e.target.value);
+    }
+  }
+});
+document.querySelector('#month').addEventListener('input', function (e) {
+  if (e.target.value.length > 2) {
+    e.target.value = e.target.value.toString();
+    e.target.value = e.target.value.slice(0, 2);
+
+    let month = Number(e.target.value);
+    if (month >= 1 && month <= 12) {
+      // if (month < 10) {
+      //   e.target.value = '0' + month;
+      // }
+      document.querySelector('#month').textContent = e.target.value;
+      // console.log(e.target.value);
+    }
+  }
+});
+document.querySelector('#day').addEventListener('input', function (e) {
+  if (e.target.value.length > 2) {
+    e.target.value = e.target.value.toString();
+    e.target.value = e.target.value.slice(0, 2);
+
+    let day = Number(e.target.value);
+    if (day >= 1 && day <= 31) {
+      document.querySelector('#day').textContent = e.target.value;
+      // console.log(e.target.value);
+    }
+  }
+});
+
+// document.querySelector('.test').addEventListener('click', function () {
+//   console.log(document.querySelector('#year').value);
+//   console.log(document.querySelector('#month').value);
+//   console.log(document.querySelector('#day').value);
+// });

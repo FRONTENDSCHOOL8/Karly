@@ -16,7 +16,7 @@
       defer
       src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
     ></script>
-    <title>회원가입</title>
+    <title>칼리 |</title>
   </head>
 
   <body>
@@ -629,7 +629,7 @@
               aria-invalid="false"
               aria-describedby="user_email_error"
             />
-            <button type="button" class="duplicate_email_btn">중복확인</button>
+            <!-- <button type="button" class="duplicate_email_btn">중복확인</button> -->
             <span class="error_message" id="user_email_error">
               이메일 형식으로 입력해 주세요.
             </span>
@@ -701,6 +701,7 @@
                 type="radio"
                 name="gender"
                 id="user_gender_male"
+                value="male"
               />
               <label for="user_gender_male">남자</label>
               <input
@@ -708,6 +709,7 @@
                 type="radio"
                 name="gender"
                 id="user_gender_female"
+                value="female"
               />
               <label for="user_gender_female">여자</label>
               <input
@@ -715,6 +717,7 @@
                 type="radio"
                 name="gender"
                 id="user_gender_none"
+                value="none"
                 checked
               />
               <label for="user_gender_none">선택안함</label>
@@ -725,30 +728,13 @@
             <div class="user_birth_label">생년월일</div>
             <div class="birth_box">
               <label for="year" class="sr_only">년</label>
-              <input
-                type="text"
-                name="year"
-                id="year"
-                maxlength="4"
-                placeholder="YYYY"
-              />
+              <input type="number" name="year" id="year" placeholder="YYYY" />
               <label for="month" class="sr_only">월</label>
-              <input
-                type="text"
-                name="month"
-                id="month"
-                maxlength="2"
-                placeholder="MM"
-              />
+              <input type="number" name="month" id="month" placeholder="MM" />
               <label for="day" class="sr_only">일</label>
-              <input
-                type="text"
-                name="day"
-                id="day"
-                maxlength="2"
-                placeholder="DD"
-              />
+              <input type="number" name="day" id="day" placeholder="DD" />
             </div>
+            <!-- <button class="test" type="button">test</button> -->
           </div>
 
           <div class="user_add_wrapper">
