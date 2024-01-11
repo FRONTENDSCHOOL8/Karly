@@ -77,14 +77,9 @@ input[type='number']::-webkit-inner-spin-button {
 .register_container {
   /* background: #eee; */
   width: 640px;
-<<<<<<< HEAD
   /* margin: auto; */
   margin: 80px auto;
   /* margin-bottom: 80px; */
-=======
-  margin: auto;
-  margin: 80px auto;
->>>>>>> upstream/dev
 }
 
 .register_title {
