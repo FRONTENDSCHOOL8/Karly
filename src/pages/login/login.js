@@ -2,7 +2,7 @@ import '/src/styles/style.css';
 import '/src/components/header/header.css';
 import '/src/pages/login/login.css';
 import '/src/components/footer/footer.css';
-import { getNode, setDocumentTitle } from '/src/lib';
+import { getStorage, setStorage, getNode, setDocumentTitle } from '/src/lib';
 import pb from '/src/api/pocketbase';
 
 const loginBtn = getNode('.login_btn');
@@ -26,8 +26,7 @@ function handleValidationId(id) {
 
 // 비밀번호 유효성 검사
 function handleValidationPassword(pw) {
-  const regex =
-    /^(?=(?:.*[A-Za-z]){1,})(?=(?:.*\d){1,}|.*[!@#$%^&*()_+{}[\]:;<>,.?~/-]{1,})(?:[A-Za-z\d!@#$%^&*()_+{}[\]:;<>,.?~/-]){10,}$/;
+  const regex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{6,16}$/;
 
   if (regex.test(pw)) return true;
   else return false;
@@ -39,11 +38,15 @@ async function handleAuth(id, pw) {
     const authData = await pb.collection('users').authWithPassword(id, pw);
 
     if (authData) {
-      console.log('로그인 성공');
-      // alert('로그인 완료! 메인페이지로 이동합니다.');
-      console.log(authData);
-      authData.isAuth = true;
-      // window.location.href = '%BASE_URL%src/pages/main/';
+      let { model, token } = await getStorage('pocketbase_auth');
+
+      setStorage('auth', {
+        isAuth: !!model,
+        user: model,
+        token: token,
+      });
+
+      window.location.href = '/src/pages/main/';
     }
   } catch (error) {
     handleLoginAlert();
@@ -66,6 +69,7 @@ function handleLoginAlertClose() {
 loginBtn.addEventListener('click', function (e) {
   e.preventDefault();
   handleAuth(userIdInput.value, userPasswordInput.value);
+  console.log(userIdInput.value, userPasswordInput.value);
 });
 
 loginAlertBtn.addEventListener('click', handleLoginAlertClose);
@@ -79,15 +83,20 @@ userIdInput.addEventListener('input', (e) => {
 userPasswordInput.addEventListener('input', (e) => {
   let state = handleValidationPassword(e.target.value);
 
-  if (e.target.value && e.target.value.length < 10) {
+  if (e.target.value && e.target.value.length < 6) {
     userPasswordError.classList.add('is_invalid');
-    userPasswordError.textContent = '최소 10자 이상 입력';
+    userPasswordError.textContent = '최소 6자 이상 입력';
+  } else if (e.target.value.length > 16) {
+    userPasswordError.classList.add('is_invalid');
+    userPasswordError.textContent = '최대 16자 까지 입력';
   } else {
     if (state) {
       userPasswordError.classList.remove('is_invalid');
     } else {
-      userPasswordError.textContent =
-        '영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합';
+      userPasswordError.textContent = '특수문자 포함 최소 6자 - 최대 16자';
     }
   }
 });
+
+// const records = await pb.collection('users').getFullList();
+// console.log(records);
