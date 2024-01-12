@@ -3,6 +3,14 @@ label {
   cursor: pointer;
 }
 
+input[type='radio'][id^='user_gender']:focus + label::before,
+input[type='radio'][id^='user_add']:focus + label::before,
+input[type='checkbox']:focus + .agree_all label::before,
+input[type='checkbox']:focus + .agree_check label::before {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
