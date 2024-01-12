@@ -301,7 +301,7 @@ document.querySelector('.join_btn').addEventListener('click', function (e) {
     .create(data)
     .then(() => {
       console.log('회원가입 완료!');
-      location.href = '%BASE_URL%src/pages/login/';
+      location.href = '/Karly/src/pages/login/';
     })
     .catch((error) => {
       console.log('회원가입 실패', error);
