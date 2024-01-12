@@ -133,6 +133,12 @@ export function renderItemCard(target, item) {
   insertLast(target, createItemCard(item));
 }
 
+export function renderItemList(target, list) {
+  list.forEach((item) => {
+    insertLast(target, createItemCard(item));
+  });
+}
+
 export function renderSpinner(target) {
   insertLast(target, createSpinner());
 }
