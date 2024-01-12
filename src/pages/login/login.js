@@ -43,7 +43,7 @@ async function handleAuth(id, pw) {
       // alert('로그인 완료! 메인페이지로 이동합니다.');
       console.log(authData);
       authData.isAuth = true;
-      // window.location.href = '/src/pages/main/';
+      // window.location.href = '%BASE_URL%src/pages/main/';
     }
   } catch (error) {
     handleLoginAlert();
