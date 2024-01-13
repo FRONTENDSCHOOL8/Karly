@@ -1,10 +1,10 @@
-import"./style-v06b81ne.js";import{a as c,g as p,c as r}from"./header-60uMwEkC.js";/* empty css               */import{a as P,b as V,i as b,c as o,g as l}from"./getPbImageURL-VQZ22oC_.js";import{s as x}from"./setDocumentTitle-_OwlDZqT.js";import{p as E}from"./pocketbase-mqgmocw_.js";const C=window.location.hash.slice(1),n=await E.collection("products").getOne(C);x(`칼리 | ${n.name}`);const S=c(".product_purchase_container");function B(t){return`
+import"./style-v06b81ne.js";import{a as c,g as h,c as r}from"./header-MICfn_ID.js";/* empty css               */import{a as E,b as B,i as g,c as o,g as u}from"./getPbImageURL-Q86jnK4B.js";import{s as m,g as v}from"./storage-jFd8YWAz.js";import{s as I}from"./setDocumentTitle-_OwlDZqT.js";import{a as H,d as L}from"./setDefaultData-b6PVXYnJ.js";import{p as k}from"./pocketbase-mqgmocw_.js";const D=window.location.hash.slice(1),n=await k.collection("products").getOne(D);console.log(n.image);I(`칼리 | ${n.name}`);const T=c(".product_purchase_container");function q(t){return`
   <img
   class="product_img"
-  src="${l(t)}"
+  src="${u(t)}"
   alt="${t.name}"
 />
-  `}function H(t,e){P(t,B(e))}H(S,n);const I=c(".product_purchase_container");function L({delivery:t,name:e,description:s,price:i,delivery_info:d,seller:a,package_type:g,package_info:m,unit:v,volume:y,origin:$,allergy:w}){return`
+  `}function A(t,e){E(t,q(e))}A(T,n);const M=c(".product_purchase_container");function Z({delivery:t,name:e,description:s,price:i,delivery_info:p,seller:l,package_type:$,package_info:P,unit:V,volume:S,origin:x,allergy:C}){return`
   <article class="product_summary">
   <h3 class="sr_only">상품 판매 개요</h3>
   <p class="product_delivery_info">${t}</p>
@@ -22,36 +22,36 @@ import"./style-v06b81ne.js";import{a as c,g as p,c as r}from"./header-60uMwEkC.j
       <th class="product_delivery">배송</th>
       <td class="product_delivery_type">
         ${t}
-        ${d}
+        ${p}
       </td>
     </tr>
     <tr>
       <th class="product_seller">판매자</th>
-      <td class="product_seller_info">${a}</td>
+      <td class="product_seller_info">${l}</td>
     </tr>
     <tr>
       <th class="product_package">포장타입</th>
       <td class="product_package_type">
-        ${g}
-        ${m}
+        ${$}
+        ${P}
       </td>
     </tr>
     <tr>
       <th class="product_sell_unit">판매단위</th>
-      <td class="product_sell_unit_info">${v}</td>
+      <td class="product_sell_unit_info">${V}</td>
     </tr>
     <tr>
       <th class="product_volume">중량/용량</th>
-      <td class="product_volume_info">${y}</td>
+      <td class="product_volume_info">${S}</td>
     </tr>
     <tr>
       <th class="product_origin">원산지</th>
-      <td class="product_origin_description">${$}</td>
+      <td class="product_origin_description">${x}</td>
     </tr>
     <tr>
       <th class="product_allergy">알레르기정보</th>
       <td class="product_allergy_info">
-        ${w}
+        ${C}
       </td>
     </tr>
     <tr>
@@ -108,11 +108,11 @@ import"./style-v06b81ne.js";import{a as c,g as p,c as r}from"./header-60uMwEkC.j
   </p>
   <small class="benefit_notice">로그인 후, 적립 혜택 제공</small>
 </article>
-  `}function k(t,e){V(t,L(e))}k(I,n);const T=c(".product_description_brief_info");function q(t){return`
+  `}function N(t,e){B(t,Z(e))}N(M,n);const Q=c(".product_description_brief_info");function F(t){return`
   <picture class="product_description_img_container">
     <img
       class="product_description_img"
-      src="${l(t,"image",1)}"
+      src="${u(t,"image",1)}"
       alt="${t.name}"
     />
   </picture>
@@ -123,19 +123,19 @@ import"./style-v06b81ne.js";import{a as c,g as p,c as r}from"./header-60uMwEkC.j
       ${t.introduction}
     </p>
   </div>
-  `}function D(t,e){b(t,q(e))}D(T,n);const M=c(".product_details_info");function A(t){return`
+  `}function O(t,e){g(t,F(e))}O(Q,n);const R=c(".product_details_info");function U(t){return`
   <picture>
   <img
-    src="${l(t,"details_pic")}"
+    src="${u(t,"details_pic")}"
     alt="제품 상세 정보"
   />
 </picture>
-  `}function Z(t,e){b(t,A(e))}Z(M,n);const N=c(".product_quantity_increase_button"),_=c(".product_quantity_decrease_button");function Q(){const t=this.previousSibling,e=c(".product_price").firstElementChild.innerText.replaceAll(",","")*1,s=c(".calculated_price"),i=c(".total_price");if(t.nodeValue=t.nodeValue-0+1+"",s.innerText=o(e*t.nodeValue)+"원",i.innerText=o(e*t.nodeValue),t.nodeValue!==1){const a=_.firstElementChild.firstElementChild;r(_,"cursor","pointer"),r(a,"fill","var(--content)")}}function F(){const t=this.nextSibling,e=c(".product_price").firstElementChild.innerText.replaceAll(",","")*1,s=c(".calculated_price"),i=c(".total_price");if(t.nodeValue==="2"){const a=this.firstElementChild.firstElementChild;r(this,"cursor","default"),r(a,"fill","var(--gray--300)")}t.nodeValue!=="1"&&(t.nodeValue=t.nodeValue-1+"",s.innerText=o(e*t.nodeValue)+"원",i.innerText=o(e*t.nodeValue))}N.addEventListener("click",Q);_.addEventListener("click",F);const h=c(".dibs_button");let u=!1;function O(){const t=h.firstElementChild,e=t.firstElementChild;u?(r(t,"fill","none"),r(e,"stroke","var(--primary)"),u=!1):(r(t,"fill","var(--accent--yellow"),r(e,"stroke","var(--accent--yellow)"),u=!0)}h.addEventListener("click",O);const f=p(".icon_wrapper");function R(t){return`
+  `}function W(t,e){g(t,U(e))}W(R,n);const j=c(".product_quantity_increase_button"),b=c(".product_quantity_decrease_button");function z(){const t=this.previousSibling,e=c(".product_price").firstElementChild.innerText.replaceAll(",","")*1,s=c(".calculated_price"),i=c(".total_price");if(t.nodeValue=t.nodeValue-0+1+"",s.innerText=o(e*t.nodeValue)+"원",i.innerText=o(e*t.nodeValue),t.nodeValue!==1){const l=b.firstElementChild.firstElementChild;r(b,"cursor","pointer"),r(l,"fill","var(--content)")}}function G(){const t=this.nextSibling,e=c(".product_price").firstElementChild.innerText.replaceAll(",","")*1,s=c(".calculated_price"),i=c(".total_price");if(t.nodeValue==="2"){const l=this.firstElementChild.firstElementChild;r(this,"cursor","default"),r(l,"fill","var(--gray--300)")}t.nodeValue!=="1"&&(t.nodeValue=t.nodeValue-1+"",s.innerText=o(e*t.nodeValue)+"원",i.innerText=o(e*t.nodeValue))}j.addEventListener("click",z);b.addEventListener("click",G);const w=c(".dibs_button");let _=!1;function J(){const t=w.firstElementChild,e=t.firstElementChild;_?(r(t,"fill","none"),r(e,"stroke","var(--primary)"),_=!1):(r(t,"fill","var(--accent--yellow"),r(e,"stroke","var(--accent--yellow)"),_=!0)}w.addEventListener("click",J);const y=h(".icon_wrapper");function K(t){return`
   <div class="cart_bubble">
   <picture class="cart_bubble_img_container">
     <img
       class="cart_bubble_img"
-      src="${l(t)}"
+      src="${u(t)}"
       alt="${t.name}"
     />
   </picture>
@@ -159,4 +159,4 @@ import"./style-v06b81ne.js";import{a as c,g as p,c as r}from"./header-60uMwEkC.j
   <path d="M10 1L18.6603 13.75H1.33975L10 1Z" fill="white" />
   <path d="M1 13.5L10 1L18.5 13.5" stroke="#C4C4C4" />
 </svg>
-  `}function U(t,e){f.forEach(s=>{b(s,R(e))})}U(f,n);const W=c(".add_cart_button");function j(){const t=p(".cart_bubble"),e=p(".cart_bubble_pointer");t.forEach(s=>{r(s,"visibility","visible"),setTimeout(()=>{r(s,"visibility","hidden")},4e3),e.forEach(i=>{r(i,"visibility","visible"),setTimeout(()=>{r(i,"visibility","hidden")},4e3)})})}W.addEventListener("click",j);
+  `}function X(t,e){y.forEach(s=>{g(s,K(e))})}X(y,n);const Y=c(".add_cart_button");function tt(){const t=h(".cart_bubble"),e=h(".cart_bubble_pointer");t.forEach(s=>{r(s,"visibility","visible"),setTimeout(()=>{r(s,"visibility","hidden")},4e3),e.forEach(i=>{r(i,"visibility","visible"),setTimeout(()=>{r(i,"visibility","hidden")},4e3)})})}Y.addEventListener("click",tt);localStorage.getItem("auth")||m("auth",H);const{user:et}=await v("auth");localStorage.getItem("view")||m("view",L);const f=await v("view"),d=window.location.hash.slice(1),ct=10;let a=f.id;a.includes(d)?(a=a.filter(t=>t!==d),a.push(d)):(a.length>=ct&&a.shift(),f.id.push(d));const rt={user:et,id:a};m("view",rt);

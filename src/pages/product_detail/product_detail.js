@@ -11,6 +11,10 @@ import {
   insertFirst,
   insertLast,
   getPbImageURL,
+  defaultAuthData,
+  defaultViewData,
+  getStorage,
+  setStorage,
 } from '/src/lib/';
 import pb from '/src/api/pocketbase';
 
@@ -18,6 +22,7 @@ import pb from '/src/api/pocketbase';
 const pageHash = window.location.hash.slice(1);
 const product = await pb.collection('products').getOne(pageHash);
 
+console.log(product.image);
 // 페이지 타이틀 수정
 setDocumentTitle(`칼리 | ${product.name}`);
 
@@ -360,3 +365,37 @@ function handleBubble() {
 }
 
 addCartButton.addEventListener('click', handleBubble);
+
+/* 최근 본 상품 목록 */
+// localStorage에 로그인 정보가 없으면 auth 초기화
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
+const { user } = await getStorage('auth');
+
+// localStorage에 최근 본 상품 목록 정보가 없으면 view 초기화
+if (!localStorage.getItem('view')) {
+  setStorage('view', defaultViewData);
+}
+const getViewData = await getStorage('view');
+
+const hash = window.location.hash.slice(1);
+const maxViewCount = 10;
+let idArray = getViewData.id;
+
+if (idArray.includes(hash)) {
+  idArray = idArray.filter((id) => id !== hash);
+  idArray.push(hash);
+} else if (idArray.length >= maxViewCount) {
+  idArray.shift();
+  getViewData.id.push(hash);
+} else {
+  getViewData.id.push(hash);
+}
+
+const viewProductData = {
+  user: user,
+  id: idArray,
+};
+
+setStorage('view', viewProductData);
