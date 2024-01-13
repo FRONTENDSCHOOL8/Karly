@@ -72,6 +72,89 @@ function createItemCard(item) {
   `;
 }
 
+function createRecommendCard(item) {
+  const ratio = item.price * (item.sales * 0.01);
+  return /* html */ `
+  <div class="swiper-slide">
+    <div class="item">
+      <a href="/src/pages/product_detail/index.html#${item.id}">
+        <figure>
+          <img
+            src="${getPbImageURL(item)}"
+            alt="${item.alt}"
+          />
+          <figcaption>
+            <span class="product_delivery"
+              >${item.delivery}</span
+            >
+            <span class="title">${item.name}</span>
+            <div>
+              <span class="discount">${item.sales}%</span>
+              <span class="price">${item.price} 원</span>
+            </div>
+            <span class="price_origin">${comma(item.price - ratio)} 원</span>
+            <span class="desc_product">${item.description}</span>
+            <div>
+            ${item.tag[0] ? `<span class="tag">${item.tag[0]}</span>` : ``}
+            ${item.tag[1] ? `<span class="tag">${item.tag[1]}</span>` : ``}
+            </div>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+  </div>
+  `;
+}
+
+function createSaleCard(item) {
+  const ratio = item.price * (item.sales * 0.01);
+  return /* html */ `
+  <div class="swiper-slide">
+    <div class="item">
+      <a href="/src/pages/product_detail/index.html#${item.id}">
+        <figure>
+          <img
+            src="${getPbImageURL(item)}"
+            alt="${item.alt}"
+          />
+          <figcaption>
+            <span class="product_delivery"
+              >${item.delivery}</span
+            >
+            <span class="title">${item.name}</span>
+            <div>
+              <span class="discount">${item.sales}%</span>
+              <span class="price">${item.price} 원</span>
+            </div>
+            <span class="price_origin">${comma(item.price - ratio)} 원</span>
+            <span class="desc_product">${item.description}</span>
+            <div>
+              ${item.tag[0] ? `<span class="tag">${item.tag[0]}</span>` : ``}
+              ${item.tag[1] ? `<span class="tag">${item.tag[1]}</span>` : ``}
+            </div>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+  </div>
+  `;
+}
+
+function createRecentCard(item) {
+  return /* html */ `
+  <div class="swiper-slide">
+    <div class="recent_view_item">
+      <a href="/src/pages/product_detail/index.html#${item.id}">
+        <img
+          src="${getPbImageURL(item)}"
+          alt="${item.alt}"
+        />
+      </a>
+    </div>
+  </div>
+  `;
+}
+
 function createSpinner(
   size = 100,
   loadingMessage = '유저 정보를 가져오는 중....📂'
@@ -175,6 +258,18 @@ function createEmptyCard(
 
 export function renderItemCard(target, item) {
   insertLast(target, createItemCard(item));
+}
+
+export function renderRecommendCard(target, item) {
+  insertFirst(target, createRecommendCard(item));
+}
+
+export function renderSaleCard(target, item) {
+  insertLast(target, createSaleCard(item));
+}
+
+export function renderRecentCard(target, item) {
+  insertFirst(target, createRecentCard(item));
 }
 
 export function renderItemList(target, list) {
