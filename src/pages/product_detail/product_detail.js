@@ -9,6 +9,7 @@ import {
   setDocumentTitle,
   insertBefore,
   insertFirst,
+  insertLast,
   getPbImageURL,
 } from '/src/lib/';
 import pb from '/src/api/pocketbase';
@@ -40,7 +41,7 @@ function renderProductImage(target, item) {
 
 renderProductImage(tagBelowProductImg, product);
 
-// 상품 정보 렌더링
+// - 상품 정보 렌더링
 const productPurchaseSection = getNode('.product_purchase_container');
 
 function createProductInfo({
@@ -169,6 +170,56 @@ function renderProductInfo(target, item) {
 }
 
 renderProductInfo(productPurchaseSection, product);
+
+// - '상품설명' 란에 있는 제품 소개 영역 렌더링
+
+const productIntro = getNode('.product_description_brief_info');
+
+function createProductIntro(item) {
+  return /* html */ `
+  <picture class="product_description_img_container">
+    <img
+      class="product_description_img"
+      src="${getPbImageURL(item, 'image', 1)}"
+      alt="${item.name}"
+    />
+  </picture>
+  <div class="product_description_info_container">
+    <p>${item.description}</p>
+    <h4>${item.name}</h4>
+    <p>
+      ${item.introduction}
+    </p>
+  </div>
+  `;
+}
+
+function renderProductIntro(target, item) {
+  insertLast(target, createProductIntro(item));
+}
+
+renderProductIntro(productIntro, product);
+
+// '상세정보' 영역 사진 렌더링
+
+const productDetailsPic = getNode('.product_details_info');
+
+function createProductDetailsPic(item) {
+  return /* html */ `
+  <picture>
+  <img
+    src="${getPbImageURL(item, 'details_pic')}"
+    alt="제품 상세 정보"
+  />
+</picture>
+  `;
+}
+
+function renderProductDetailsPic(target, item) {
+  insertLast(target, createProductDetailsPic(item));
+}
+
+renderProductDetailsPic(productDetailsPic, product);
 
 // '상품선택' 영역 '+', '-' 버튼을 눌러 상품 구매 수량 조정 및 수량에 따른 가격 계산
 const addProductButton = getNode('.product_quantity_increase_button');

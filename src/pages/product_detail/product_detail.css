@@ -466,6 +466,7 @@ button {
 .why_karly {
   padding-block-start: 72px;
   padding-block-end: 136px;
+  border-block-start: 1px solid var(--gray--100);
 
   & h3 {
     color: var(--content);
