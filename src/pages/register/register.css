@@ -3,8 +3,23 @@ label {
   cursor: pointer;
 }
 
+input[type='radio'][id^='user_gender']:focus + label::before,
+input[type='radio'][id^='user_add']:focus + label::before,
+input[type='checkbox']:focus + .agree_all label::before,
+input[type='checkbox']:focus + .agree_check label::before {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .duplicate_alert_container,
-.duplicate_email_alert_container {
+.duplicate_email_alert_container,
+.duplicate_number_alert_container {
   width: 100%;
   height: 100%;
   top: 0;
@@ -20,7 +35,8 @@ label {
 }
 
 .duplicate_alert_box,
-.duplicate_email_alert_box {
+.duplicate_email_alert_box,
+.duplicate_number_alert_box {
   width: 360px;
   height: 177px;
   position: absolute;
@@ -34,7 +50,8 @@ label {
 }
 
 .duplicate_alert_text,
-.duplicate_email_alert_text {
+.duplicate_email_alert_text,
+.duplicate_number_alert_text {
   width: 100%;
   height: 122px;
   color: var(--content);
@@ -48,7 +65,8 @@ label {
 }
 
 .duplicate_alert_btn,
-.duplicate_email_alert_btn {
+.duplicate_email_alert_btn,
+.duplicate_number_alert_btn {
   width: 100%;
   height: 55px;
   line-height: 45px;
@@ -67,14 +85,9 @@ label {
 .register_container {
   /* background: #eee; */
   width: 640px;
-<<<<<<< HEAD
   /* margin: auto; */
   margin: 80px auto;
   /* margin-bottom: 80px; */
-=======
-  margin: auto;
-  margin: 80px auto;
->>>>>>> upstream/dev
 }
 
 .register_title {
@@ -216,13 +229,6 @@ label {
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
-}
-
-.disable_btn {
-  cursor: inherit;
-  background: var(--white);
-  color: var(--gray--200);
-  border: 1px solid var(--gray--200);
 }
 
 .search_address {
@@ -415,4 +421,11 @@ label {
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 24px */
+}
+
+.disable_btn {
+  cursor: inherit;
+  background: var(--white);
+  color: var(--gray--200);
+  border: 1px solid var(--gray--200);
 }

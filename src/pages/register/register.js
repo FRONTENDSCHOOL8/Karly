@@ -2,7 +2,10 @@ import '/src/styles/style.css';
 import '/src/components/header/header.css';
 import '/src/pages/register/register.css';
 import '/src/components/footer/footer.css';
-import { getNode } from '/src/lib';
+import { getNode, setDocumentTitle } from '/src/lib';
+import pb from '/src/api/pocketbase.js';
+
+setDocumentTitle('칼리 | 회원가입');
 
 const html = getNode('html');
 const userIdInput = getNode('.user_id_input');
@@ -49,8 +52,7 @@ function handleValidationId(id) {
 
 // 비밀번호 유효성 검사
 function handleValidationPassword(pw) {
-  const regex =
-    /^(?=(?:.*[A-Za-z]){1,})(?=(?:.*\d){1,}|.*[!@#$%^&*()_+{}[\]:;<>,.?~/-]{1,})(?:[A-Za-z\d!@#$%^&*()_+{}[\]:;<>,.?~/-]){10,}$/;
+  const regex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{6,16}$/;
 
   if (regex.test(pw)) return true;
   else return false;
@@ -64,34 +66,120 @@ function handleValidationEmail(email) {
   else return false;
 }
 
+// 아이디 중복확인 (return값이 true면 중복이라는 뜻)
+async function DuplicationId() {
+  const records = await pb.collection('users').getFullList();
+  console.log(records);
+  let res = records.filter((item) => userIdInput.value === item.username);
+  if (res.length === 0) return false;
+  else return true;
+}
+
+// 이메일 중복확인 (return값이 true면 중복이라는 뜻)
+// async function DuplicationEmail() {
+//   const authData = await pb
+//     .collection('users')
+//     .authWithPassword(userIdInput.value, userPasswordInput.value);
+
+//   if (authData.record.email !== userEmailInput.value) return false;
+//   else return true;
+// }
+
 // handleValidationAlertShow, handleValidationAlertClose 나중에 하나로 리팩토링하기
-// 중복확인 알림창 보이기
-function handleValidationAlertShow() {
+// 아이디 중복확인 알림창 보이기
+async function handleValidationAlertShow() {
   if (!handleValidationId(userIdInput.value)) {
     duplicateAlertText.textContent =
       '6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합';
     duplicateAlertContainer.style.visibility = 'visible';
     html.style.overflow = 'hidden';
   } else {
-    duplicateIdBtn.disabled = true;
-    duplicateIdBtn.classList.add('disable_btn');
-    duplicateAlertText.textContent = '사용 할 수 있는 아이디 입니다';
-    duplicateAlertContainer.style.visibility = 'visible';
-    html.style.overflow = 'hidden';
+    if (await DuplicationId()) {
+      duplicateAlertText.textContent = '이미 등록된 아이디 입니다';
+      duplicateAlertContainer.style.visibility = 'visible';
+      html.style.overflow = 'hidden';
+    } else {
+      duplicateIdBtn.disabled = true;
+      duplicateIdBtn.classList.add('disable_btn');
+      duplicateAlertText.textContent = '사용 할 수 있는 아이디 입니다';
+      duplicateAlertContainer.style.visibility = 'visible';
+      html.style.overflow = 'hidden';
+    }
   }
 }
 
-function handleDuplicateAlertShow() {
+// 이메일 중복확인 알림창 보이기
+// async function handleDuplicateAlertShow() {
+//   if (!handleValidationEmail(userEmailInput.value)) {
+//     duplicateEmailAlertText.textContent = '이메일 형식으로 입력해 주세요.';
+//     duplicateEmailAlertContainer.style.visibility = 'visible';
+//     html.style.overflow = 'hidden';
+//   } else {
+//     if (await DuplicationEmail()) {
+//       duplicateEmailAlertText.textContent = '이미 등록된 이메일 입니다.';
+//       duplicateEmailAlertContainer.style.visibility = 'visible';
+//       html.style.overflow = 'hidden';
+//     } else {
+//       duplicateEmailBtn.disabled = true;
+//       duplicateEmailBtn.classList.add('disable_btn');
+//       duplicateEmailAlertText.textContent = '사용 가능한 이메일 입니다.';
+//       duplicateEmailAlertContainer.style.visibility = 'visible';
+//       html.style.overflow = 'hidden';
+//     }
+//   }
+// }
+async function handleDuplicateAlertShow() {
+  const data = {
+    username: '',
+    password: '123456!',
+    passwordConfirm: '123456!',
+    email: userEmailInput.value,
+    emailVisibility: true,
+  };
+
   if (!handleValidationEmail(userEmailInput.value)) {
     duplicateEmailAlertText.textContent = '이메일 형식으로 입력해 주세요.';
     duplicateEmailAlertContainer.style.visibility = 'visible';
     html.style.overflow = 'hidden';
   } else {
-    duplicateEmailBtn.disabled = true;
-    duplicateEmailBtn.classList.add('disable_btn');
-    duplicateEmailAlertText.textContent = '사용 가능한 이메일 입니다.';
-    duplicateEmailAlertContainer.style.visibility = 'visible';
+    pb.collection('users')
+      .create(data)
+      .then(() => {
+        duplicateEmailBtn.disabled = true;
+        duplicateEmailBtn.classList.add('disable_btn');
+        duplicateEmailAlertText.textContent = '사용 가능한 이메일 입니다.';
+        duplicateEmailAlertContainer.style.visibility = 'visible';
+        html.style.overflow = 'hidden';
+        deleteUserInfo();
+        console.log('성공!');
+      })
+      .catch((error) => {
+        duplicateEmailAlertText.textContent = '이미 등록된 이메일 입니다.';
+        duplicateEmailAlertContainer.style.visibility = 'visible';
+        html.style.overflow = 'hidden';
+        console.log('이메일 만들기 실패', error);
+      });
+  }
+}
+
+// 이메일 중복확인 후 생성된 정보 db에서 삭제
+async function deleteUserInfo() {
+  const records = await pb.collection('users').getFullList();
+  let res = records.filter((item) => userEmailInput.value === item.email);
+  if (res.length !== 0) await pb.collection('users').delete(res[0].id);
+}
+
+// 인증번호 알림창 보이기
+async function handleAuthNumAlertShow() {
+  if (!checkNumberBtn.disabled) {
+    document.querySelector('.duplicate_number_alert_text').textContent =
+      '믿음으로 인증되었습니다';
+    document.querySelector(
+      '.duplicate_number_alert_container'
+    ).style.visibility = 'visible';
+    checkNumberBtn.classList.add('disable_btn');
     html.style.overflow = 'hidden';
+    checkNumberBtn.disabled = true;
   }
 }
 
@@ -104,6 +192,13 @@ function handleValidationAlertClose() {
 // 이메일 중복확인 알림창 닫기
 function handleDuplicateAlertClose() {
   duplicateEmailAlertContainer.style.visibility = 'hidden';
+  html.style.overflow = 'scroll';
+}
+
+// 인증번호 알림창 닫기
+function handleAuthNumAlertClose() {
+  document.querySelector('.duplicate_number_alert_container').style.visibility =
+    'hidden';
   html.style.overflow = 'scroll';
 }
 
@@ -120,15 +215,17 @@ userPasswordInput.addEventListener('input', (e) => {
   handleInputActive(e, userPasswordInput);
   let state = handleValidationPassword(e.target.value);
 
-  if (e.target.value && e.target.value.length < 10) {
+  if (e.target.value && e.target.value.length < 6) {
     userPasswordError.classList.add('is_invalid');
-    userPasswordError.textContent = '최소 10자 이상 입력';
+    userPasswordError.textContent = '최소 6자 이상 입력';
+  } else if (e.target.value.length > 16) {
+    userPasswordError.classList.add('is_invalid');
+    userPasswordError.textContent = '최대 16자 까지 입력';
   } else {
     if (state) {
       userPasswordError.classList.remove('is_invalid');
     } else {
-      userPasswordError.textContent =
-        '영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합';
+      userPasswordError.textContent = '특수문자 포함 최소 6자 - 최대 16자';
     }
   }
 });
@@ -155,37 +252,28 @@ userEmailInput.addEventListener('input', (e) => {
   else userEmailError.classList.add('is_invalid');
 });
 
-// const x = [];
 userPhoneInput.addEventListener('input', (e) => {
   handleInputActive(e, userPhoneInput);
-  console.log(userPhoneInput.value);
   let val = e.target.value;
-
-  // if(isNaN(val)){
-  //   userPhoneInput.value = x;
-  // } else{
-  //   x.push(val);
-  //   userPhoneInput.value = x;
-  //   console.log('숫자');
-  //   if(val){
-  //     checkNumberBtn.classList.remove('disable_btn');
-  //   }else{
-  //     checkNumberBtn.classList.add('disable_btn');
-  //   }
-  // }
 
   if (isNaN(val)) {
     userPhoneInput.value = '';
   } else {
     userPhoneInput.value = val;
-    console.log('숫자');
     if (val) {
       checkNumberBtn.classList.remove('disable_btn');
+      checkNumberBtn.disabled = false;
     } else {
       checkNumberBtn.classList.add('disable_btn');
+      checkNumberBtn.disabled = true;
     }
   }
 });
+
+checkNumberBtn.addEventListener('click', handleAuthNumAlertShow);
+document
+  .querySelector('.duplicate_number_alert_btn')
+  .addEventListener('click', handleAuthNumAlertClose);
 
 duplicateIdBtn.addEventListener('click', handleValidationAlertShow);
 duplicateAlertBtn.addEventListener('click', handleValidationAlertClose);
@@ -224,3 +312,136 @@ function handleSearchAddress() {
 const userAddressBtn = getNode('.user_address_btn');
 
 userAddressBtn.addEventListener('click', handleSearchAddress);
+
+document.querySelector('.join_btn').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const data = {
+    username: userIdInput.value,
+    password: userPasswordInput.value,
+    passwordConfirm: userPasswordInput.value,
+    name: userNameInput.value,
+    email: userEmailInput.value,
+    emailVisibility: true,
+    phone: userPhoneInput.value,
+    gender: document.querySelectorAll('.radio_wrapper')[0].value ?? 'none',
+    birth: `${document.querySelector('#year').value}${
+      document.querySelector('#month').value
+    }${document.querySelector('#day').value}`,
+  };
+
+  pb.collection('users')
+    .create(data)
+    .then(() => {
+      console.log('회원가입 완료!');
+      location.href = '/src/pages/login/';
+    })
+    .catch((error) => {
+      console.log('회원가입 실패', error);
+    });
+});
+
+document
+  .querySelectorAll('.radio_wrapper')[0]
+  .addEventListener('click', function (e) {
+    if (e.target.tagName !== 'INPUT') return;
+    document.querySelectorAll('.radio_wrapper')[0].value = e.target.value;
+  });
+
+document.querySelector('#year').addEventListener('input', function (e) {
+  // if(year >== 1900 && year <== 2024)
+
+  if (e.target.value.length > 4) {
+    e.target.value = e.target.value.toString();
+    e.target.value = e.target.value.slice(0, 4);
+
+    let year = Number(e.target.value);
+    if (year >= 1900 && year <= 2024) {
+      document.querySelector('#year').textContent = e.target.value;
+      // console.log(e.target.value);
+    }
+  }
+});
+document.querySelector('#month').addEventListener('input', function (e) {
+  if (e.target.value.length > 2) {
+    e.target.value = e.target.value.toString();
+    e.target.value = e.target.value.slice(0, 2);
+
+    let month = Number(e.target.value);
+    if (month >= 1 && month <= 12) {
+      // if (month < 10) {
+      //   e.target.value = '0' + month;
+      // }
+      document.querySelector('#month').textContent = e.target.value;
+      // console.log(e.target.value);
+    }
+  }
+});
+document.querySelector('#day').addEventListener('input', function (e) {
+  if (e.target.value.length > 2) {
+    e.target.value = e.target.value.toString();
+    e.target.value = e.target.value.slice(0, 2);
+
+    let day = Number(e.target.value);
+    if (day >= 1 && day <= 31) {
+      document.querySelector('#day').textContent = e.target.value;
+      // console.log(e.target.value);
+    }
+  }
+});
+
+let all = false;
+let check1 = false;
+let check2 = false;
+let check4 = false;
+
+document
+  .querySelector('.agree_info_wrapper')
+  .addEventListener('change', function (e) {
+    if (e.target.name === 'agree_all') {
+      if (e.target.checked) {
+        check1 = true;
+        check2 = true;
+        check4 = true;
+      } else {
+        check1 = false;
+        check2 = false;
+        check4 = false;
+      }
+    } else if (e.target.name === 'check_1') {
+      if (e.target.checked) check1 = true;
+      else {
+        check1 = false;
+        agreeAll.checked = false;
+      }
+    } else if (e.target.name === 'check_2') {
+      if (e.target.checked) check2 = true;
+      else {
+        check2 = false;
+        agreeAll.checked = false;
+      }
+    } else if (e.target.name === 'check_4') {
+      if (e.target.checked) check4 = true;
+      else {
+        check4 = false;
+        agreeAll.checked = false;
+      }
+    }
+
+    console.log('체크1', check1);
+    console.log('체크2', check2);
+    console.log('체크4', check4);
+    console.log('\n');
+
+    joinBtnActive(check1, check2, check4, all);
+  });
+
+function joinBtnActive(x, y, z, all) {
+  if ((x && y && z) || all) {
+    document.querySelector('.join_btn').classList.remove('disable_btn');
+    document.querySelector('.join_btn').disabled = false;
+  } else {
+    document.querySelector('.join_btn').classList.add('disable_btn');
+    document.querySelector('.join_btn').disabled = true;
+  }
+}
