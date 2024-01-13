@@ -195,8 +195,9 @@ button {
   left: 190px;
   border: 0;
   padding: 0;
-  background-color: var(--gray--300);
+  background-color: transparent;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .product_delivery {
