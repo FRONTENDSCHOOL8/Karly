@@ -3,29 +3,22 @@ migrate((db) => {
   const dao = new Dao(db)
   const collection = dao.findCollectionByNameOrId("_pb_users_auth_")
 
-  // add
-  collection.schema.addField(new SchemaField({
-    "system": false,
-    "id": "ztg6bttm",
-    "name": "user_id",
-    "type": "text",
-    "required": false,
-    "presentable": false,
-    "unique": false,
-    "options": {
-      "min": null,
-      "max": null,
-      "pattern": ""
-    }
-  }))
+  collection.listRule = ""
+  collection.viewRule = ""
+  collection.createRule = ""
+  collection.updateRule = ""
+  collection.deleteRule = ""
 
   return dao.saveCollection(collection)
 }, (db) => {
   const dao = new Dao(db)
   const collection = dao.findCollectionByNameOrId("_pb_users_auth_")
 
-  // remove
-  collection.schema.removeField("ztg6bttm")
+  collection.listRule = null
+  collection.viewRule = null
+  collection.createRule = null
+  collection.updateRule = null
+  collection.deleteRule = null
 
   return dao.saveCollection(collection)
 })
