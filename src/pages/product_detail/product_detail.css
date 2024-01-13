@@ -145,6 +145,8 @@ button {
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 18.005px */
+
+  margin-block-start: 4px;
 }
 
 .product_allergy_description {
@@ -464,6 +466,7 @@ button {
 .why_karly {
   padding-block-start: 72px;
   padding-block-end: 136px;
+  border-block-start: 1px solid var(--gray--100);
 
   & h3 {
     color: var(--content);

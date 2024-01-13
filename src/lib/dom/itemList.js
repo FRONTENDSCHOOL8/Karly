@@ -1,36 +1,82 @@
+import { insertLast } from './insert.js';
+import { comma, getPbImageURL } from '/src/lib/utils';
 
-import { insertLast } from './insert.js'
+// createItemCard 태그를 생성
 
-
-
-// createUserCard 태그를 생성
-
-
-function createUserCard({
-  id,
-  name = 'tiger',
-  email = 'tiger@naver.com',
-  website = 'tiger@tiger.com'
-}){
-  return /* html */`
-    <article class="user-card" data-index="user-${id}">
-      <h3 class="user-name">${name}</h3>
-      <div class="user-resouce-info">
-        <div>
-          <a class="user-email" href="mailto:${email}">${email}</a>
-        </div>
-        <div>
-          <a class="user-website" href="${website}" target="_blank" rel="noopener noreferer">${website}</a>
-        </div>
-      </div>
-      <button class="delete">삭제</button>
-    </article>
-  `
+function createItemCard(item) {
+  return /* html */ `
+  <li class="item_card">
+  <a href="/Karly/src/pages/product_detail/index.html#${item.id}">
+    <figure>
+      <img
+        class="product_img"
+        src="${getPbImageURL(item)}"
+        alt="${item.name}"
+      />
+      <figcaption class="product_info">
+        <small class="product_delivery">${item.delivery}</small>
+        <h4 class="product_title">${item.name}</h4>
+        <em class="product_price">${comma(item.price)} 원</em>
+        <p class="product_description">${item.description}</p>
+      </figcaption>
+    </figure>
+  </a>
+  <button class="cart_button">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="45"
+    height="45"
+    viewBox="0 0 45 45"
+    fill="none"
+    aria-labelledby="cart"
+  >
+    <title id="cart">담기</title>
+    <path
+      opacity="0.5"
+      d="M22.5 45C34.9264 45 45 34.9264 45 22.5C45 10.0736 34.9264 0 22.5 0C10.0736 0 0 10.0736 0 22.5C0 34.9264 10.0736 45 22.5 45Z"
+      fill="#2A0038"
+    />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M31.4897 17.29L29.3197 26.52H16.8997L14.7397 17.29H31.4897Z"
+      stroke="white"
+      stroke-width="1.4"
+      stroke-linecap="square"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M27.3797 32.94C28.3186 32.94 29.0797 32.1789 29.0797 31.24C29.0797 30.3011 28.3186 29.54 27.3797 29.54C26.4408 29.54 25.6797 30.3011 25.6797 31.24C25.6797 32.1789 26.4408 32.94 27.3797 32.94Z"
+      stroke="white"
+      stroke-width="1.2"
+      stroke-linecap="square"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M18.8499 32.94C19.7888 32.94 20.5499 32.1789 20.5499 31.24C20.5499 30.3011 19.7888 29.54 18.8499 29.54C17.911 29.54 17.1499 30.3011 17.1499 31.24C17.1499 32.1789 17.911 32.94 18.8499 32.94Z"
+      stroke="white"
+      stroke-width="1.2"
+      stroke-linecap="square"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M11.0298 14.38H14.0498L15.4598 20.36"
+      stroke="white"
+      stroke-width="1.4"
+      stroke-linecap="square"
+      stroke-linejoin="round"
+    />
+  </svg>
+</button>
+</li>
+  `;
 }
 
-
-function createSpinner(size=100,loadingMessage = '유저 정보를 가져오는 중....📂'){
-  return /* html */`
+function createSpinner(
+  size = 100,
+  loadingMessage = '유저 정보를 가져오는 중....📂'
+) {
+  return /* html */ `
     <figure class="loadingSpinner">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#fff;display:block;" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" preserveAspectRatio="xMidYMid">
         <g>
@@ -78,12 +124,14 @@ function createSpinner(size=100,loadingMessage = '유저 정보를 가져오는 
         <figcaption>${loadingMessage}</figcaption>
     </figure>
 
-  `
+  `;
 }
 
-
-function createEmptyCard(size= 200 , errorMessage= '알 수 없는 오류가 발생했습니다 🤔'){
-  return /* html */`
+function createEmptyCard(
+  size = 200,
+  errorMessage = '알 수 없는 오류가 발생했습니다 🤔'
+) {
+  return /* html */ `
     <figure class="empty-user-card">
       <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M180 100C180 111.881 177.405 123.168 172.746 133.308C160.119 160.865 132.292 180 100 180C67.7081 180 39.8811 160.865 27.2541 133.308C22.5946 123.168 20 111.881 20 100C20 55.8162 55.8162 20 100 20C144.184 20 180 55.8162 180 100Z" fill="#F4F7FC"/>
@@ -122,42 +170,25 @@ function createEmptyCard(size= 200 , errorMessage= '알 수 없는 오류가 발
         
       <figcaption>${errorMessage}</figcaption>
     </figure>
-  `
+  `;
 }
 
-
-export function renderUserCard(target,data){
-  insertLast(target,createUserCard(data))
+export function renderItemCard(target, item) {
+  insertLast(target, createItemCard(item));
 }
 
-export function renderSpinner(target){
-  insertLast(target,createSpinner())
+export function renderItemList(target, list) {
+  list.forEach((item) => {
+    insertLast(target, createItemCard(item));
+  });
 }
 
-export function renderEmptyCard(target){
-  insertLast(target,createEmptyCard())
+export function renderSpinner(target) {
+  insertLast(target, createSpinner());
 }
 
-// renderUserCard 랜더링 ( insertLast )
+export function renderEmptyCard(target) {
+  insertLast(target, createEmptyCard());
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// renderItemCard 렌더링 ( insertLast )
