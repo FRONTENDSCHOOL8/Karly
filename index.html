@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/main.js"></script>
     <script type="module" src="/src/components/header/header.js"></script>
+    <title>칼리 |</title>
   </head>
   <body>
     <header>
@@ -418,18 +419,12 @@
           <div
             class="swiper-button-prev banner"
             aria-label="메인 배너 슬라이더 이전으로"
+            role="button"
           ></div>
           <div
             class="swiper-button-next banner"
             aria-label="메인 배너 슬라이더 다음으로"
-          ></div>
-          <div
-            class="swiper-button-prev banner"
-            aria-label="메인 배너 슬라이더 이전으로"
-          ></div>
-          <div
-            class="swiper-button-next banner"
-            aria-label="메인 배너 슬라이더 다음으로"
+            role="button"
           ></div>
           <div class="swiper-pagination banner"></div>
         </div>
@@ -454,15 +449,18 @@
             <div
               class="swiper-button-prev recommend"
               aria-label="추천상품 슬라이더 이전으로"
+              role="button"
             ></div>
             <div
               class="swiper-button-next recommend"
               aria-label="추천상품 슬라이더 다음으로"
+              role="button"
             ></div>
             <div class="swiper-pagination recommend"></div>
           </div>
         </section>
         <section class="main_section line_banner">
+          <h2 class="sr_only">중간 배너</h2>
           <a href="">
             <figure>
               <img
@@ -483,10 +481,12 @@
             <div
               class="swiper-button-prev sale"
               aria-label="할인 상품 슬라이더 이전으로"
+              role="button"
             ></div>
             <div
               class="swiper-button-next sale"
               aria-label="할인 상품 슬라이더 다음으로"
+              role="button"
             ></div>
           </div>
         </section>

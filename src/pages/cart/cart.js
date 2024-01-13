@@ -12,9 +12,12 @@ import {
   defaultAuthData,
   getPbImageURL,
   tiger,
+  checkLogin,
 } from '/src/lib';
 
 setDocumentTitle('칼리 | 장바구니');
+
+checkLogin();
 
 if (!localStorage.getItem('auth')) {
   setStorage('auth', defaultAuthData);

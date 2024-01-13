@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import pb from '/src/api/pocketbase';
 import '/src/components/footer/footer.css';
 import '/src/components/header/header.css';
@@ -17,6 +18,7 @@ import {
   renderRecommendCard,
   renderSaleCard,
   renderRecentCard,
+  checkLogin,
 } from '/src/lib';
 
 import Swiper from 'swiper';
@@ -28,22 +30,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 setDocumentTitle('칼리 | 마켓칼리');
 
 /* 로그인 상태 확인 */
-if (await getStorage('pocketbase_auth')) {
-  const { model } = await getStorage('pocketbase_auth');
-  const welcome = getNodes('.header_member_service li a');
-  welcome[0].textContent = `${model.name} 님`;
-  ('welcome');
-  welcome[0].style.color = 'var(--black)';
-  welcome[0].style.fontWeight = '700';
-  welcome[1].textContent = '로그아웃';
-  welcome[1].href = '/src/pages/main/';
-  welcome[1].addEventListener('click', function () {
-    pb.authStore.clear();
-    deleteStorage('pocketbase_auth');
-    setStorage('view', defaultViewData);
-    setStorage('auth', defaultAuthData);
-  });
-}
+checkLogin();
 
 // localStorage에 최근 본 상품 목록 정보가 없으면 view 초기화
 if (!localStorage.getItem('view')) {

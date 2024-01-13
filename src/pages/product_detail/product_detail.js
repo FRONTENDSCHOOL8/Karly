@@ -15,8 +15,11 @@ import {
   defaultViewData,
   getStorage,
   setStorage,
+  checkLogin,
 } from '/src/lib/';
 import pb from '/src/api/pocketbase';
+
+checkLogin();
 
 // 포켓호스트 서버에서 상품 정보 받아오기
 const pageHash = window.location.hash.slice(1);

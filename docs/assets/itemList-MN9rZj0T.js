@@ -1,4 +1,4 @@
-import{i,g as r,c as e,b as n}from"./getPbImageURL-Q86jnK4B.js";import"./header-MICfn_ID.js";function t(s){return`
+import{i,g as r,b as e,f as n}from"./checkLogin-dd8Ug7jR.js";import"./header-tMjJ4wC4.js";function t(s){return`
   <li class="item_card">
   <a href="/Karly/src/pages/product_detail/index.html#${s.id}">
     <figure>
@@ -15,16 +15,14 @@ import{i,g as r,c as e,b as n}from"./getPbImageURL-Q86jnK4B.js";import"./header-
       </figcaption>
     </figure>
   </a>
-  <button class="cart_button">
+  <button class="cart_button" aria-label="담기">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="45"
     height="45"
     viewBox="0 0 45 45"
     fill="none"
-    aria-labelledby="cart"
   >
-    <title id="cart">담기</title>
     <path
       opacity="0.5"
       d="M22.5 45C34.9264 45 45 34.9264 45 22.5C45 10.0736 34.9264 0 22.5 0C10.0736 0 0 10.0736 0 22.5C0 34.9264 10.0736 45 22.5 45Z"
