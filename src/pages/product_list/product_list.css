@@ -272,3 +272,72 @@ button {
   font-weight: 400;
   line-height: normal;
 }
+
+/* 장바구니 버블 스타일 */
+.icon_wrapper {
+  position: relative;
+}
+
+.cart_bubble {
+  position: absolute;
+  top: 64px;
+  right: -24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 254px;
+  height: 100px;
+  padding: 20px;
+  border: 1px solid var(--gray--200);
+  background-color: var(--white);
+  z-index: 15;
+  visibility: hidden;
+}
+
+.cart_bubble_pointer {
+  visibility: hidden;
+  position: absolute;
+  left: 124px;
+  top: 51px;
+  z-index: 15;
+}
+
+.cart_bubble_img_container {
+  display: inline-flex;
+  width: 46px;
+  height: 60px;
+}
+
+.cart_bubble_img {
+  height: 100%;
+}
+
+.cart_bubble_textbox {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart_bubble_product {
+  color: var(--gray--300);
+
+  /* Label/Small */
+  font-family: Pretendard;
+  font-size: 12.003px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 18.005px */
+
+  margin-block-end: 8px;
+}
+
+.cart_bubble_description {
+  color: var(--content);
+
+  /* Paragraph/Small */
+  font-family: Pretendard;
+  font-size: 12.003px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 19.205px */
+}
