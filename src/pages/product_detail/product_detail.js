@@ -293,7 +293,52 @@ function handleDibs() {
 
 dibsButton.addEventListener('click', handleDibs);
 
-// '장바구니 담기' 버튼 클릭 시 header 장바구니 아이콘 아래 bubble 표시했다가 제거
+// '장바구니 담기' 버튼 클릭 시 header 영역 장바구니 아이콘 아래 bubble 표시했다가 제거
+// Bubble 마크업 DOM에 뿌려주기
+const headerIconWrappers = getNodes('.icon_wrapper');
+
+function createCartBubble(item) {
+  return /* html */ `
+  <div class="cart_bubble">
+  <picture class="cart_bubble_img_container">
+    <img
+      class="cart_bubble_img"
+      src="${getPbImageURL(item)}"
+      alt="${item.name}"
+    />
+  </picture>
+  <div class="cart_bubble_textbox">
+    <h4 class="cart_bubble_product">
+      ${item.name}
+    </h4>
+    <p class="cart_bubble_description">
+      장바구니에 상품을 담았습니다.
+    </p>
+  </div>
+</div>
+<svg
+  class="cart_bubble_pointer"
+  xmlns="http://www.w3.org/2000/svg"
+  width="20"
+  height="18"
+  viewBox="0 0 20 18"
+  fill="none"
+>
+  <path d="M10 1L18.6603 13.75H1.33975L10 1Z" fill="white" />
+  <path d="M1 13.5L10 1L18.5 13.5" stroke="#C4C4C4" />
+</svg>
+  `;
+}
+
+function renderCartBubble(target, item) {
+  headerIconWrappers.forEach((target) => {
+    insertLast(target, createCartBubble(item));
+  });
+}
+
+renderCartBubble(headerIconWrappers, product);
+
+// 버튼 클릭 시 header 영역 장바구니 아이콘 아래 bubble 표시했다가 제거하는 기능 구현
 const addCartButton = getNode('.add_cart_button');
 
 function handleBubble() {
