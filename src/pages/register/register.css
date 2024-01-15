@@ -3,14 +3,6 @@ label {
   cursor: pointer;
 }
 
-input[type='radio'][id^='user_gender']:focus + label::before,
-input[type='radio'][id^='user_add']:focus + label::before,
-input[type='checkbox']:focus + .agree_all label::before,
-input[type='checkbox']:focus + .agree_check label::before {
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -30,8 +22,6 @@ input[type='number']::-webkit-inner-spin-button {
   z-index: 100;
   overflow: hidden;
   visibility: hidden;
-  /* opacity: 0; */
-  /* transition: all 1s; */
 }
 
 .duplicate_alert_box,
@@ -83,23 +73,20 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .register_container {
-  /* background: #eee; */
   width: 640px;
-  /* margin: auto; */
   margin: 80px auto;
-  /* margin-bottom: 80px; */
 }
 
 .register_title {
   text-align: center;
-  /* margin-top: 80px; */
+
   margin-bottom: 44px;
   color: var(--black, #000);
   font-family: Pretendard;
   font-size: 21.328px;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 31.992px */
+  line-height: 150%;
 }
 
 .require {
@@ -110,12 +97,11 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 12.003px;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 18.005px */
+  line-height: 150%;
 }
 
 .line_bold {
   border: 1px solid rgb(51, 51, 51);
-  /* border: 1px solid #333333; */
 }
 
 .user_id_wrapper,
@@ -201,13 +187,11 @@ input[type='number']::-webkit-inner-spin-button {
   padding: 0px 20px;
   border-radius: 4px;
   border: 1px solid var(--gray-300, #a6a6a6);
-  color: var(--gray-400, #898989);
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 160%; /* 25.6px */
-  /* outline: none; */
+  line-height: 160%;
 }
 
 .input_active {
@@ -247,7 +231,7 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
   margin-bottom: 4px;
 }
 
@@ -257,10 +241,11 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 12.003px;
   font-style: normal;
   font-weight: 400;
-  line-height: 160%; /* 19.205px */
+  line-height: 160%;
 }
 
-.radio_wrapper label {
+.gender_radio_wrapper label,
+.add_radio_wrapper label {
   cursor: pointer;
   user-select: none;
   line-height: 44px;
@@ -285,6 +270,7 @@ input[type='number']::-webkit-inner-spin-button {
   background-size: cover;
   margin-right: 8px;
   vertical-align: -7px;
+  border: 1px solid white;
 }
 
 #user_gender_male:checked + label::before,
@@ -305,6 +291,7 @@ input[type='number']::-webkit-inner-spin-button {
   background-size: cover;
   margin-right: 8px;
   vertical-align: -7px;
+  border: 1px solid white;
 }
 
 #agree_all:checked + div label::before,
@@ -315,6 +302,14 @@ input[type='number']::-webkit-inner-spin-button {
   background-image: url('/src/assets/icons/Checked.svg');
 }
 
+input[type='radio'][id^='user_gender']:focus + label::before,
+input[type='radio'][id^='user_add']:focus + label::before,
+input[type='checkbox']:focus + .agree_all label::before,
+input[type='checkbox']:focus + .agree_check label::before {
+  border: 1px solid black !important;
+  border-radius: 5px;
+}
+
 .birth_box {
   display: flex;
   border-radius: 2px;
@@ -322,7 +317,6 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .birth_box input {
-  /* border: none; */
   width: 110px;
   padding: 0;
   border: 0;
@@ -342,7 +336,7 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 160%; /* 25.6px */
+  line-height: 160%;
 }
 
 .agree_check_box {
@@ -360,7 +354,7 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 21.328px;
   font-style: normal;
   font-weight: 600;
-  line-height: 31px; /* 31.992px */
+  line-height: 31px;
 }
 
 .agree_ckeck_btn {
@@ -372,7 +366,7 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 12.003px;
   font-style: normal;
   font-weight: 700;
-  line-height: 51px; /* 19.205px */
+  line-height: 51px;
 }
 
 .agree_all {
@@ -388,7 +382,7 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 12.003px;
   font-style: normal;
   font-weight: 400;
-  line-height: 160%; /* 19.205px */
+  line-height: 160%;
 }
 
 .agree_check {
@@ -420,7 +414,7 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
 }
 
 .disable_btn {
