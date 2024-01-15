@@ -14,6 +14,7 @@
     <script
       type="module"
       src="/src/pages/product_detail/product_detail.js"
+      defer
     ></script>
   </head>
 
@@ -34,11 +35,11 @@
         <div class="header_inner">
           <ul class="header_member_service">
             <li>
-              <a href="/">회원가입</a>
+              <a href="%BASE_URL%src/pages/register/">회원가입</a>
             </li>
             <li class="divider" aria-hidden="true"></li>
             <li>
-              <a href="/">로그인</a>
+              <a href="%BASE_URL%src/pages/login/">로그인</a>
             </li>
             <li class="divider" aria-hidden="true"></li>
             <li>
@@ -54,7 +55,7 @@
           <div class="header_main">
             <div class="logo_switch">
               <h1 class="logo">
-                <a href="/src/pages/main/">
+                <a href="%BASE_URL%src/pages/main/">
                   <img src="/public/logo.png" alt="마켓컬리 홈으로" />
                 </a>
               </h1>
@@ -87,7 +88,11 @@
                       확인하세요!
                     </p>
                     <div class="location_modal_btn">
-                      <a href="/" class="location_modal_btn_login">로그인</a>
+                      <a
+                        href="%BASE_URL%src/pages/login/"
+                        class="location_modal_btn_login"
+                        >로그인</a
+                      >
                       <a href="/" class="location_modal_btn_addr">주소 검색</a>
                     </div>
                   </div>
@@ -98,38 +103,10 @@
                   </a>
                 </div>
                 <div>
-                  <a href="">
+                  <a href="%BASE_URL%src/pages/cart/">
                     <img src="/src/assets/icons/Cart.png" alt="장바구니" />
                   </a>
                 </div>
-                <div class="cart_bubble">
-                  <picture class="cart_bubble_img_container">
-                    <img
-                      class="cart_bubble_img"
-                      src="/src/assets/images/daejangun.jpeg"
-                      alt="장군이"
-                    />
-                  </picture>
-                  <div class="cart_bubble_textbox">
-                    <h4 class="cart_bubble_product">
-                      [풀무원] 탱탱쫄면 (4개입)
-                    </h4>
-                    <p class="cart_bubble_description">
-                      장바구니에 상품을 담았습니다.
-                    </p>
-                  </div>
-                </div>
-                <svg
-                  class="cart_bubble_pointer"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="18"
-                  viewBox="0 0 20 18"
-                  fill="none"
-                >
-                  <path d="M10 1L18.6603 13.75H1.33975L10 1Z" fill="white" />
-                  <path d="M1 13.5L10 1L18.5 13.5" stroke="#C4C4C4" />
-                </svg>
               </div>
             </div>
           </div>
@@ -139,338 +116,212 @@
         <div class="nav_origin">
           <ul class="menu">
             <li>
-              <div>카테고리</div>
+              <a href="/">카테고리</a>
               <div class="category">
                 <a>
-                  <img
-                    src="/src/assets/icons/gift_thin_icon_171751.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/gift_thin_icon_171751.svg" alt />
                   <span>선물하기</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Vegetable.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Vegetable.svg" alt />
                   <span>채소</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Fruit.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Fruit.svg" alt />
                   <span>과일 · 견과 · 쌀</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=SeaFood.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=SeaFood.svg" alt />
                   <span>수산 · 해산 · 건어물</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Meet.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Meet.svg" alt />
                   <span>정육 · 계란</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Cook.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Cook.svg" alt />
                   <span>국 · 반찬 · 메인요리</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Salad.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Salad.svg" alt />
                   <span>샐러드 · 간편식</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Oil.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Oil.svg" alt />
                   <span>면 · 양념 · 오일</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Coffee.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Coffee.svg" alt />
                   <span>생수 · 음료 · 우유 · 커피</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Snack.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Snack.svg" alt />
                   <span>간식 · 과자 · 떡</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Bread.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Bread.svg" alt />
                   <span>베이커리 · 치즈 · 델리</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Health.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Health.svg" alt />
                   <span>건강식품</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Wine.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Wine.svg" alt />
                   <span>와인</span>
                 </a>
                 <a>
                   <img
                     src="/src/assets/icons/Type=_TraditionalLiquor.svg"
-                    aria-hidden="true"
+                    alt
                   />
                   <span>전통주</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Detergent.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Detergent.svg" alt />
                   <span>생활용품 · 리빙 · 캠핑</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Cosmetics.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Cosmetics.svg" alt />
                   <span>스킨케어 · 메이크업</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=shampoo.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=shampoo.svg" alt />
                   <span>헤어 · 바디 · 구강</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Food.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Food.svg" alt />
                   <span>주방용품</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=HomeAppliances.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=HomeAppliances.svg" alt />
                   <span>가전제품</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Dog.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Dog.svg" alt />
                   <span>반려동물</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Baby.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Baby.svg" alt />
                   <span>베이비 · 키즈 · 완구</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Travel.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Travel.svg" alt />
                   <span>여행 · 티켓</span>
                 </a>
               </div>
             </li>
-            <li><a href="/">신상품</a></li>
-            <li><a href="/">베스트</a></li>
-            <li><a href="/">알뜰쇼핑</a></li>
-            <li><a href="/">특가/혜택</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">신상품</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">베스트</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">알뜰쇼핑</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">특가/혜택</a></li>
             <li>
-              <a href="/" class="menu_dawn">샛별·낮 <span>배송안내</span></a>
+              <button class="menu_dawn">샛별·낮 <span>배송안내</span></button>
             </li>
           </ul>
         </div>
         <div class="nav_scroll" style="display: none">
           <ul class="menu_scroll">
             <li>
-              <div>카테고리</div>
+              <a href="/">카테고리</a>
               <div class="category">
                 <a>
-                  <img
-                    src="/src/assets/icons/gift_thin_icon_171751.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/gift_thin_icon_171751.svg" alt />
                   <span>선물하기</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Vegetable.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Vegetable.svg" alt />
                   <span>채소</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Fruit.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Fruit.svg" alt />
                   <span>과일 · 견과 · 쌀</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=SeaFood.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=SeaFood.svg" alt />
                   <span>수산 · 해산 · 건어물</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Meet.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Meet.svg" alt />
                   <span>정육 · 계란</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Cook.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Cook.svg" alt />
                   <span>국 · 반찬 · 메인요리</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Salad.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Salad.svg" alt />
                   <span>샐러드 · 간편식</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Oil.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Oil.svg" alt />
                   <span>면 · 양념 · 오일</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Coffee.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Coffee.svg" alt />
                   <span>생수 · 음료 · 우유 · 커피</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Snack.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Snack.svg" alt />
                   <span>간식 · 과자 · 떡</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Bread.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Bread.svg" alt />
                   <span>베이커리 · 치즈 · 델리</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Health.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Health.svg" alt />
                   <span>건강식품</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Wine.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Wine.svg" alt />
                   <span>와인</span>
                 </a>
                 <a>
                   <img
                     src="/src/assets/icons/Type=_TraditionalLiquor.svg"
-                    aria-hidden="true"
+                    alt
                   />
                   <span>전통주</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Detergent.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Detergent.svg" alt />
                   <span>생활용품 · 리빙 · 캠핑</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=_Cosmetics.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=_Cosmetics.svg" alt />
                   <span>스킨케어 · 메이크업</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=shampoo.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=shampoo.svg" alt />
                   <span>헤어 · 바디 · 구강</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Food.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Food.svg" alt />
                   <span>주방용품</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=HomeAppliances.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=HomeAppliances.svg" alt />
                   <span>가전제품</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Dog.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Dog.svg" alt />
                   <span>반려동물</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Baby.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Baby.svg" alt />
                   <span>베이비 · 키즈 · 완구</span>
                 </a>
                 <a>
-                  <img
-                    src="/src/assets/icons/Type=Travel.svg"
-                    aria-hidden="true"
-                  />
+                  <img src="/src/assets/icons/Type=Travel.svg" alt />
                   <span>여행 · 티켓</span>
                 </a>
               </div>
             </li>
-            <li><a href="/">신상품</a></li>
-            <li><a href="/">베스트</a></li>
-            <li><a href="/">알뜰쇼핑</a></li>
-            <li><a href="/">특가/혜택</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">신상품</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">베스트</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">알뜰쇼핑</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">특가/혜택</a></li>
             <li>
               <form action="/" class="search_form">
                 <label for="searchScroll"></label>
@@ -494,7 +345,11 @@
                       확인하세요!
                     </p>
                     <div class="location_modal_btn">
-                      <a href="/" class="location_modal_btn_login">로그인</a>
+                      <a
+                        href="%BASE_URL%src/pages/login/"
+                        class="location_modal_btn_login"
+                        >로그인</a
+                      >
                       <a href="/" class="location_modal_btn_addr">주소 검색</a>
                     </div>
                   </div>
@@ -505,38 +360,10 @@
                   </a>
                 </div>
                 <div>
-                  <a href="">
+                  <a href="%BASE_URL%src/pages/cart/">
                     <img src="/src/assets/icons/Cart.png" alt="장바구니" />
                   </a>
                 </div>
-                <div class="cart_bubble">
-                  <picture class="cart_bubble_img_container">
-                    <img
-                      class="cart_bubble_img"
-                      src="/src/assets/images/daejangun.jpeg"
-                      alt="장군이"
-                    />
-                  </picture>
-                  <div class="cart_bubble_textbox">
-                    <h4 class="cart_bubble_product">
-                      [풀무원] 탱탱쫄면 (4개입)
-                    </h4>
-                    <p class="cart_bubble_description">
-                      장바구니에 상품을 담았습니다.
-                    </p>
-                  </div>
-                </div>
-                <svg
-                  class="cart_bubble_pointer"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="18"
-                  viewBox="0 0 20 18"
-                  fill="none"
-                >
-                  <path d="M10 1L18.6603 13.75H1.33975L10 1Z" fill="white" />
-                  <path d="M1 13.5L10 1L18.5 13.5" stroke="#C4C4C4" />
-                </svg>
               </div>
             </li>
           </ul>
@@ -546,127 +373,7 @@
     <main class="item_detail_main">
       <section class="product_purchase_section">
         <h2 class="sr_only">상품 구매</h2>
-        <img
-          class="product_img"
-          src="/src/assets/images/daejangun.jpeg"
-          alt="장군이"
-        />
         <div class="product_purchase_container">
-          <article class="product_summary">
-            <h3 class="sr_only">상품 판매 개요</h3>
-            <p class="product_delivery_info">샛별배송</p>
-            <h4 class="product_title">장군이</h4>
-            <p class="product_description">6조의 자랑 귀여운 장군이</p>
-            <p class="product_price"><em>1,000,000,000</em>원</p>
-            <small class="benefit_notice"
-              >로그인 후, 적립 혜택이 제공됩니다.</small
-            >
-            <table class="product_brief_info_container">
-              <caption class="sr_only">
-                상품 판매 정보
-              </caption>
-              <tr>
-                <th class="product_delivery">배송</th>
-                <td class="product_delivery_type">
-                  샛별배송
-                  <p class="product_delivery_description">
-                    23시 전 주문 시 내일 아침 7시 전 도착<br />(대구 부산 울산
-                    샛별배송 운영시간 별도 확인)
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <th class="product_seller">판매자</th>
-                <td class="product_seller_info">칼리</td>
-              </tr>
-              <tr>
-                <th class="product_package">포장타입</th>
-                <td class="product_package_type">
-                  상온 (종이포장)
-                  <p class="product_package_notice">
-                    택배배송은 에코 포장이 스티로폼으로 대체됩니다.
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <th class="product_sell_unit">판매단위</th>
-                <td class="product_sell_unit_info">1봉</td>
-              </tr>
-              <tr>
-                <th class="product_quantity">중량/용량</th>
-                <td class="product_quantity_info">123g*4봉</td>
-              </tr>
-              <tr>
-                <th class="product_origin">원산지</th>
-                <td class="product_origin_description">상세페이지 별도표기</td>
-              </tr>
-              <tr>
-                <th class="product_allergy">알레르기정보</th>
-                <td class="product_allergy_info">
-                  <p class="product_allergy_description">
-                    대두, 밀, 쇠고기 함유
-                  </p>
-                  <p class="product_allergy_description">
-                    계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아,
-                    토마토, 아황산류, 호두, 잣, 닭고기, 오징어, 조개류(굴, 전복,
-                    홍합 포함)를 사용한 제품과 같은 제조시설에서 제조
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <th class="product_select">상품선택</th>
-                <td class="product_select_option">
-                  <div class="product_quantity_selector">
-                    <strong class="product_name">장군이</strong>
-                    <div class="product_quantity_select_buttons">
-                      <button
-                        class="product_quantity_decrease_button"
-                        type="button"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="30"
-                          height="30"
-                          viewBox="0 0 30 30"
-                          fill="none"
-                        >
-                          <path
-                            d="M20 14V16H10V14H20Z"
-                            fill="var(--gray--300)"
-                          />
-                        </svg></button
-                      >1<button
-                        class="product_quantity_increase_button"
-                        type="button"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="30"
-                          height="30"
-                          viewBox="0 0 30 30"
-                          fill="none"
-                        >
-                          <path
-                            d="M16 10V14H20V16H16V20H14V16H10V14H14V10H16Z"
-                            fill="var(--content)"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    <em class="calculated_price">1,000,000,000원</em>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </article>
-          <article class="product_total_price_section">
-            <h3 class="sr_only">총 상품 금액</h3>
-            <p class="product_total_price">
-              <span>총 상품 금액&#58;</span
-              ><em class="total_price">1,000,000,000</em>원
-            </p>
-            <small class="benefit_notice">로그인 후, 적립 혜택 제공</small>
-          </article>
           <div class="product_choice_buttons">
             <button class="dibs_button" type="submit">
               <svg
@@ -729,26 +436,6 @@
         </nav>
         <article class="product_description_brief_info">
           <h3 class="sr_only">상품설명</h3>
-          <picture class="product_description_img_container">
-            <img
-              class="product_description_img"
-              src="/src/assets/images/daejangun.jpeg"
-              alt="장군이"
-            />
-          </picture>
-          <div class="product_description_info_container">
-            <p>튀기지 않아 부담 없는 매콤함</p>
-            <h4>[풀무원] 탱탱쫄면</h4>
-            <p>
-              쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
-              풀무원은 이 맛을 더 부담 없이 즐길 수 있도록 튀기지 않고 만든
-              탱탱쫄면을 선보입니다. 밀가루와 감자 전분을 적절히 배합해 탄력이
-              좋고, 입에 넣었을 때는 찰지게 씹히죠. 고추장을 넣어 숙성한
-              비빔장은 자연스럽고 깊은 맛을 냅니다. 간단하게 조리해 마지막 한
-              가닥까지 탱탱한 식감을 즐겨보세요. 취향에 따라 다양한 고명을 올려
-              드셔도 좋아요.
-            </p>
-          </div>
         </article>
         <article class="karly_checkpoint">
           <h3 lang="en">Karly's Check Point</h3>
@@ -761,12 +448,6 @@
         </article>
         <article class="product_details_info">
           <h3 class="sr_only">상세정보</h3>
-          <picture>
-            <img
-              src="/src/assets/images/product_details_info.png"
-              alt="제품 상세 정보"
-            />
-          </picture>
         </article>
         <article class="why_karly">
           <h3 lang="en">WHY KARLY</h3>
@@ -844,13 +525,13 @@
                 리뷰 게시판
               </caption>
               <tr class="review_board_notice">
-                <th>
+                <th colspan="2">
                   <span class="review_board_notice_mark">공지</span>금주의
                   베스트 후기 안내
                 </th>
               </tr>
               <tr class="review_board_notice">
-                <th>
+                <th colspan="2">
                   <span class="review_board_notice_mark">공지</span>상품 후기
                   적립금 정책 안내
                 </th>
