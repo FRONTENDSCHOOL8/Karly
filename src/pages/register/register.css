@@ -111,6 +111,7 @@ input[type='number']::-webkit-inner-spin-button {
 .user_email_wrapper,
 .user_phone_wrapper,
 .user_address_wrapper,
+.user_detail_address_wrapper,
 .user_gender_wrapper,
 .user_birth_wrapper,
 .user_add_wrapper,
@@ -145,6 +146,10 @@ input[type='number']::-webkit-inner-spin-button {
 
 .user_address_wrapper {
   height: 107px;
+}
+
+.user_detail_address_wrapper {
+  height: 130px;
 }
 
 .user_agree_info_wrapper {
@@ -200,7 +205,9 @@ input[type='number']::-webkit-inner-spin-button {
 
 .duplicate_id_btn,
 .duplicate_email_btn,
-.check_number_btn {
+.check_number_btn,
+.check_address_btn,
+.check_detail_address_btn {
   background: var(--white);
   cursor: pointer;
   width: 143px;
@@ -222,6 +229,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .user_address_btn {
+  cursor: pointer;
   background: var(--white);
   height: 40px;
   border-radius: 4px;
@@ -422,4 +430,27 @@ input[type='checkbox']:focus + .agree_check label::before {
   background: var(--white);
   color: var(--gray--200);
   border: 1px solid var(--gray--200);
+}
+
+/* 주소 스타일링 */
+.user_address_input {
+  width: 289px;
+  height: 44px;
+  border: none;
+  padding: 0px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--gray-300, #a6a6a6);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.detail_address_wrapper {
+  margin-top: 14px;
+}
+
+.address_hidden {
+  display: none;
 }
