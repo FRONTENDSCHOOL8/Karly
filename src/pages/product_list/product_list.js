@@ -1,10 +1,18 @@
 import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
 import '/src/pages/product_list/product_list.css';
-import { getNode, getNodes, insertLast, css, renderItemList } from '/src/lib';
+import {
+  getNode,
+  getNodes,
+  insertLast,
+  css,
+  renderItemList,
+  getStorage,
+  checkLogin,
+} from '/src/lib';
 import pb from '/src/api/pocketbase';
 
-// 포켓호스트 서버에서 상품 정보 받아와서 제품 목gi록 페이지 화면에 렌더링
+// 포켓호스트 서버에서 상품 정보 받아와서 제품 목록 페이지 화면에 렌더링
 const itemList = await pb.collection('products').getList(1, 15);
 const itemListContainer = getNode('.item_list_container');
 
@@ -17,8 +25,7 @@ const headerIconWrappers = getNodes('.icon_wrapper');
 function handleBubble(e) {
   // 각 상품의 장바구니 담기 버튼 클릭 시 장바구니 bubble 구현 마크업에 해당 상품 정보가 담긴 채 DOM으로 뿌려지는 기능 구현
   const addCartButton = e.currentTarget;
-  const itemCard = addCartButton.parentElement;
-  const itemCardLink = itemCard.firstElementChild;
+  const itemCardLink = addCartButton.previousElementSibling;
   const itemCardFigure = itemCardLink.firstElementChild;
   const itemCardImg = itemCardFigure.firstElementChild;
   const itemCardFigCaption = itemCardFigure.lastElementChild;
@@ -88,4 +95,32 @@ function handleBubble(e) {
 // 각 상품의 장바구니 담기 버튼에 클릭 이벤트 추가
 addCartButtons.forEach((item) => {
   item.addEventListener('click', handleBubble);
+});
+
+// 로그인 상태 확인 후, 로그인 되어 있으면 화면에 로그인 유저 정보 렌더링
+checkLogin();
+
+// 장바구니 담기 버튼 클릭 시 서버 내 장바구니 컬렉션에 클릭한 제품의 레코드 id와 로그인 한 유저 레코드의 'username' 필드 값이 담긴 신규 레코드 생성
+async function handleCartData(e) {
+  // - 클릭한 제품의 레코드 id 값 추출
+  const addCartButton = e.currentTarget;
+  const itemCardLink = addCartButton.previousElementSibling;
+  const hashIndex = itemCardLink.href.indexOf('#');
+  const productId = itemCardLink.href.slice(hashIndex + 1);
+  // - 로그인 한 유저의 레코드 id 값 추출
+  const loginUserInfo = await getStorage('auth');
+  const loginUserName = loginUserInfo.user.username;
+  // 서버 DB 'cart' 컬렉션에 클릭한 제품의 레코드 id와 로그인 한 유저 레코드의 'username' 필드 값이 담긴 신규 레코드 추가
+  const cartData = {
+    username: loginUserName,
+    product_id: productId,
+    quantity: 1,
+  };
+
+  const cartRecord = await pb.collection('cart').create(cartData);
+}
+
+// - 각 상품의 장바구니 담기 버튼에 클릭 이벤트 추가
+addCartButtons.forEach((item) => {
+  item.addEventListener('click', handleCartData);
 });

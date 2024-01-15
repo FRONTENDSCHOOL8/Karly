@@ -360,3 +360,7 @@ function handleBubble() {
 }
 
 addCartButton.addEventListener('click', handleBubble);
+
+const fileName = 'image';
+
+console.log(getPbImageURL(product, 'image', 0));
