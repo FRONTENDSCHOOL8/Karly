@@ -185,6 +185,9 @@ duplicateEmailAlertBtn.addEventListener('click', () =>
 
 // 아이디 입력
 userIdInput.addEventListener('input', (e) => {
+  duplicateIdBtn.disabled = false;
+  duplicateIdBtn.classList.remove('disable_btn');
+
   let state = handleValidationId(e.target.value);
 
   if (state) errorMessage.classList.remove('is_invalid');
@@ -223,6 +226,9 @@ form.addEventListener('input', (e) => {
 
 // 이메일 입력
 userEmailInput.addEventListener('input', (e) => {
+  duplicateEmailBtn.disabled = false;
+  duplicateEmailBtn.classList.remove('disable_btn');
+
   let state = handleValidationEmail(e.target.value);
 
   if (state) userEmailError.classList.remove('is_invalid');
