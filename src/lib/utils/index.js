@@ -11,3 +11,4 @@ export * from './validation.js';
 export * from './getPbImageURL.js';
 export * from './setDocumentTitle.js';
 export * from './setDefaultData.js';
+export * from './checkLogin.js';

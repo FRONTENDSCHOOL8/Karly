@@ -9,6 +9,8 @@ import {
   setDocumentTitle,
   handleValidationId,
   handleValidationPassword,
+  defaultAuthData,
+  defaultViewData,
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
 
@@ -30,13 +32,10 @@ async function handleAuth(id, pw) {
     if (authData) {
       let { model, token } = await getStorage('pocketbase_auth');
 
-      setStorage('auth', {
-        isAuth: !!model,
-        user: model,
-        token: token,
-      });
+      setStorage('auth', defaultAuthData);
+      setStorage('view', defaultViewData);
 
-      window.location.href = '/src/pages/main/';
+      window.location.href = '/Karly/src/pages/main/';
     }
   } catch (error) {
     handleLoginAlert('visible', 'hidden');

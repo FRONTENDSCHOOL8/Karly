@@ -12,6 +12,8 @@ import {
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
 
+checkLogin();
+
 // 포켓호스트 서버에서 상품 정보 받아와서 제품 목록 페이지 화면에 렌더링
 const itemList = await pb.collection('products').getList(1, 15);
 const itemListContainer = getNode('.item_list_container');
@@ -130,10 +132,8 @@ headerIconWrappers.forEach(async (item) => {
   const headerCartIconLink = item.children[2].firstElementChild;
   const authUserInfo = await getStorage('auth');
   if (authUserInfo.isAuth) {
-    headerCartIconLink.href = '/src/pages/cart/';
+    headerCartIconLink.href = '/Karly/src/pages/cart/';
   } else {
-    headerCartIconLink.href = '/src/pages/login/';
+    headerCartIconLink.href = '/Karly/src/pages/login/';
   }
 });
-
-console.log(await getStorage('auth'));

@@ -91,7 +91,7 @@ body {
   width: 8px;
   height: 5.6px;
   display: inline-block;
-  background: url(/src/assets/icons/Icon_down\ 1.png) no-repeat;
+  background: url(/src/assets/icons/Icon_down1.png) no-repeat;
 }
 
 .header_member_service li:nth-of-type(5):hover .cs_modal,

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/main.js"></script>
     <script type="module" src="/src/components/header/header.js"></script>
+    <title>칼리 |</title>
   </head>
   <body>
     <header>
@@ -24,11 +25,11 @@
         <div class="header_inner">
           <ul class="header_member_service">
             <li>
-              <a href="/src/pages/register/">회원가입</a>
+              <a href="%BASE_URL%src/pages/register/">회원가입</a>
             </li>
             <li class="divider" aria-hidden="true"></li>
             <li>
-              <a href="/src/pages/login/">로그인</a>
+              <a href="%BASE_URL%src/pages/login/">로그인</a>
             </li>
             <li class="divider" aria-hidden="true"></li>
             <li>
@@ -78,7 +79,7 @@
                     </p>
                     <div class="location_modal_btn">
                       <a
-                        href="/src/pages/login/"
+                        href="%BASE_URL%src/pages/login/"
                         class="location_modal_btn_login"
                         >로그인</a
                       >
@@ -92,7 +93,7 @@
                   </a>
                 </div>
                 <div>
-                  <a href="/src/pages/cart/">
+                  <a href="%BASE_URL%src/pages/cart/">
                     <img src="/src/assets/icons/Cart.png" alt="장바구니" />
                   </a>
                 </div>
@@ -200,10 +201,10 @@
                 </a>
               </div>
             </li>
-            <li><a href="/src/pages/product_list/">신상품</a></li>
-            <li><a href="/src/pages/product_list/">베스트</a></li>
-            <li><a href="/src/pages/product_list/">알뜰쇼핑</a></li>
-            <li><a href="/src/pages/product_list/">특가/혜택</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">신상품</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">베스트</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">알뜰쇼핑</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">특가/혜택</a></li>
             <li>
               <button class="menu_dawn">샛별·낮 <span>배송안내</span></button>
             </li>
@@ -307,10 +308,10 @@
                 </a>
               </div>
             </li>
-            <li><a href="/src/pages/product_list/">신상품</a></li>
-            <li><a href="/src/pages/product_list/">베스트</a></li>
-            <li><a href="/src/pages/product_list/">알뜰쇼핑</a></li>
-            <li><a href="/src/pages/product_list/">특가/혜택</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">신상품</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">베스트</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">알뜰쇼핑</a></li>
+            <li><a href="%BASE_URL%src/pages/product_list/">특가/혜택</a></li>
             <li>
               <form action="/" class="search_form">
                 <label for="searchScroll"></label>
@@ -335,7 +336,7 @@
                     </p>
                     <div class="location_modal_btn">
                       <a
-                        href="/src/pages/login/"
+                        href="%BASE_URL%src/pages/login/"
                         class="location_modal_btn_login"
                         >로그인</a
                       >
@@ -349,7 +350,7 @@
                   </a>
                 </div>
                 <div>
-                  <a href="/src/pages/cart/">
+                  <a href="%BASE_URL%src/pages/cart/">
                     <img src="/src/assets/icons/Cart.png" alt="장바구니" />
                   </a>
                 </div>
@@ -418,10 +419,12 @@
           <div
             class="swiper-button-prev banner"
             aria-label="메인 배너 슬라이더 이전으로"
+            role="button"
           ></div>
           <div
             class="swiper-button-next banner"
             aria-label="메인 배너 슬라이더 다음으로"
+            role="button"
           ></div>
           <div class="swiper-pagination banner"></div>
         </div>
@@ -435,7 +438,7 @@
                 <!-- pocketbase data area -->
                 <div class="swiper-slide">
                   <div class="item item_last">
-                    <a href="/src/pages/product_list/">
+                    <a href="%BASE_URL%src/pages/product_list/">
                       <span class="item_last_icon"></span>
                       <span>전체보기</span>
                     </a>
@@ -446,14 +449,18 @@
             <div
               class="swiper-button-prev recommend"
               aria-label="추천상품 슬라이더 이전으로"
+              role="button"
             ></div>
             <div
               class="swiper-button-next recommend"
               aria-label="추천상품 슬라이더 다음으로"
+              role="button"
             ></div>
+            <div class="swiper-pagination recommend"></div>
           </div>
         </section>
         <section class="main_section line_banner">
+          <h2 class="sr_only">중간 배너</h2>
           <a href="">
             <figure>
               <img
@@ -474,10 +481,12 @@
             <div
               class="swiper-button-prev sale"
               aria-label="할인 상품 슬라이더 이전으로"
+              role="button"
             ></div>
             <div
               class="swiper-button-next sale"
               aria-label="할인 상품 슬라이더 다음으로"
+              role="button"
             ></div>
           </div>
         </section>
@@ -502,6 +511,15 @@
               />
             </div>
           </div>
+        </div>
+      </div>
+      <div class="popup_container">
+        <div class="popup_img"></div>
+        <div class="popup_btn_wrapper">
+          <button type="button" class="popup_today_close">
+            오늘 하루 안 보기
+          </button>
+          <button type="button" class="popup_close">닫기</button>
         </div>
       </div>
     </main>

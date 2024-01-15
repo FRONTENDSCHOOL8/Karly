@@ -8,9 +8,12 @@ import {
   comma,
   insertLast,
   getPbImageURL,
+  checkLogin,
 } from '/src/lib';
 
 setDocumentTitle('칼리 | 장바구니');
+
+checkLogin();
 
 const cartData1 = await pb.collection('products').getFullList({
   filter: 'package_type~"냉장"',

@@ -5,6 +5,7 @@ button {
 
 /* 제품 상세 페이지 메인 섹션 스타일 */
 .item_detail_main {
+  position: relative;
   width: 1050px;
   padding-block-start: 40px;
   margin-block-start: 4px;

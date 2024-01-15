@@ -185,6 +185,9 @@ duplicateEmailAlertBtn.addEventListener('click', () =>
 
 // 아이디 입력
 userIdInput.addEventListener('input', (e) => {
+  duplicateIdBtn.disabled = false;
+  duplicateIdBtn.classList.remove('disable_btn');
+
   let state = handleValidationId(e.target.value);
 
   if (state) errorMessage.classList.remove('is_invalid');
@@ -223,6 +226,9 @@ form.addEventListener('input', (e) => {
 
 // 이메일 입력
 userEmailInput.addEventListener('input', (e) => {
+  duplicateEmailBtn.disabled = false;
+  duplicateEmailBtn.classList.remove('disable_btn');
+
   let state = handleValidationEmail(e.target.value);
 
   if (state) userEmailError.classList.remove('is_invalid');
@@ -254,8 +260,25 @@ function handleSearchAddress() {
   // eslint-disable-next-line no-undef
   new daum.Postcode({
     oncomplete: function (data) {
-      if (data.userSelectedType === 'R') return;
-      else return;
+      if (data.userSelectedType === 'R') {
+        document.querySelector('.user_address_input').value = data.roadAddress;
+        document
+          .querySelector('.user_address_wrapper')
+          .classList.add('address_hidden');
+        document
+          .querySelector('.user_detail_address_wrapper')
+          .classList.remove('address_hidden');
+        document.querySelector('#user_detail_address').value = '';
+      } else if (data.userSelectedType === 'J') {
+        document.querySelector('.user_address_input').value = data.jibunAddress;
+        document
+          .querySelector('.user_address_wrapper')
+          .classList.add('address_hidden');
+        document
+          .querySelector('.user_detail_address_wrapper')
+          .classList.remove('address_hidden');
+        document.querySelector('#user_detail_address').value = '';
+      } else return;
     },
   }).open({
     //여러개의 팝업창이 뜨는 것을 방지하기 위해 팝업창의 Key값을 지정
@@ -268,6 +291,12 @@ function handleSearchAddress() {
 }
 // 주소검색 버튼 클릭
 userAddressBtn.addEventListener('click', handleSearchAddress);
+
+// 주소 다시 검색 버튼 클릭
+getNode('.check_detail_address_btn').addEventListener(
+  'click',
+  handleSearchAddress
+);
 
 // 성별 체크
 form.addEventListener('change', function (e) {
@@ -321,6 +350,9 @@ function handleCreateUser() {
     email: userEmailInput.value,
     emailVisibility: true,
     phone: getNode('.user_phone_input').value,
+    address: `${getNode('.user_address_input').value} ${
+      getNode('#user_detail_address').value
+    }`,
     gender,
     birth: `${getNode('#year').value}${getNode('#month').value}${
       getNode('#day').value
