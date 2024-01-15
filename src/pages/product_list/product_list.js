@@ -124,3 +124,16 @@ async function handleCartData(e) {
 addCartButtons.forEach((item) => {
   item.addEventListener('click', handleCartData);
 });
+
+// 페이지 헤더의 장바구니 아이콘 클릭 시 로그인 여부에 따라 페이지 이동 경로 다르게 설정하는 기능 구현
+headerIconWrappers.forEach(async (item) => {
+  const headerCartIconLink = item.children[2].firstElementChild;
+  const authUserInfo = await getStorage('auth');
+  if (authUserInfo.isAuth) {
+    headerCartIconLink.href = '/src/pages/cart/';
+  } else {
+    headerCartIconLink.href = '/src/pages/login/';
+  }
+});
+
+console.log(await getStorage('auth'));
