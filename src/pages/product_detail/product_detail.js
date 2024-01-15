@@ -392,6 +392,7 @@ async function handleCartData() {
     quantity: productQuantity.innerText * 1,
   };
 
+  // eslint-disable-next-line no-unused-vars
   const cartRecord = await pb.collection('cart').create(cartData);
 }
 

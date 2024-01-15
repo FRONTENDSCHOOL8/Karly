@@ -130,6 +130,7 @@ async function handleCartData(e) {
     quantity: 1,
   };
 
+  // eslint-disable-next-line no-unused-vars
   const cartRecord = await pb.collection('cart').create(cartData);
 }
 
@@ -167,19 +168,6 @@ const getViewData = await getStorage('view');
 
 let idArray = getViewData.id;
 let viewDataArray = [];
-
-const hash = window.location.hash.slice(1);
-const maxViewCount = 10;
-
-if (idArray.includes(hash)) {
-  idArray = idArray.filter((id) => id !== hash);
-  idArray.push(hash);
-} else if (idArray.length >= maxViewCount) {
-  idArray.shift();
-  getViewData.id.push(hash);
-} else {
-  getViewData.id.push(hash);
-}
 
 const viewProductData = {
   user: user,
