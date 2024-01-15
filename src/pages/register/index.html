@@ -373,7 +373,7 @@
     </header>
 
     <main class="register_container">
-      <h1 class="register_title">회원가입</h1>
+      <h2 class="register_title">회원가입</h2>
       <div class="require">
         <img
           style="padding-left: 4px; padding-bottom: 10px"
@@ -384,7 +384,7 @@
 
       <div class="line_bold" role="presentation"></div>
 
-      <form action="/" method="post">
+      <form method="post">
         <fieldset>
           <legend class="sr_only">회원가입</legend>
 
@@ -403,7 +403,6 @@
               name="user_id"
               placeholder="아이디를 입력해주세요"
               aria-invalid="false"
-              aria-live="assertive"
               aria-describedby="user_id_error"
             />
             <button type="button" class="duplicate_id_btn">중복확인</button>
@@ -436,7 +435,6 @@
               name="user_password"
               class="user_password_input"
               placeholder="비밀번호를 입력해주세요"
-              aria-live="polite"
               aria-invalid="false"
               aria-describedby="user_password_error"
             />
@@ -459,7 +457,6 @@
               name="user_password_check"
               class="user_password_check_input"
               placeholder="비밀번호를 한번 더 입력해주세요"
-              aria-live="polite"
               aria-invalid="false"
               aria-describedby="user_password_check_error"
             />
@@ -499,7 +496,6 @@
               name="user_email"
               class="user_email_input"
               placeholder="예) marketkarly@karly.com"
-              aria-live="polite"
               aria-invalid="false"
               aria-describedby="user_email_error"
             />
@@ -569,7 +565,7 @@
 
           <div class="user_gender_wrapper">
             <div class="user_gender_label">성별</div>
-            <div class="radio_wrapper">
+            <div class="gender_radio_wrapper">
               <input
                 class="sr_only"
                 type="radio"
@@ -608,12 +604,11 @@
               <label for="day" class="sr_only">일</label>
               <input type="number" name="day" id="day" placeholder="DD" />
             </div>
-            <!-- <button class="test" type="button">test</button> -->
           </div>
 
           <div class="user_add_wrapper">
             <div class="user_add_label">추가입력 사항</div>
-            <div class="radio_wrapper">
+            <div class="add_radio_wrapper">
               <input
                 class="sr_only"
                 type="radio"
@@ -717,9 +712,6 @@
                 />
                 <div class="agree_check">
                   <label for="check_4">본인은 만 14세 이상입니다. (필수)</label>
-                  <button type="button" class="agree_ckeck_btn">
-                    약관보기
-                  </button>
                 </div>
               </div>
             </div>
@@ -728,7 +720,7 @@
       </form>
       <div class="line_thin" role="presentation"></div>
       <div class="join_btn_wrapper">
-        <button type="submit" class="join_btn disable_btn" disabled>
+        <button type="button" class="join_btn disable_btn" disabled>
           가입하기
         </button>
       </div>
