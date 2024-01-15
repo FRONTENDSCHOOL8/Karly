@@ -7,11 +7,7 @@ import {
   getNodes,
   comma,
   insertLast,
-  getStorage,
-  setStorage,
-  defaultAuthData,
   getPbImageURL,
-  tiger,
   checkLogin,
 } from '/src/lib';
 
@@ -19,26 +15,28 @@ setDocumentTitle('칼리 | 장바구니');
 
 checkLogin();
 
-if (!localStorage.getItem('auth')) {
-  setStorage('auth', defaultAuthData);
-}
-async function renderCart() {
-  const response = await tiger.get(
-    `${import.meta.env.VITE_PB_API}/collections/cart/records`
-  );
-  let { cartData1, cartData2, cartData3 } = response.data.items;
-  const { isAuth, user } = await getStorage('auth');
-  cartData1 = await pb.collection('cart').getFullList({
-    filter: 'package_type~"냉장"',
-  });
-  cartData2 = await pb.collection('cart').getFullList({
-    filter: 'package_type~"냉동"',
-  });
-  cartData3 = await pb.collection('cart').getFullList({
-    filter: 'package_type~"상온"',
-  });
-  function template(Auth, item) {
-    const template = /* html */ `
+const cartData1 = await pb.collection('products').getFullList({
+  filter: 'package_type~"냉장"',
+});
+const cartData2 = await pb.collection('products').getFullList({
+  filter: 'package_type~"냉동"',
+});
+const cartData3 = await pb.collection('products').getFullList({
+  filter: 'package_type~"상온"',
+});
+
+cartData1.forEach((item) => {
+  insertLast('.cart_content_list_1', template(item));
+});
+cartData2.forEach((item) => {
+  insertLast('.cart_content_list_2', template(item));
+});
+cartData3.forEach((item) => {
+  insertLast('.cart_content_list_3', template(item));
+});
+
+function template(item) {
+  const template = /* html */ `
       <li>
         <div class="input_check">
           <input
@@ -47,11 +45,7 @@ async function renderCart() {
             id="check_item_${item.id}"
           />
           <label for="check_item_${item.id}">
-            <a href="${
-              !isAuth
-                ? '/src/pages/login/'
-                : `/src/pages/product_detail/index.html#${item.id}`
-            }">
+            <a href="/src/pages/product_detail/index.html#${item.id}">
               <span class="item">
                 <img
                   src="${getPbImageURL(item)}"
@@ -69,7 +63,7 @@ async function renderCart() {
             <input
               type="number"
               min="1"
-              value="${item.quantity}"
+              value="1"
               aria-label="수량"
               class="quantity"
             />
@@ -81,132 +75,74 @@ async function renderCart() {
             </button>
           </div>
           <span class="item_price_total">
-            <span class="sales sr_only">${item.sales}</span>
-            <span class="before_price sr_only">${item.price}</span>
-            <span class="price" >${comma(item.price)}</span>원</span>
+            <span class="sales" style="display:none">${item.sales}</span>
+            <span class="before_price" style="display:none">${item.price}</span>
+            <span class="price">${comma(
+              Math.floor((item.price - (item.price * item.sales) / 100) / 10) *
+                10
+            )}</span>원</span>
         </div>
         <div class="item_delete">
           <button type="button" class="btn_cancel">
             <span class="sr_only">삭제</span>
           </button>
         </div>
+        
       </li>
-    `;
-
-    return template;
-  }
-  cartData1.forEach((item) => {
-    if (item.username == user.username) {
-      insertLast('.cart_content_list_1', template(isAuth, item));
-    }
-  });
-  cartData2.forEach((item) => {
-    if (item.username == user.username) {
-      insertLast('.cart_content_list_2', template(isAuth, item));
-    }
-  });
-  cartData3.forEach((item) => {
-    if (item.username == user.username) {
-      insertLast('.cart_content_list_3', template(isAuth, item));
-    }
-  });
-
-  selection();
-  total();
-  check_all();
-  input_number();
-  item_price_total();
+  `;
+  return template;
 }
-renderCart();
 
-function accordion() {
-  const btn = getNodes('.cart_title_btn');
+selection();
+total();
+checkAll();
+inputNumber();
+priceTotal();
 
-  function handleAccordion(e) {
+const accordion = getNodes('.cart_title_btn');
+const checkItem = document.querySelectorAll('.check_item');
+const inputNum = document.querySelectorAll('input[type="number"]');
+const inputNumBtn = document.querySelectorAll('.input_number button');
+
+accordion.forEach((element) => {
+  element.addEventListener('click', (e) => {
     const title = e.target.closest('.cart_list_title');
     title.classList.toggle('open');
-  }
-
-  btn.forEach((element) => {
-    element.addEventListener('click', handleAccordion);
   });
-}
-accordion();
+});
 
-function selection() {
-  const selection = getNodes('.check_all_text .selection');
-  const check_item_checked = getNodes('input[class="check_item"]:checked');
-
-  selection.forEach((element) => {
-    element.innerText = check_item_checked.length;
-  });
-}
-
-function total() {
-  const total = getNodes('.check_all_text .all');
-  const check_item = document.getElementsByClassName('check_item');
-
-  total.forEach((element) => {
-    element.innerText = check_item.length;
-  });
-}
-
-function check_all() {
-  const check_all = getNode('#check_all_1');
-  const check_item = getNodes('.check_item');
-
-  check_all.addEventListener('change', (e) => {
-    const ischeck = e.target.checked;
-
-    check_item.forEach((element) => {
-      if (ischeck === true) {
-        element.checked = ischeck;
-      } else {
-        element.checked = ischeck;
+checkItem.forEach((element) => {
+  element.addEventListener('click', () => {
+    checkItem.forEach((element) => {
+      if (element.checked === true) {
+        priceTotal();
       }
     });
-    selection();
   });
+});
 
-  for (const item of check_item) {
-    item.addEventListener('click', updateDisplay);
-  }
+inputNum.forEach((element) => {
+  element.addEventListener('input', price_sum);
+});
+inputNumBtn.forEach((element) => {
+  element.addEventListener('click', price_sum);
+});
 
-  function updateDisplay() {
-    let checkedCount = 0;
-    for (const item of check_item) {
-      if (item.checked) {
-        checkedCount++;
-      }
-    }
-
-    if (checkedCount === 0) {
-      check_all.checked = false;
-      check_all.indeterminate = false;
-    } else if (checkedCount === check_item.length) {
-      check_all.checked = true;
-      check_all.indeterminate = false;
-    } else {
-      check_all.checked = false;
-      check_all.indeterminate = true;
-    }
-
-    selection();
-  }
-}
-
-function input_number() {
-  const numbers = document.querySelectorAll('input[type="number"]');
+function inputNumber() {
+  const number = document.querySelectorAll('input[type="number"]');
   const btns = document.querySelectorAll('.input_number button');
-  btns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const number = btn.parentElement.querySelector('input[type="number"]');
-      if (btn.classList.contains('btn_plus')) {
+
+  btns.forEach((element) => {
+    element.addEventListener('click', () => {
+      const number = element.parentElement.querySelector(
+        'input[type="number"]'
+      );
+      if (element.classList.contains('btn_plus')) {
         let value = Number(number.value);
         value++;
         number.value = value;
         number.setAttribute('value', value);
-        btn.parentElement
+        element.parentElement
           .querySelector('.btn_minus')
           .removeAttribute('disabled', '');
       } else {
@@ -216,12 +152,12 @@ function input_number() {
         number.setAttribute('value', value);
         if (number.value <= 1) {
           number.value = '1';
-          btn.setAttribute('disabled', '');
+          element.setAttribute('disabled', '');
         }
       }
     });
   });
-  numbers.forEach((element) => {
+  number.forEach((element) => {
     element.addEventListener('input', (e) => {
       const target = e.target;
       if (target.value > 1) {
@@ -244,36 +180,122 @@ function input_number() {
   });
 }
 
-function item_price_total() {
-  const input_number = document.querySelectorAll('input[type="number"]');
-  const button = document.querySelectorAll('.input_number button');
-
-  input_number.forEach((element) => {
-    element.addEventListener('input', price_sum);
-  });
-  button.forEach((element) => {
-    element.addEventListener('click', price_sum);
-  });
-
-  function price_sum(e) {
-    const target = e.target;
-    const quantity =
-      target.closest('.item_price').querySelector('.quantity').value * 1;
-    const sales =
-      target.closest('.item_price').querySelector('.item_price_total .sales')
-        .innerHTML * 1;
-    const before_price =
-      target
-        .closest('.item_price')
-        .querySelector('.item_price_total .before_price').innerHTML * 1;
-    const price_innerHTML = target
+function price_sum(e) {
+  const target = e.target;
+  const quantity =
+    target.closest('.item_price').querySelector('.quantity').value * 1;
+  const sales =
+    target.closest('.item_price').querySelector('.item_price_total .sales')
+      .innerHTML * 1;
+  const beforePrice =
+    target
       .closest('.item_price')
-      .querySelector('.item_price_total .price');
-    const discount = (before_price * sales) / 100;
-    const after_price = before_price - discount;
-    const price = after_price * quantity;
-    const price_result = Math.floor(price / 10) * 10;
+      .querySelector('.item_price_total .before_price').innerHTML * 1;
+  const priceInnerHTML = target
+    .closest('.item_price')
+    .querySelector('.item_price_total .price');
+  const discount = (beforePrice * sales) / 100;
+  const afterPrice = beforePrice - discount;
+  const price = afterPrice * quantity;
+  const priceResult = Math.floor(price / 10) * 10;
+  priceInnerHTML.innerHTML = comma(priceResult);
+  priceTotal();
+}
 
-    price_innerHTML.innerHTML = comma(price_result);
+function priceTotal() {
+  const priceSum = document.querySelector('.price_info .price_sum');
+  const discountSum = document.querySelector('.price_info .discount_sum');
+  const deliveryCharge = document.querySelector('.price_info .delivery_charge');
+  const total = document.querySelector('.price_info .total');
+  const checkItem = document.querySelectorAll('.check_item');
+  const sumArr = [];
+  const sumArr2 = [];
+  const sumArr3 = [];
+  checkItem.forEach((element) => {
+    const quantity = element.closest('li').querySelector('.quantity').value * 1;
+    const beforePrice =
+      element.closest('li').querySelector('.before_price').innerHTML * 1;
+    const sales = element.closest('li').querySelector('.sales').innerHTML * 1;
+    const discount = (beforePrice * sales) / 100;
+    if (element.checked === true) {
+      sumArr.push(beforePrice * quantity);
+      sumArr2.push(discount * quantity);
+      sumArr3.push((beforePrice - discount) * quantity);
+    }
+  });
+  const sum = sumArr.reduce((acc, cur) => acc + cur, 0);
+  const sum2 = sumArr2.reduce((acc, cur) => acc + cur, 0);
+  const sum3 = sumArr3.reduce((acc, cur) => acc + cur, 0);
+  priceSum.innerHTML = comma(Math.floor(sum / 10) * 10);
+  if (sum2 === 0) {
+    discountSum.innerHTML = comma(Math.floor(sum2 / 10) * 10);
+  } else {
+    discountSum.innerHTML = '-' + comma(Math.floor(sum2 / 10) * 10);
+  }
+  if (sum3 === 0) {
+    deliveryCharge.innerHTML = 0;
+  } else {
+    deliveryCharge.innerHTML = '+' + comma(3000);
+  }
+  if (sum3 === 0) {
+    total.innerHTML = 0;
+  } else {
+    total.innerHTML = comma(Math.floor((sum3 + 3000) / 10) * 10);
+  }
+}
+
+function selection() {
+  const selection = getNodes('.check_all_text .selection');
+  const checkItemChecked = getNodes('input[class="check_item"]:checked');
+  selection.forEach((element) => {
+    element.innerText = checkItemChecked.length;
+  });
+}
+
+function total() {
+  const total = getNodes('.check_all_text .all');
+  const checkItem = document.getElementsByClassName('check_item');
+  total.forEach((element) => {
+    element.innerText = checkItem.length;
+  });
+}
+
+function checkAll() {
+  const check_all = getNode('#check_all_1');
+  const checkItem = getNodes('.check_item');
+  check_all.addEventListener('change', (e) => {
+    const ischeck = e.target.checked;
+    checkItem.forEach((element) => {
+      if (ischeck === true) {
+        element.checked = ischeck;
+      } else {
+        element.checked = ischeck;
+      }
+    });
+    selection();
+    priceTotal();
+  });
+  for (const item of checkItem) {
+    item.addEventListener('click', updateDisplay);
+  }
+  function updateDisplay() {
+    let checkedCount = 0;
+    for (const item of checkItem) {
+      if (item.checked) {
+        checkedCount++;
+      }
+    }
+    if (checkedCount === 0) {
+      check_all.checked = false;
+      check_all.indeterminate = false;
+    } else if (checkedCount === checkItem.length) {
+      check_all.checked = true;
+      check_all.indeterminate = false;
+    } else {
+      check_all.checked = false;
+      check_all.indeterminate = true;
+    }
+    selection();
+    priceTotal();
   }
 }
