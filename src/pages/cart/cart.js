@@ -87,6 +87,7 @@ function template(item) {
             <span class="sr_only">삭제</span>
           </button>
         </div>
+        
       </li>
   `;
   return template;
