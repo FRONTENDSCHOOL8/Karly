@@ -10,12 +10,12 @@ import {
   css,
   defaultViewData,
   getNode,
-  getStorage,
   renderRecentCard,
   renderRecommendCard,
   renderSaleCard,
   setDocumentTitle,
   setStorage,
+  getStorage,
 } from '/src/lib';
 
 import Swiper from 'swiper';
@@ -148,3 +148,44 @@ function handleSliderBtn() {
 // window.addEventListener('load', handleSliderBtn);
 swiperBannerPrevBtn.addEventListener('click', handleSliderBtn);
 swiperBannerNextBtn.addEventListener('click', handleSliderBtn);
+
+/* 팝업 */
+const popup = getNode('.popup_container');
+
+// 오늘 날짜를 생성
+const nowDate = new Date();
+const nowYear = nowDate.getFullYear();
+const nowMonth = nowDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더함
+const nowDay = nowDate.getDate();
+
+// 오늘 날짜를 형식에 맞게 변형  ex) 2024-01-15
+const formattedDate =
+  nowYear +
+  '-' +
+  (nowMonth < 10 ? '0' : '') +
+  nowMonth +
+  '-' +
+  (nowDay < 10 ? '0' : '') +
+  nowDay;
+
+// 팝업 버튼 클릭 시 발생 이벤트 처리
+popup.addEventListener('click', function (e) {
+  if (e.target.className === 'popup_today_close') {
+    setStorage('today', formattedDate);
+    popup.style.display = 'none';
+  } else if (e.target.className === 'popup_close') {
+    popup.style.display = 'none';
+  }
+});
+
+// 메인 페이지로 이동할 때마다 확인해야 함
+// localStorage에 today값과 오늘 날짜가 동일한지 확인
+// 동일하면 display = 'none'
+// 동일하지 않다면 display = 'block'
+async function todayDate() {
+  const todayDate = await getStorage('today');
+
+  if (formattedDate === todayDate) popup.style.display = 'none';
+  else popup.style.display = 'block';
+}
+todayDate();
