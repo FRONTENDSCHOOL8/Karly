@@ -11,11 +11,8 @@ import {
   insertFirst,
   insertLast,
   getPbImageURL,
-  defaultAuthData,
-  defaultViewData,
-  getStorage,
-  setStorage,
   checkLogin,
+  getStorage,
 } from '/src/lib/';
 import pb from '/src/api/pocketbase';
 
@@ -369,36 +366,24 @@ function handleBubble() {
 
 addCartButton.addEventListener('click', handleBubble);
 
-/* 최근 본 상품 목록 */
-// localStorage에 로그인 정보가 없으면 auth 초기화
-if (!localStorage.getItem('auth')) {
-  setStorage('auth', defaultAuthData);
-}
-const { user } = await getStorage('auth');
+// 로그인 상태 확인 후, 로그인 되어 있으면 화면에 로그인 유저 정보 렌더링
+checkLogin();
 
-// localStorage에 최근 본 상품 목록 정보가 없으면 view 초기화
-if (!localStorage.getItem('view')) {
-  setStorage('view', defaultViewData);
-}
-const getViewData = await getStorage('view');
+// 장바구니 담기 버튼 클릭 시 서버 내 장바구니 컬렉션에 클릭한 제품의 레코드 id와 로그인 한 유저 레코드의 'username' 필드 값이 담긴 신규 레코드 생성
+async function handleCartData() {
+  // - 로그인 한 유저의 레코드 id 값 추출
+  const loginUserInfo = await getStorage('auth');
+  const loginUserName = loginUserInfo.user.username;
+  const productQuantity = getNode('.product_quantity_select_buttons');
+  // 서버 DB 'cart' 컬렉션에 현재 페이지에 렌더링 된 제품의 레코드 id와 현재 로그인 되어 있는 유저 레코드의 'username' 필드 값이 담긴 신규 레코드 추가
+  const cartData = {
+    username: loginUserName,
+    product_id: pageHash,
+    quantity: productQuantity.innerText * 1,
+  };
 
-const hash = window.location.hash.slice(1);
-const maxViewCount = 10;
-let idArray = getViewData.id;
-
-if (idArray.includes(hash)) {
-  idArray = idArray.filter((id) => id !== hash);
-  idArray.push(hash);
-} else if (idArray.length >= maxViewCount) {
-  idArray.shift();
-  getViewData.id.push(hash);
-} else {
-  getViewData.id.push(hash);
+  const cartRecord = await pb.collection('cart').create(cartData);
 }
 
-const viewProductData = {
-  user: user,
-  id: idArray,
-};
-
-setStorage('view', viewProductData);
+// - 상세 페이지 내 '장바구니 담기' 버튼에 클릭 이벤트 추가
+addCartButton.addEventListener('click', handleCartData);
