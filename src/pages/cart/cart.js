@@ -45,7 +45,7 @@ function template(item) {
             id="check_item_${item.id}"
           />
           <label for="check_item_${item.id}">
-            <a href="/src/pages/product_detail/index.html#${item.id}">
+            <a href="/Karly/src/pages/product_detail/index.html#${item.id}">
               <span class="item">
                 <img
                   src="${getPbImageURL(item)}"
@@ -87,7 +87,7 @@ function template(item) {
             <span class="sr_only">삭제</span>
           </button>
         </div>
-        
+
       </li>
   `;
   return template;
