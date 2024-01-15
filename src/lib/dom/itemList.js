@@ -75,7 +75,7 @@ function createRecommendCard(item) {
   return /* html */ `
   <div class="swiper-slide">
     <div class="item">
-      <a href="/src/pages/product_detail/index.html#${item.id}">
+      <a href="/Karly/src/pages/product_detail/index.html#${item.id}">
         <figure>
           <img
             src="${getPbImageURL(item)}"

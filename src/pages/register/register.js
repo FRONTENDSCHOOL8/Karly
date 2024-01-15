@@ -361,7 +361,7 @@ function handleCreateUser() {
 
   pb.collection('users')
     .create(data)
-    .then(() => (location.href = '/src/pages/login/'));
+    .then(() => (location.href = '/Karly/src/pages/login/'));
 }
 
 // 가입하기 버튼 클릭
