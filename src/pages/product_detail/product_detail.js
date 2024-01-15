@@ -1,5 +1,6 @@
 import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
+import '/src/styles/main.css';
 import '/src/pages/product_detail/product_detail.css';
 import {
   getNode,
@@ -13,16 +14,25 @@ import {
   getPbImageURL,
   checkLogin,
   getStorage,
+  setStorage,
+  renderRecentCard,
+  defaultAuthData,
+  defaultViewData,
 } from '/src/lib/';
 import pb from '/src/api/pocketbase';
+import Swiper from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
+// 로그인 여부 확인 및 로그인 여부에 따른 UI 변경 기능 적용
 checkLogin();
 
 // 포켓호스트 서버에서 상품 정보 받아오기
 const pageHash = window.location.hash.slice(1);
 const product = await pb.collection('products').getOne(pageHash);
 
-console.log(product.image);
 // 페이지 타이틀 수정
 setDocumentTitle(`칼리 | ${product.name}`);
 
@@ -393,8 +403,73 @@ headerIconWrappers.forEach(async (item) => {
   const headerCartIconLink = item.children[2].firstElementChild;
   const authUserInfo = await getStorage('auth');
   if (authUserInfo.isAuth) {
-    headerCartIconLink.href = '/Karly/src/pages/cart/';
+    headerCartIconLink.href = '/src/pages/cart/';
   } else {
-    headerCartIconLink.href = '/Karly/src/pages/login/';
+    headerCartIconLink.href = '/src/pages/login/';
   }
 });
+
+// '최근 본 상품' UI 구현
+/* 최근 본 상품 목록 */
+// localStorage에 로그인 정보가 없으면 auth 초기화
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
+
+const { user } = await getStorage('auth');
+
+// localStorage에 최근 본 상품 목록 정보가 없으면 view 초기화
+if (!localStorage.getItem('view')) {
+  setStorage('view', defaultViewData);
+}
+
+const getViewData = await getStorage('view');
+
+let idArray = getViewData.id;
+let viewDataArray = [];
+
+const hash = window.location.hash.slice(1);
+const maxViewCount = 10;
+
+if (idArray.includes(hash)) {
+  idArray = idArray.filter((id) => id !== hash);
+  idArray.push(hash);
+} else if (idArray.length >= maxViewCount) {
+  idArray.shift();
+  getViewData.id.push(hash);
+} else {
+  getViewData.id.push(hash);
+}
+
+const viewProductData = {
+  user: user,
+  id: idArray,
+};
+
+setStorage('view', viewProductData);
+
+// '최근 본 항목' 캐러셀 렌더링
+async function renderCarousel() {
+  for (let id of idArray) {
+    const viewData = await pb.collection('products').getOne(id);
+    viewDataArray.push(viewData);
+  }
+  viewDataArray.forEach((item) => {
+    renderRecentCard('.recent > .swiper-wrapper', item);
+  });
+
+  // eslint-disable-next-line no-unused-vars
+  const swiperRecent = new Swiper('.swiper.recent', {
+    modules: [Navigation, Pagination, Autoplay],
+    direction: 'vertical',
+    slidesPerView: 3,
+    spaceBetween: 15,
+    centeredSlides: false,
+    navigation: {
+      nextEl: '.swiper-button-next.recent',
+      prevEl: '.swiper-button-prev.recent',
+    },
+  });
+}
+
+renderCarousel();
