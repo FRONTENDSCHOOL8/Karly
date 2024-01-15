@@ -41,7 +41,6 @@ let viewDataArray = [];
 /* RenderCarouselsData + Carousels */
 async function renderCarousel() {
   const productData = await pb.collection('products').getFullList();
-  // console.log(productData);
 
   productData.forEach((item) => {
     renderRecommendCard('.recommend > .swiper-wrapper', item);
@@ -104,7 +103,6 @@ async function renderCarousel() {
   })();
 
   /* EventListener */
-  // window.addEventListener('load', handleSliderBtn);
   swiperBannerPrevBtn.addEventListener('click', handleSliderBtn);
   swiperBannerNextBtn.addEventListener('click', handleSliderBtn);
 
@@ -119,7 +117,6 @@ async function renderCarousel() {
   const swiperRecent = new Swiper('.swiper.recent', {
     modules: [Navigation, Pagination, Autoplay],
     direction: 'vertical',
-    // loop: true,
     slidesPerView: 3,
     spaceBetween: 15,
     centeredSlides: false,
