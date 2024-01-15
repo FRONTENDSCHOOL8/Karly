@@ -1,4 +1,4 @@
-import { insertLast } from './insert.js';
+import { insertLast, insertFirst } from './insert.js';
 import { comma, getPbImageURL } from '/src/lib/utils';
 
 // createItemCard 태그를 생성
@@ -21,16 +21,14 @@ function createItemCard(item) {
       </figcaption>
     </figure>
   </a>
-  <button class="cart_button">
+  <button class="cart_button" aria-label="담기">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="45"
     height="45"
     viewBox="0 0 45 45"
     fill="none"
-    aria-labelledby="cart"
   >
-    <title id="cart">담기</title>
     <path
       opacity="0.5"
       d="M22.5 45C34.9264 45 45 34.9264 45 22.5C45 10.0736 34.9264 0 22.5 0C10.0736 0 0 10.0736 0 22.5C0 34.9264 10.0736 45 22.5 45Z"
@@ -69,6 +67,89 @@ function createItemCard(item) {
   </svg>
 </button>
 </li>
+  `;
+}
+
+function createRecommendCard(item) {
+  const ratio = item.price * (item.sales * 0.01);
+  return /* html */ `
+  <div class="swiper-slide">
+    <div class="item">
+      <a href="/src/pages/product_detail/index.html#${item.id}">
+        <figure>
+          <img
+            src="${getPbImageURL(item)}"
+            alt="${item.alt}"
+          />
+          <figcaption>
+            <span class="product_delivery"
+              >${item.delivery}</span
+            >
+            <span class="title">${item.name}</span>
+            <div>
+              <span class="discount">${item.sales}%</span>
+              <span class="price">${item.price} 원</span>
+            </div>
+            <span class="price_origin">${comma(item.price - ratio)} 원</span>
+            <span class="desc_product">${item.description}</span>
+            <div>
+            ${item.tag[0] ? `<span class="tag">${item.tag[0]}</span>` : ``}
+            ${item.tag[1] ? `<span class="tag">${item.tag[1]}</span>` : ``}
+            </div>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+  </div>
+  `;
+}
+
+function createSaleCard(item) {
+  const ratio = item.price * (item.sales * 0.01);
+  return /* html */ `
+  <div class="swiper-slide">
+    <div class="item">
+      <a href="/Karly/src/pages/product_detail/index.html#${item.id}">
+        <figure>
+          <img
+            src="${getPbImageURL(item)}"
+            alt="${item.alt}"
+          />
+          <figcaption>
+            <span class="product_delivery"
+              >${item.delivery}</span
+            >
+            <span class="title">${item.name}</span>
+            <div>
+              <span class="discount">${item.sales}%</span>
+              <span class="price">${item.price} 원</span>
+            </div>
+            <span class="price_origin">${comma(item.price - ratio)} 원</span>
+            <span class="desc_product">${item.description}</span>
+            <div>
+              ${item.tag[0] ? `<span class="tag">${item.tag[0]}</span>` : ``}
+              ${item.tag[1] ? `<span class="tag">${item.tag[1]}</span>` : ``}
+            </div>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+  </div>
+  `;
+}
+
+function createRecentCard(item) {
+  return /* html */ `
+  <div class="swiper-slide">
+    <div class="recent_view_item">
+      <a href="/Karly/src/pages/product_detail/index.html#${item.id}">
+        <img
+          src="${getPbImageURL(item)}"
+          alt="${item.alt}"
+        />
+      </a>
+    </div>
+  </div>
   `;
 }
 
@@ -175,6 +256,18 @@ function createEmptyCard(
 
 export function renderItemCard(target, item) {
   insertLast(target, createItemCard(item));
+}
+
+export function renderRecommendCard(target, item) {
+  insertFirst(target, createRecommendCard(item));
+}
+
+export function renderSaleCard(target, item) {
+  insertLast(target, createSaleCard(item));
+}
+
+export function renderRecentCard(target, item) {
+  insertFirst(target, createRecentCard(item));
 }
 
 export function renderItemList(target, list) {

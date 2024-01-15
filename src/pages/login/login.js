@@ -9,6 +9,8 @@ import {
   setDocumentTitle,
   handleValidationId,
   handleValidationPassword,
+  defaultAuthData,
+  defaultViewData,
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
 
@@ -30,17 +32,13 @@ async function handleAuth(id, pw) {
     if (authData) {
       let { model, token } = await getStorage('pocketbase_auth');
 
-      setStorage('auth', {
-        isAuth: !!model,
-        user: model,
-        token: token,
-      });
+      setStorage('auth', defaultAuthData);
+      setStorage('view', defaultViewData);
 
-      window.location.href = '/src/pages/main/';
+      window.location.href = '/Karly/src/pages/main/';
     }
   } catch (error) {
     handleLoginAlert('visible', 'hidden');
-    console.log('로그인 실패!', error);
   }
 }
 
@@ -50,15 +48,18 @@ function handleLoginAlert(state, overflow) {
   html.style.overflowY = overflow;
 }
 
+// 로그인 성공 여부 알림창
 loginAlertContainer.addEventListener('click', function (e) {
   if (e.target.tagName === 'BUTTON') handleLoginAlert('hidden', 'scroll');
 });
 
+// 로그인 버튼 클릭
 loginBtn.addEventListener('click', function (e) {
   e.preventDefault();
   handleAuth(userIdInput.value, userPasswordInput.value);
 });
 
+// 아이디 입력
 userIdInput.addEventListener('input', (e) => {
   let value = e.target.value;
   let state = handleValidationId(value);
@@ -66,6 +67,7 @@ userIdInput.addEventListener('input', (e) => {
   else errorMessage.classList.add('is_invalid');
 });
 
+// 비밀번호 입력
 userPasswordInput.addEventListener('input', (e) => {
   let value = e.target.value;
   let state = handleValidationPassword(value);

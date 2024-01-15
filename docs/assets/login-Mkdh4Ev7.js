@@ -1,1 +1,0 @@
-import"./style-v06b81ne.js";import{a as e}from"./header-lQ4xOUi4.js";/* empty css               */const n=e(".login_btn"),i=e(".register_btn");n.addEventListener("click",function(t){t.preventDefault()});i.addEventListener("click",function(t){t.preventDefault()});
