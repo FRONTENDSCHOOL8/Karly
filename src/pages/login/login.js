@@ -32,7 +32,11 @@ async function handleAuth(id, pw) {
     if (authData) {
       let { model, token } = await getStorage('pocketbase_auth');
 
-      setStorage('auth', defaultAuthData);
+      setStorage('auth', {
+        isAuth: !!model,
+        user: model,
+        token: token,
+      });
       setStorage('view', defaultViewData);
 
       window.location.href = '/Karly/src/pages/main/';
