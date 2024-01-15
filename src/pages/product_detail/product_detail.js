@@ -16,10 +16,13 @@ import {
 } from '/src/lib/';
 import pb from '/src/api/pocketbase';
 
+checkLogin();
+
 // 포켓호스트 서버에서 상품 정보 받아오기
 const pageHash = window.location.hash.slice(1);
 const product = await pb.collection('products').getOne(pageHash);
 
+console.log(product.image);
 // 페이지 타이틀 수정
 setDocumentTitle(`칼리 | ${product.name}`);
 

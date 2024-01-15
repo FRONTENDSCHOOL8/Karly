@@ -36,7 +36,7 @@ async function handleAuth(id, pw) {
         token: token,
       });
 
-      window.location.href = '/src/pages/main/';
+      window.location.href = '/Karly/src/pages/main/';
     }
   } catch (error) {
     handleLoginAlert('visible', 'hidden');

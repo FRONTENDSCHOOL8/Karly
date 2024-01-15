@@ -12,6 +12,8 @@ import {
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
 
+checkLogin();
+
 // 포켓호스트 서버에서 상품 정보 받아와서 제품 목록 페이지 화면에 렌더링
 const itemList = await pb.collection('products').getList(1, 15);
 const itemListContainer = getNode('.item_list_container');

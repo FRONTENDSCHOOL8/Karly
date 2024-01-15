@@ -269,10 +269,39 @@ function handleSearchAddress() {
 // 주소검색 버튼 클릭
 userAddressBtn.addEventListener('click', handleSearchAddress);
 
+<<<<<<< HEAD
+document.querySelector('.join_btn').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const data = {
+    username: userIdInput.value,
+    password: userPasswordInput.value,
+    passwordConfirm: userPasswordInput.value,
+    name: userNameInput.value,
+    email: userEmailInput.value,
+    emailVisibility: true,
+    phone: userPhoneInput.value,
+    gender: document.querySelectorAll('.radio_wrapper')[0].value ?? 'none',
+    birth: `${document.querySelector('#year').value}${
+      document.querySelector('#month').value
+    }${document.querySelector('#day').value}`,
+  };
+
+  pb.collection('users')
+    .create(data)
+    .then(() => {
+      console.log('회원가입 완료!');
+      location.href = '/Karly/src/pages/login/';
+    })
+    .catch((error) => {
+      console.log('회원가입 실패', error);
+    });
+=======
 // 성별 체크
 form.addEventListener('change', function (e) {
   if (e.target.name !== 'gender') return;
   gender = e.target.value;
+>>>>>>> dev
 });
 
 // 생년월일 입력 함수
