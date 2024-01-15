@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import pb from '/src/api/pocketbase';
 import '/src/components/footer/footer.css';
 import '/src/components/header/header.css';
@@ -5,18 +6,16 @@ import '/src/styles/main.css';
 import '/src/styles/style.css';
 
 import {
+  checkLogin,
   css,
-  defaultAuthData,
   defaultViewData,
-  deleteStorage,
   getNode,
-  getNodes,
   getStorage,
-  setDocumentTitle,
-  setStorage,
+  renderRecentCard,
   renderRecommendCard,
   renderSaleCard,
-  renderRecentCard,
+  setDocumentTitle,
+  setStorage,
 } from '/src/lib';
 
 import Swiper from 'swiper';
@@ -28,22 +27,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 setDocumentTitle('칼리 | 마켓칼리');
 
 /* 로그인 상태 확인 */
-if (await getStorage('pocketbase_auth')) {
-  const { model } = await getStorage('pocketbase_auth');
-  const welcome = getNodes('.header_member_service li a');
-  welcome[0].textContent = `${model.name} 님`;
-  ('welcome');
-  welcome[0].style.color = 'var(--black)';
-  welcome[0].style.fontWeight = '700';
-  welcome[1].textContent = '로그아웃';
-  welcome[1].href = '/src/pages/main/';
-  welcome[1].addEventListener('click', function () {
-    pb.authStore.clear();
-    deleteStorage('pocketbase_auth');
-    setStorage('view', defaultViewData);
-    setStorage('auth', defaultAuthData);
-  });
-}
+checkLogin();
 
 // localStorage에 최근 본 상품 목록 정보가 없으면 view 초기화
 if (!localStorage.getItem('view')) {
@@ -54,7 +38,7 @@ const getViewData = await getStorage('view');
 let idArray = getViewData.id;
 let viewDataArray = [];
 
-/* RenderCarouselsData */
+/* RenderCarouselsData + Carousels */
 async function renderCarousel() {
   const productData = await pb.collection('products').getFullList();
   // console.log(productData);
@@ -63,8 +47,37 @@ async function renderCarousel() {
     renderRecommendCard('.recommend > .swiper-wrapper', item);
   });
 
+  const swiperRecommend = new Swiper('.swiper.recommend', {
+    modules: [Navigation, Pagination],
+    loop: false,
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    spaceBetween: 30,
+    centeredSlides: false,
+    navigation: {
+      nextEl: '.swiper-button-next.recommend',
+      prevEl: '.swiper-button-prev.recommend',
+    },
+  });
+
   productData.forEach((item) => {
     renderSaleCard('.sale > .swiper-wrapper', item);
+  });
+
+  const swiperSale = new Swiper('.swiper.sale', {
+    modules: [Navigation, Pagination, Autoplay],
+    loop: true,
+    slidesPerView: 4,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next.sale',
+      prevEl: '.swiper-button-prev.sale',
+    },
   });
 
   for (let id of idArray) {
@@ -74,10 +87,23 @@ async function renderCarousel() {
   viewDataArray.forEach((item) => {
     renderRecentCard('.recent > .swiper-wrapper', item);
   });
+
+  const swiperRecent = new Swiper('.swiper.recent', {
+    modules: [Navigation, Pagination, Autoplay],
+    direction: 'vertical',
+    // loop: true,
+    slidesPerView: 3,
+    spaceBetween: 15,
+    centeredSlides: false,
+    navigation: {
+      nextEl: '.swiper-button-next.recent',
+      prevEl: '.swiper-button-prev.recent',
+    },
+  });
 }
 renderCarousel();
 
-/* Carousels */
+/* Carousel */
 const swiperBanner = new Swiper('.swiper.banner', {
   modules: [Navigation, Pagination, Autoplay],
   loop: true,
@@ -92,48 +118,6 @@ const swiperBanner = new Swiper('.swiper.banner', {
   pagination: {
     el: '.swiper-pagination.banner',
     type: 'fraction',
-  },
-});
-
-const swiperRecommend = new Swiper('.swiper.recommend', {
-  modules: [Navigation, Pagination],
-  loop: false,
-  slidesPerView: 4,
-  slidesPerGroup: 4,
-  spaceBetween: 30,
-  centeredSlides: false,
-  navigation: {
-    nextEl: '.swiper-button-next.recommend',
-    prevEl: '.swiper-button-prev.recommend',
-  },
-});
-
-const swiperSale = new Swiper('.swiper.sale', {
-  modules: [Navigation, Pagination, Autoplay],
-  loop: true,
-  slidesPerView: 4,
-  spaceBetween: 30,
-  centeredSlides: true,
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next.sale',
-    prevEl: '.swiper-button-prev.sale',
-  },
-});
-
-const swiperRecent = new Swiper('.swiper.recent', {
-  modules: [Navigation, Pagination, Autoplay],
-  direction: 'vertical',
-  // loop: true,
-  slidesPerView: 3,
-  spaceBetween: 15,
-  centeredSlides: false,
-  navigation: {
-    nextEl: '.swiper-button-next.recent',
-    prevEl: '.swiper-button-prev.recent',
   },
 });
 
