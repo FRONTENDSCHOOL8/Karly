@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import pb from '/src/api/pocketbase';
+import pb from '/src/api/pocketbase.js';
 import '/src/components/footer/footer.css';
 import '/src/components/header/header.css';
 import '/src/styles/main.css';
@@ -41,7 +41,6 @@ let viewDataArray = [];
 /* RenderCarouselsData + Carousels */
 async function renderCarousel() {
   const productData = await pb.collection('products').getFullList();
-  // console.log(productData);
 
   productData.forEach((item) => {
     renderRecommendCard('.recommend > .swiper-wrapper', item);
@@ -80,6 +79,33 @@ async function renderCarousel() {
     },
   });
 
+  /* Events */
+  const swiperBannerPrevBtn = getNode('.swiper-button-prev.recommend');
+  const swiperBannerNextBtn = getNode('.swiper-button-next.recommend');
+
+  function handleSliderBtn() {
+    if (swiperBannerNextBtn.classList.contains('swiper-button-disabled')) {
+      css(swiperBannerNextBtn, 'display', 'none');
+    } else {
+      css(swiperBannerNextBtn, 'display', 'flex');
+    }
+
+    if (swiperBannerPrevBtn.classList.contains('swiper-button-disabled')) {
+      css(swiperBannerPrevBtn, 'display', 'none');
+    } else {
+      css(swiperBannerPrevBtn, 'display', 'flex');
+    }
+  }
+
+  (function prevBtnSetting() {
+    css(swiperBannerNextBtn, 'display', 'flex');
+    css(swiperBannerPrevBtn, 'display', 'none');
+  })();
+
+  /* EventListener */
+  swiperBannerPrevBtn.addEventListener('click', handleSliderBtn);
+  swiperBannerNextBtn.addEventListener('click', handleSliderBtn);
+
   for (let id of idArray) {
     const viewData = await pb.collection('products').getOne(id);
     viewDataArray.push(viewData);
@@ -91,7 +117,6 @@ async function renderCarousel() {
   const swiperRecent = new Swiper('.swiper.recent', {
     modules: [Navigation, Pagination, Autoplay],
     direction: 'vertical',
-    // loop: true,
     slidesPerView: 3,
     spaceBetween: 15,
     centeredSlides: false,
@@ -120,34 +145,6 @@ const swiperBanner = new Swiper('.swiper.banner', {
     type: 'fraction',
   },
 });
-
-/* Events */
-const swiperBannerPrevBtn = getNode('.swiper-button-prev.recommend');
-const swiperBannerNextBtn = getNode('.swiper-button-next.recommend');
-
-function handleSliderBtn() {
-  if (swiperBannerNextBtn.classList.contains('swiper-button-disabled')) {
-    css(swiperBannerNextBtn, 'display', 'none');
-  } else {
-    css(swiperBannerNextBtn, 'display', 'flex');
-  }
-
-  if (swiperBannerPrevBtn.classList.contains('swiper-button-disabled')) {
-    css(swiperBannerPrevBtn, 'display', 'none');
-  } else {
-    css(swiperBannerPrevBtn, 'display', 'flex');
-  }
-}
-
-(function prevBtnSetting() {
-  css(swiperBannerNextBtn, 'display', 'flex');
-  css(swiperBannerPrevBtn, 'display', 'none');
-})();
-
-/* EventListener */
-// window.addEventListener('load', handleSliderBtn);
-swiperBannerPrevBtn.addEventListener('click', handleSliderBtn);
-swiperBannerNextBtn.addEventListener('click', handleSliderBtn);
 
 /* 팝업 */
 const popup = getNode('.popup_container');

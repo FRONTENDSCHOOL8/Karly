@@ -87,13 +87,19 @@ function createRecommendCard(item) {
             >
             <span class="title">${item.name}</span>
             <div>
-              <span class="discount">${item.sales}%</span>
-              <span class="price">${item.price} 원</span>
+              <span class="discount">
+                ${`${item.sales}` === `0` ? `` : `${item.sales} %`}
+              </span>
+              <span class="price">${comma(item.price)} 원</span>
             </div>
             <span class="price_origin">${comma(item.price - ratio)} 원</span>
             <span class="desc_product">${item.description}</span>
             <div>
-            ${item.tag[0] ? `<span class="tag">${item.tag[0]}</span>` : ``}
+            ${
+              item.tag[0]
+                ? `<span class="tag tag_karly">${item.tag[0]}</span>`
+                : ``
+            }
             ${item.tag[1] ? `<span class="tag">${item.tag[1]}</span>` : ``}
             </div>
           </figcaption>
@@ -121,13 +127,19 @@ function createSaleCard(item) {
             >
             <span class="title">${item.name}</span>
             <div>
-              <span class="discount">${item.sales}%</span>
-              <span class="price">${item.price} 원</span>
+            <span class="discount">
+            ${`${item.sales}` === `0` ? `` : `${item.sales} %`}
+            </span>
+              <span class="price">${comma(item.price)} 원</span>
             </div>
             <span class="price_origin">${comma(item.price - ratio)} 원</span>
             <span class="desc_product">${item.description}</span>
             <div>
-              ${item.tag[0] ? `<span class="tag">${item.tag[0]}</span>` : ``}
+              ${
+                item.tag[0]
+                  ? `<span class="tag tag_karly">${item.tag[0]}</span>`
+                  : ``
+              }
               ${item.tag[1] ? `<span class="tag">${item.tag[1]}</span>` : ``}
             </div>
           </figcaption>
