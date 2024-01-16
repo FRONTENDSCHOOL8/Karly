@@ -17,7 +17,7 @@ export async function checkLogin() {
     welcome[0].style.color = 'var(--black)';
     welcome[0].style.fontWeight = '700';
     welcome[1].textContent = '로그아웃';
-    welcome[1].href = '/Karly/src/pages/main/';
+    welcome[1].href = '/Karly/';
     welcome[1].addEventListener('click', function () {
       pb.authStore.clear();
       deleteStorage('pocketbase_auth');
