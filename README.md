@@ -12,7 +12,7 @@
 
 #### 배포 링크
 - [https://lumpyspaceyz.github.io/Karly/](https://lumpyspaceyz.github.io/Karly/)
-
+- id: water222, pw: 123456!
 
 <br>
 
