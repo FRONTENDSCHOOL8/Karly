@@ -9,7 +9,6 @@ import {
   setDocumentTitle,
   handleValidationId,
   handleValidationPassword,
-  defaultAuthData,
   defaultViewData,
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
