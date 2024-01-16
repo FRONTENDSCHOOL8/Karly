@@ -1,0 +1,1 @@
+function a(e){return!!/^(?=.*[A-Za-z])[A-Za-z\d]{6,16}$/.test(e)}function r(e){return!!/^(?=.*[!@#$%^&*(),.?":{}|<>]).{6,16}$/.test(e)}function n(e){return!!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(e)}export{r as a,n as b,a as h};

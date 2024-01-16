@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pocketbase": ".\\pocketbase\\pocketbase serve"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
     "prettier": "^3.1.1",
     "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "pocketbase": "^0.20.1",
+    "swiper": "^11.0.5"
   }
 }
