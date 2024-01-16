@@ -1,4 +1,4 @@
-import"./style-v06b81ne.js";import{p as v,g as c,a as b,c as s}from"./header-qYaCn0IU.js";/* empty css               */import{b as k,S as H,N as T,P as A,A as q}from"./autoplay-kvZURvwd.js";import{c as $,b as U,d as N,i as m,a as n,g as d}from"./checkLogin-VMqPfWLq.js";import{g as p,s as w,a as M,d as Q}from"./setDefaultData-8dNE6q3B.js";import{s as Z}from"./setDocumentTitle-_OwlDZqT.js";$();const V=window.location.hash.slice(1),o=await v.collection("products").getOne(V);Z(`칼리 | ${o.name}`);const K=c(".product_purchase_container");function O(t){return`
+import"./style-v06b81ne.js";import{p as v,g as c,a as b,c as s}from"./header-RZqFFW1r.js";/* empty css               */import{b as k,S as H,N as T,P as A,A as q}from"./autoplay-Ef54JZgK.js";import{c as $,b as U,d as N,i as m,a as n,g as d}from"./checkLogin-LD3I1H2Y.js";import{g as p,s as w,a as M,d as Q}from"./setDefaultData-jfMFH5kw.js";import{s as Z}from"./setDocumentTitle-_OwlDZqT.js";$();const V=window.location.hash.slice(1),o=await v.collection("products").getOne(V);Z(`칼리 | ${o.name}`);const K=c(".product_purchase_container");function O(t){return`
   <img
   class="product_img"
   src="${d(t)}"

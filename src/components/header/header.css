@@ -606,3 +606,7 @@ body {
 .menu_scroll .icon_wrapper img {
   display: block;
 }
+
+#searchScroll {
+  font-family: Pretendard;
+}
