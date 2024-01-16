@@ -1,4 +1,4 @@
-import{i as ge,g as Q,a as W,d as ve}from"./checkLogin-VMqPfWLq.js";import"./header-qYaCn0IU.js";function Ce(t){return`
+import{i as ge,g as Q,a as W,d as ve}from"./checkLogin-LD3I1H2Y.js";import"./header-RZqFFW1r.js";function Ce(t){return`
   <li class="item_card">
   <a href="/Karly/src/pages/product_detail/index.html#${t.id}">
     <figure>
