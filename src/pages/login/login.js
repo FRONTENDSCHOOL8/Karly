@@ -39,7 +39,7 @@ async function handleAuth(id, pw) {
       });
       setStorage('view', defaultViewData);
 
-      window.location.href = '/Karly/src/pages/main/';
+      window.location.href = '/Karly/';
     }
   } catch (error) {
     handleLoginAlert('visible', 'hidden');
