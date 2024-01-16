@@ -1,10 +1,10 @@
-import"./style-v06b81ne.js";import{p as v,g as c,a as b,c as s}from"./header-qYaCn0IU.js";/* empty css               */import{b as k,S as H,N as T,P as A,A as q}from"./autoplay-VpRqDq9N.js";import{c as $,b as U,d as N,i as m,a as n,g as d}from"./checkLogin-Eh0U5S-P.js";import{g as p,s as w,a as M,d as Q}from"./setDefaultData-8dNE6q3B.js";import{s as Z}from"./setDocumentTitle-_OwlDZqT.js";$();const V=window.location.hash.slice(1),o=await v.collection("products").getOne(V);Z(`칼리 | ${o.name}`);const O=c(".product_purchase_container");function R(t){return`
+import"./style-v06b81ne.js";import{p as v,g as c,a as b,c as s}from"./header-qYaCn0IU.js";/* empty css               */import{b as k,S as H,N as T,P as A,A as q}from"./autoplay-fTI9n1sh.js";import{c as $,b as U,d as N,i as m,a as n,g as d}from"./checkLogin-Eh0U5S-P.js";import{g as p,s as w,a as M,d as Q}from"./setDefaultData-8dNE6q3B.js";import{s as Z}from"./setDocumentTitle-_OwlDZqT.js";$();const V=window.location.hash.slice(1),o=await v.collection("products").getOne(V);Z(`칼리 | ${o.name}`);const K=c(".product_purchase_container");function O(t){return`
   <img
   class="product_img"
   src="${d(t)}"
   alt="${t.name}"
 />
-  `}function F(t,e){U(t,R(e))}F(O,o);const W=c(".product_purchase_container");function j({delivery:t,name:e,description:r,price:a,delivery_info:_,seller:l,package_type:S,package_info:x,unit:I,volume:B,origin:D,allergy:L}){return`
+  `}function R(t,e){U(t,O(e))}R(K,o);const F=c(".product_purchase_container");function W({delivery:t,name:e,description:r,price:a,delivery_info:_,seller:l,package_type:S,package_info:x,unit:I,volume:B,origin:D,allergy:L}){return`
   <article class="product_summary">
   <h3 class="sr_only">상품 판매 개요</h3>
   <p class="product_delivery_info">${t}</p>
@@ -108,7 +108,7 @@ import"./style-v06b81ne.js";import{p as v,g as c,a as b,c as s}from"./header-qYa
   </p>
   <small class="benefit_notice">로그인 후, 적립 혜택 제공</small>
 </article>
-  `}function z(t,e){N(t,j(e))}z(W,o);const G=c(".product_description_brief_info");function J(t){return`
+  `}function j(t,e){N(t,W(e))}j(F,o);const z=c(".product_description_brief_info");function G(t){return`
   <picture class="product_description_img_container">
     <img
       class="product_description_img"
@@ -123,7 +123,7 @@ import"./style-v06b81ne.js";import{p as v,g as c,a as b,c as s}from"./header-qYa
       ${t.introduction}
     </p>
   </div>
-  `}function K(t,e){m(t,J(e))}K(G,o);const X=c(".product_details_info");function Y(t){return`
+  `}function J(t,e){m(t,G(e))}J(z,o);const X=c(".product_details_info");function Y(t){return`
   <picture>
   <img
     src="${d(t,"details_pic")}"
@@ -159,4 +159,4 @@ import"./style-v06b81ne.js";import{p as v,g as c,a as b,c as s}from"./header-qYa
   <path d="M10 1L18.6603 13.75H1.33975L10 1Z" fill="white" />
   <path d="M1 13.5L10 1L18.5 13.5" stroke="#C4C4C4" />
 </svg>
-  `}function it(t,e){y.forEach(r=>{m(r,st(e))})}it(y,o);const C=c(".add_cart_button");function nt(){const t=b(".cart_bubble"),e=b(".cart_bubble_pointer");t.forEach(r=>{s(r,"visibility","visible"),setTimeout(()=>{s(r,"visibility","hidden")},4e3),e.forEach(a=>{s(a,"visibility","visible"),setTimeout(()=>{s(a,"visibility","hidden")},4e3)})})}C.addEventListener("click",nt);$();async function ot(){const e=(await p("auth")).user.username,r=c(".product_quantity_select_buttons"),a={username:e,product_id:V,quantity:r.innerText*1};await v.collection("cart").create(a)}C.addEventListener("click",ot);y.forEach(async t=>{const e=t.children[2].firstElementChild;(await p("auth")).isAuth?e.href="/src/pages/cart/":e.href="/src/pages/login/"});localStorage.getItem("auth")||w("auth",M);const{user:lt}=await p("auth");localStorage.getItem("view")||w("view",Q);const g=await p("view");let i=g.id,P=[];const u=window.location.hash.slice(1),ut=10;i.includes(u)?(i=i.filter(t=>t!==u),i.push(u)):(i.length>=ut&&i.shift(),g.id.push(u));const dt={user:lt,id:i};w("view",dt);async function pt(){for(let t of i){const e=await v.collection("products").getOne(t);P.push(e)}P.forEach(t=>{k(".recent > .swiper-wrapper",t)}),new H(".swiper.recent",{modules:[T,A,q],direction:"vertical",slidesPerView:3,spaceBetween:15,centeredSlides:!1,navigation:{nextEl:".swiper-button-next.recent",prevEl:".swiper-button-prev.recent"}})}pt();
+  `}function it(t,e){y.forEach(r=>{m(r,st(e))})}it(y,o);const C=c(".add_cart_button");function nt(){const t=b(".cart_bubble"),e=b(".cart_bubble_pointer");t.forEach(r=>{s(r,"visibility","visible"),setTimeout(()=>{s(r,"visibility","hidden")},4e3),e.forEach(a=>{s(a,"visibility","visible"),setTimeout(()=>{s(a,"visibility","hidden")},4e3)})})}C.addEventListener("click",nt);$();async function ot(){const e=(await p("auth")).user.username,r=c(".product_quantity_select_buttons"),a={username:e,product_id:V,quantity:r.innerText*1};await v.collection("cart").create(a)}C.addEventListener("click",ot);y.forEach(async t=>{const e=t.children[2].firstElementChild;(await p("auth")).isAuth?e.href="/Karly/src/pages/cart/":e.href="/Karly/src/pages/login/"});localStorage.getItem("auth")||w("auth",M);const{user:lt}=await p("auth");localStorage.getItem("view")||w("view",Q);const g=await p("view");let i=g.id,P=[];const u=window.location.hash.slice(1),ut=10;i.includes(u)?(i=i.filter(t=>t!==u),i.push(u)):(i.length>=ut&&i.shift(),g.id.push(u));const dt={user:lt,id:i};w("view",dt);async function pt(){for(let t of i){const e=await v.collection("products").getOne(t);P.push(e)}P.forEach(t=>{k(".recent > .swiper-wrapper",t)}),new H(".swiper.recent",{modules:[T,A,q],direction:"vertical",slidesPerView:3,spaceBetween:15,centeredSlides:!1,navigation:{nextEl:".swiper-button-next.recent",prevEl:".swiper-button-prev.recent"}})}pt();

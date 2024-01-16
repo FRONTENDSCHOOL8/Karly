@@ -92,7 +92,9 @@ function createRecommendCard(item) {
               </span>
               <span class="price">${comma(item.price)} 원</span>
             </div>
-            <span class="price_origin">${comma(item.price - ratio)} 원</span>
+            <span class="price_origin">${comma(
+              Math.round(item.price - ratio)
+            )} 원</span>
             <span class="desc_product">${item.description}</span>
             <div>
             ${
@@ -132,7 +134,9 @@ function createSaleCard(item) {
             </span>
               <span class="price">${comma(item.price)} 원</span>
             </div>
-            <span class="price_origin">${comma(item.price - ratio)} 원</span>
+            <span class="price_origin">${comma(
+              Math.round(item.price - ratio)
+            )} 원</span>
             <span class="desc_product">${item.description}</span>
             <div>
               ${

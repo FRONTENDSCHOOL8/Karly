@@ -81,7 +81,7 @@ import{i as ge,g as Q,a as W,d as ve}from"./checkLogin-Eh0U5S-P.js";import"./hea
               </span>
               <span class="price">${W(t.price)} 원</span>
             </div>
-            <span class="price_origin">${W(t.price-e)} 원</span>
+            <span class="price_origin">${W(Math.round(t.price-e))} 원</span>
             <span class="desc_product">${t.description}</span>
             <div>
             ${t.tag[0]?`<span class="tag tag_karly">${t.tag[0]}</span>`:""}
@@ -112,7 +112,7 @@ import{i as ge,g as Q,a as W,d as ve}from"./checkLogin-Eh0U5S-P.js";import"./hea
             </span>
               <span class="price">${W(t.price)} 원</span>
             </div>
-            <span class="price_origin">${W(t.price-e)} 원</span>
+            <span class="price_origin">${W(Math.round(t.price-e))} 원</span>
             <span class="desc_product">${t.description}</span>
             <div>
               ${t.tag[0]?`<span class="tag tag_karly">${t.tag[0]}</span>`:""}

@@ -404,9 +404,9 @@ headerIconWrappers.forEach(async (item) => {
   const headerCartIconLink = item.children[2].firstElementChild;
   const authUserInfo = await getStorage('auth');
   if (authUserInfo.isAuth) {
-    headerCartIconLink.href = '/src/pages/cart/';
+    headerCartIconLink.href = '/Karly/src/pages/cart/';
   } else {
-    headerCartIconLink.href = '/src/pages/login/';
+    headerCartIconLink.href = '/Karly/src/pages/login/';
   }
 });
 
