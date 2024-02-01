@@ -3,9 +3,8 @@ import '/src/components/header/header.css';
 import { getNode, css, addClass, removeClass } from '/src/lib';
 
 (function () {
-  const navScroll = getNode('.nav_scroll');
-
   window.addEventListener('scroll', () => {
+    const navScroll = getNode('.nav_scroll');
     if (window.scrollY >= 190) {
       css(navScroll, 'display', 'flex');
       addClass(navScroll, 'sticky');
@@ -15,10 +14,8 @@ import { getNode, css, addClass, removeClass } from '/src/lib';
     }
   });
 
-  const topBanner = getNode('.top_banner');
-  const topBannerCloseBtn = getNode('.top_banner_close');
-
   function handleBannerClose() {
+    const topBanner = getNode('.top_banner');
     topBanner.style.transition = 'All 0.5s';
     topBanner.style.transform = 'translateY(-50px)';
 
@@ -27,5 +24,6 @@ import { getNode, css, addClass, removeClass } from '/src/lib';
     }, 250);
   }
 
+  const topBannerCloseBtn = getNode('.top_banner_close');
   topBannerCloseBtn.addEventListener('click', handleBannerClose);
 })();

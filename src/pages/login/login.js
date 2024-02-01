@@ -7,9 +7,8 @@ import {
   setStorage,
   getNode,
   setDocumentTitle,
-  handleValidationId,
-  handleValidationPassword,
-  defaultAuthData,
+  validateId,
+  validatePassword,
   defaultViewData,
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
@@ -66,7 +65,7 @@ loginBtn.addEventListener('click', function (e) {
 // 아이디 입력
 userIdInput.addEventListener('input', (e) => {
   let value = e.target.value;
-  let state = handleValidationId(value);
+  let state = validateId(value);
   if (state) errorMessage.classList.remove('is_invalid');
   else errorMessage.classList.add('is_invalid');
 });
@@ -74,7 +73,7 @@ userIdInput.addEventListener('input', (e) => {
 // 비밀번호 입력
 userPasswordInput.addEventListener('input', (e) => {
   let value = e.target.value;
-  let state = handleValidationPassword(value);
+  let state = validatePassword(value);
 
   if (value && value.length < 6) {
     userPasswordError.classList.add('is_invalid');

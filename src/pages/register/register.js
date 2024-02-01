@@ -5,9 +5,9 @@ import '/src/components/footer/footer.css';
 import {
   getNode,
   setDocumentTitle,
-  handleValidationId,
-  handleValidationPassword,
-  handleValidationEmail,
+  validateId,
+  validatePassword,
+  validateEmail,
 } from '/src/lib';
 import pb from '/src/api/pocketbase.js';
 
@@ -78,7 +78,7 @@ async function deleteUserInfo() {
 
 // 아이디 중복확인 알림창 보이기
 async function handleValidationAlertShow() {
-  if (!handleValidationId(userIdInput.value)) {
+  if (!validateId(userIdInput.value)) {
     duplicateAlertText.textContent =
       '6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합';
     duplicateAlertContainer.style.visibility = 'visible';
@@ -108,7 +108,7 @@ async function handleDuplicateAlertShow() {
     emailVisibility: true,
   };
 
-  if (!handleValidationEmail(userEmailInput.value)) {
+  if (!validateEmail(userEmailInput.value)) {
     duplicateEmailAlertText.textContent = '이메일 형식으로 입력해 주세요.';
     duplicateEmailAlertContainer.style.visibility = 'visible';
     html.style.overflowY = 'hidden';
@@ -134,6 +134,7 @@ async function handleDuplicateAlertShow() {
 // 인증번호 알림창 보이기
 async function handleAuthNumAlertShow() {
   if (!checkNumberBtn.disabled) {
+    // ㅋㅋㅋㅋㅋㅋㅋ
     getNode('.duplicate_number_alert_text').textContent =
       '믿음으로 인증되었습니다';
     getNode('.duplicate_number_alert_container').style.visibility = 'visible';
@@ -188,7 +189,7 @@ userIdInput.addEventListener('input', (e) => {
   duplicateIdBtn.disabled = false;
   duplicateIdBtn.classList.remove('disable_btn');
 
-  let state = handleValidationId(e.target.value);
+  let state = validateId(e.target.value);
 
   if (state) errorMessage.classList.remove('is_invalid');
   else errorMessage.classList.add('is_invalid');
@@ -196,28 +197,40 @@ userIdInput.addEventListener('input', (e) => {
 
 // 비밀번호 입력
 userPasswordInput.addEventListener('input', (e) => {
-  let state = handleValidationPassword(e.target.value);
+  // TODO: 함수의 이름은 동사로 작성하시고, 변수의 이름은 의도를 잘 설명할 수 있게 구체적으로 적어 주세요.
+  // 이제 state 라는 변수는 isValid 라는 이름의 논리 도구가 되었습니다.
+  const isValid = validatePassword(e.target.value);
 
+  // TODO: 다중 if else 는 만악의 근원입니다. else 사용 금지!
   if (e.target.value && e.target.value.length < 6) {
     userPasswordError.classList.add('is_invalid');
     userPasswordError.textContent = '최소 6자 이상 입력';
-  } else if (e.target.value.length > 16) {
+    return;
+  }
+
+  if (e.target.value.length > 16) {
     userPasswordError.classList.add('is_invalid');
     userPasswordError.textContent = '최대 16자 까지 입력';
-  } else {
-    if (state) {
-      userPasswordError.classList.remove('is_invalid');
-    } else {
-      userPasswordError.textContent = '특수문자 포함 최소 6자 - 최대 16자';
-    }
+    return;
   }
+
+  // TODO: 자바스크립트 코드가 자연어로 연출이 되지요.
+  if (isValid) {
+    userPasswordError.classList.remove('is_invalid');
+    return;
+  }
+
+  // TODO: else를 사용하고 있다면 무언가 잘못 돌아가고 있다는 증거입니다. 머리를 비웁시다.
+  userPasswordError.textContent = '특수문자 포함 최소 6자 - 최대 16자';
 });
 
 // 비밀번호 확인 입력
 form.addEventListener('input', (e) => {
   if (e.target.id !== 'user_password_check') return;
 
-  if (e.target.value === userPasswordInput.value) {
+  // 자바스크립트 코드를 자연어처럼 연출해 보세요!
+  const isValid = e.target.value === userPasswordInput.value;
+  if (isValid) {
     userPasswordCheckError.classList.remove('is_invalid');
   } else {
     userPasswordCheckError.classList.add('is_invalid');
@@ -229,7 +242,7 @@ userEmailInput.addEventListener('input', (e) => {
   duplicateEmailBtn.disabled = false;
   duplicateEmailBtn.classList.remove('disable_btn');
 
-  let state = handleValidationEmail(e.target.value);
+  let state = validateEmail(e.target.value);
 
   if (state) userEmailError.classList.remove('is_invalid');
   else userEmailError.classList.add('is_invalid');
