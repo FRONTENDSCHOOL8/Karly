@@ -7,9 +7,8 @@ import {
   setStorage,
   getNode,
   setDocumentTitle,
-  handleValidationId,
-  handleValidationPassword,
-  defaultAuthData,
+  validateId,
+  validatePassword,
   defaultViewData,
 } from '/src/lib';
 import pb from '/src/api/pocketbase';
@@ -66,15 +65,15 @@ loginBtn.addEventListener('click', function (e) {
 // 아이디 입력
 userIdInput.addEventListener('input', (e) => {
   let value = e.target.value;
-  let state = handleValidationId(value);
-  if (state) errorMessage.classList.remove('is_invalid');
+  const isValidID = validateId(value);
+  if (isValidID) errorMessage.classList.remove('is_invalid');
   else errorMessage.classList.add('is_invalid');
 });
 
 // 비밀번호 입력
 userPasswordInput.addEventListener('input', (e) => {
   let value = e.target.value;
-  let state = handleValidationPassword(value);
+  const isValidPassword = validatePassword(value);
 
   if (value && value.length < 6) {
     userPasswordError.classList.add('is_invalid');
@@ -83,7 +82,7 @@ userPasswordInput.addEventListener('input', (e) => {
     userPasswordError.classList.add('is_invalid');
     userPasswordError.textContent = '최대 16자 까지 입력';
   } else {
-    if (state) {
+    if (isValidPassword) {
       userPasswordError.classList.remove('is_invalid');
     } else {
       userPasswordError.textContent = '특수문자 포함 최소 6자 - 최대 16자';

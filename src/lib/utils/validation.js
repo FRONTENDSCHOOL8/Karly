@@ -1,5 +1,5 @@
 // 아이디 유효성 검사
-export function handleValidationId(id) {
+export function validateId(id) {
   const regex = /^(?=.*[A-Za-z])[A-Za-z\d]{6,16}$/;
 
   if (regex.test(id)) return true;
@@ -7,7 +7,7 @@ export function handleValidationId(id) {
 }
 
 // 비밀번호 유효성 검사
-export function handleValidationPassword(pw) {
+export function validatePassword(pw) {
   const regex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{6,16}$/;
 
   if (regex.test(pw)) return true;
@@ -15,7 +15,7 @@ export function handleValidationPassword(pw) {
 }
 
 // 이메일 유효성 검사
-export function handleValidationEmail(email) {
+export function validateEmail(email) {
   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (regex.test(email)) return true;
